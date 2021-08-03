@@ -10002,3 +10002,22 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #3490dc;
+  width: 250px;
+  padding: 20px;
+}
+
+.header .logo {
+  width: 100px;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.main-content {
+  padding-left: 250px;
+}
