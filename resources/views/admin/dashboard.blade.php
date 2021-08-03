@@ -14,9 +14,8 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <h3>{{ __('This is Aadmin Dashboard') }} {{ date('d-m-Y') }}</h3>
 
-                    <h2>{{ date('dmy') }}</h2>
                 </div>
             </div>
         </div>
