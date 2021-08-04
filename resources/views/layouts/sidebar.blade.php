@@ -86,7 +86,7 @@
             <hr>
 
             <ul class="main-menu">
-                <li class="{{ (request()->is('admin/dashboard')) ? 'active' : '' }}"><a href=""><i
+                <li class="{{ (request()->is('*/dashboard')) ? 'active' : '' }}"><a href=""><i
                             class="fas fa-tachometer-alt mr-1"></i> Dashboard</a></li>
             </ul>
         </header>

@@ -1,48 +1,56 @@
-.header{
+.header {
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
     background-color: $light;
     width: 250px;
-    padding:20px;
+    padding: 20px;
 }
 
-.navbar-light .navbar-nav .nav-link{
+.navbar-light .navbar-nav .nav-link {
     color: $black;
 }
 
-.header .logo{
+.navbar {}
+
+.header .logo {
     width: 60px;
     display: inline-block;
     margin: 0 auto;
 }
 
-.main-content{
-    padding-left: 250px;
+.main-content {
+    padding-left: 300px;
+    padding-right: 50px;
 }
 
-.main-menu{
+.main-menu {
     list-style: none;
     padding: 0;
     margin: 0;
     text-align: left;
-    li{
+    li {
         border-radius: 5px;
-        &.active{
+        transition: all 350ms;
+        &.active {
             background: $primary;
-
-            a{
+            a {
                 color: $white;
             }
         }
-        a{
+        &:hover {
+            background-color: $primary;
+            a {
+                color: $white;
+            }
+        }
+        a {
             padding: 10px;
             display: block;
             color: $black;
             font-size: 1rem;
-
-            &:hover{
+            &:hover {
                 text-decoration: none;
             }
         }
