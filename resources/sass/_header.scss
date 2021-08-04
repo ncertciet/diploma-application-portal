@@ -3,17 +3,48 @@
     top: 0;
     left: 0;
     bottom: 0;
-    background-color: $primary;
+    background-color: $light;
     width: 250px;
     padding:20px;
 }
 
+.navbar-light .navbar-nav .nav-link{
+    color: $black;
+}
+
 .header .logo{
-    width: 100px;
+    width: 60px;
     display: inline-block;
     margin: 0 auto;
 }
 
 .main-content{
     padding-left: 250px;
+}
+
+.main-menu{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    li{
+        border-radius: 5px;
+        &.active{
+            background: $primary;
+
+            a{
+                color: $white;
+            }
+        }
+        a{
+            padding: 10px;
+            display: block;
+            color: $black;
+            font-size: 1rem;
+
+            &:hover{
+                text-decoration: none;
+            }
+        }
+    }
 }

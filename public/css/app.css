@@ -10007,17 +10007,46 @@ h3 {
   top: 0;
   left: 0;
   bottom: 0;
-  background-color: #3490dc;
+  background-color: #f8f9fa;
   width: 250px;
   padding: 20px;
 }
 
+.navbar-light .navbar-nav .nav-link {
+  color: #000;
+}
+
 .header .logo {
-  width: 100px;
+  width: 60px;
   display: inline-block;
   margin: 0 auto;
 }
 
 .main-content {
   padding-left: 250px;
+}
+
+.main-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+.main-menu li {
+  border-radius: 5px;
+}
+.main-menu li.active {
+  background: #3490dc;
+}
+.main-menu li.active a {
+  color: #fff;
+}
+.main-menu li a {
+  padding: 10px;
+  display: block;
+  color: #000;
+  font-size: 1rem;
+}
+.main-menu li a:hover {
+  text-decoration: none;
 }
