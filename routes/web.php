@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -41,13 +41,13 @@ Route::group(['middleware' => ['auth', 'applicant'], 'prefix' => 'applicant'], f
         return view('applicant.dashboard');
     })->name('applicant.dashboard');
 
-    // Route::get('/application/step1', function(){
-    //     return view('applicant.application.form-step1');
-    // })->name('applicantion.form.step1');
+     Route::get('/application/step1', function(){
+         return view('applicant.application.form-step1');
+     })->name('applicantion.form.step1');
 
     Route::POST('/application/step1', 'App\Http\Controllers\ApplicationController@store')->name('application.step1.store');
 
-    Route::get('/application/step1', 'App\Http\Controllers\ApplicationController@index')->name('applicantion.form.step1');
+//    Route::get('/application/step1', 'App\Http\Controllers\ApplicationController@index')->name('applicantion.form.step1');
 
 
 

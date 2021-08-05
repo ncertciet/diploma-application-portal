@@ -1,13 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+        <div class="col-md-6">
 
-                <div class="card-body">
+            <div class="logo-wrap text-center mb-4">
+                <div class="login-logo">
+                    <img class="img-fluid" src="/images/ncert.png" alt="NCERT Logo">
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3 class="mb-0">Login</h3>
+                </div>
+                <div class="card-body mt-5 mb-5">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -54,7 +62,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                                    <i class="fas fa-sign-in-alt mr-1"></i> {{ __('Login') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
@@ -65,6 +73,9 @@
                             </div>
                         </div>
                     </form>
+                </div>
+                <div class="card-footer text-center">
+                    <a class="font-weight-bold" href="{{ route('register') }}"><i class="fas fa-user-plus mr-1"></i> {{ __('Create New Account') }}</a>
                 </div>
             </div>
         </div>

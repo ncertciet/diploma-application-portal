@@ -6,13 +6,20 @@
     background-color: $light;
     width: 250px;
     padding: 20px;
+    margin-top: 60px;
 }
 
 .navbar-light .navbar-nav .nav-link {
     color: $black;
 }
 
-.navbar {}
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
 
 .header .logo {
     width: 60px;
@@ -20,9 +27,18 @@
     margin: 0 auto;
 }
 
+.login-logo {
+    width: 80px;
+    display: inline-block;
+    margin: 0 auto;
+}
+
 .main-content {
-    padding-left: 300px;
-    padding-right: 50px;
+    padding-left: 250px;
+
+    .inner-container{
+        margin-top: -100px;
+    }
 }
 
 .main-menu {
@@ -58,6 +74,36 @@
     }
 }
 
+.hero-section{
+    padding-top: 5rem;
+    padding-bottom: 10rem;
+    width: 100%;
+    background-color: #0061f2 !important;
+    background-image: linear-gradient(
+            135deg
+        , #0061f2 0%, rgba(105, 0, 199, 0.8) 100%) !important;
+
+    .page-title{
+        font-weight: 500;
+        color: $white;
+    }
+
+    .page-header-subtitle{
+        font-size: 1.15rem;
+        color: $white;
+    }
+}
+
 .invalid-feedback {
     display: block !important;
+}
+
+
+
+// Break Points =============
+
+@media (min-width: 1500px) {
+    .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+        max-width: 1440px;
+    }
 }

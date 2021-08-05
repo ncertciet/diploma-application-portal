@@ -16,8 +16,10 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
     <!-- Styles -->
@@ -28,7 +30,7 @@
     <div id="app">
 
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm bg-primary">
-            <div class="container">
+            <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
@@ -38,7 +40,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <a href="/" class="h3 mb-0 text-dark">Diploma Application Portal</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -60,13 +62,19 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                                @php
+                                    $email = Auth::user()->email;
+                                    $default = "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y";
+                                    $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default );
+                                @endphp
+
+                                <img width="35" class="img-fluid rounded-circle" src="{{ $grav_url }}" alt="" /> {{ Auth::user()->name }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    <i class="fas fa-sign-out-alt mr-1"></i> {{ __('Logout') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -92,15 +100,15 @@
                 {{-- Admin Menu --}}
                 @if(Auth::user()->type === 'admin')
                 <li class="{{ (request()->is('*/dashboard')) ? 'active' : '' }}"><a href="{{ route('admin.dashboard')}}"><i
-                    class="fas fa-tachometer-alt mr-1"></i> Dashboard</a></li>
+                    class="fas fa-chart-bar mr-1"></i> Dashboard</a></li>
                 @endif
 
-                
+
                 {{-- Applicant Menu --}}
                 @if(Auth::user()->type === 'user')
                 <li class="{{ (request()->is('*/dashboard')) ? 'active' : '' }}"><a href="{{ route('applicant.dashboard')}}"><i
-                    class="fas fa-tachometer-alt mr-1"></i> Dashboard</a></li>
-                <li class="{{ (request()->is('*/application/*')) ? 'active' : '' }}"><a href="{{ route('application.form.step1')}}"><i 
+                    class="fas fa-chart-bar mr-1"></i> Dashboard</a></li>
+                <li class="{{ (request()->is('*/application/*')) ? 'active' : '' }}"><a href="{{ route('applicantion.form.step1')}}"><i
                     class="far fa-file-alt mr-1"></i> Application</a></li>
                 @endif
 
@@ -112,12 +120,12 @@
                 @endif
             </ul>
 
-            
 
-        
+
+
         </header>
 
-        <main class="py-4 main-content">
+        <main class="main-content">
             @yield('content')
         </main>
     </div>

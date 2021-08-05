@@ -1,13 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
+            <div class="logo-wrap text-center mb-4">
+                <div class="login-logo">
+                    <img class="img-fluid" src="/images/ncert.png" alt="NCERT Logo">
+                </div>
+            </div>
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header text-center">
+                    <h3 class="mb-0">Reset Password</h3>
+                </div>
 
-                <div class="card-body">
+                <div class="card-body mt-4 mb-4">
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf
 
