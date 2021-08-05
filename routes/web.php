@@ -34,17 +34,26 @@ Auth::routes();
 // });
 
 
-// user protected routes
+// Applicant protected routes
 Route::group(['middleware' => ['auth', 'applicant'], 'prefix' => 'applicant'], function () {
+
     Route::get('/dashboard', function(){
         return view('applicant.dashboard');
     })->name('applicant.dashboard');
 
-    Route::get('/application', function(){
-        return view('form');
-    })->name('applicant.form');
+    // Route::get('/application/step1', function(){
+    //     return view('applicant.application.form-step1');
+    // })->name('applicantion.form.step1');
+
+    Route::POST('/application/step1', 'App\Http\Controllers\ApplicationController@store')->name('application.step1.store');
+
+    Route::get('/application/step1', 'App\Http\Controllers\ApplicationController@index')->name('applicantion.form.step1');
 
 
+
+    Route::get('/application/step2', function(){
+        return view('applicant.application.form-step2');
+    })->name('applicantion.form.step2');
 });
 
 // admin protected routes

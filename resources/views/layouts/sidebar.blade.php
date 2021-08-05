@@ -15,7 +15,9 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
     <!-- Styles -->
@@ -86,9 +88,33 @@
             <hr>
 
             <ul class="main-menu">
-                <li class="{{ (request()->is('*/dashboard')) ? 'active' : '' }}"><a href=""><i
-                            class="fas fa-tachometer-alt mr-1"></i> Dashboard</a></li>
+
+                {{-- Admin Menu --}}
+                @if(Auth::user()->type === 'admin')
+                <li class="{{ (request()->is('*/dashboard')) ? 'active' : '' }}"><a href="{{ route('admin.dashboard')}}"><i
+                    class="fas fa-tachometer-alt mr-1"></i> Dashboard</a></li>
+                @endif
+
+                
+                {{-- Applicant Menu --}}
+                @if(Auth::user()->type === 'user')
+                <li class="{{ (request()->is('*/dashboard')) ? 'active' : '' }}"><a href="{{ route('applicant.dashboard')}}"><i
+                    class="fas fa-tachometer-alt mr-1"></i> Dashboard</a></li>
+                <li class="{{ (request()->is('*/application/*')) ? 'active' : '' }}"><a href="{{ route('application.form.step1')}}"><i 
+                    class="far fa-file-alt mr-1"></i> Application</a></li>
+                @endif
+
+
+                {{-- Study Centre Menu --}}
+                @if(Auth::user()->type === 'study-centre')
+                <li class="{{ (request()->is('*/dashboard')) ? 'active' : '' }}"><a href="{{ route('study-centre.dashboard')}}"><i
+                    class="fas fa-tachometer-alt mr-1"></i> Dashboard</a></li>
+                @endif
             </ul>
+
+            
+
+        
         </header>
 
         <main class="py-4 main-content">
