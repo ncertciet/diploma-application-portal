@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::get('/', 'App\Http\Controllers\HomeController@index');
 
 // if (!Auth::check()) {
 //     Route::get('/', function () {
@@ -23,9 +22,10 @@ Route::get('/', function () {
 //     });
 // }
 
-// if (Auth::check()) {
-
-
+// if (FacadesAuth::check()) {
+//     Route::get('', function () {
+//         return redirect('admin/dashboard');
+//     });
 //     if ($user = Auth::user()) {
 
 //         if ($user->type === 'admin') {
@@ -38,9 +38,7 @@ Route::get('/', function () {
 //                 return redirect(route('study-centre.dashboard'));
 //             });
 //         } else if ($user->type === 'user') {
-//             Route::get('/', function () {
-//                 return redirect(route('applicant.dashboard'));
-//             });
+            
 //         }
 //     }
 // }

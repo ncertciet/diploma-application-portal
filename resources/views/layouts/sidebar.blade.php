@@ -114,7 +114,7 @@
 
 
                 {{-- Study Centre Menu --}}
-                @if(Auth::user()->type === 'study-centre')
+                @if(Auth::user()->type === 'rie')
                 <li class="{{ (request()->is('*/dashboard')) ? 'active' : '' }}"><a href="{{ route('study-centre.dashboard')}}"><i
                     class="fas fa-tachometer-alt mr-1"></i> Dashboard</a></li>
                 @endif

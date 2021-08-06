@@ -79,8 +79,11 @@
 
                     <div class="form-group col-md-3">
                         <label for="sc_state">State/UT</label>
-                        <select class="form-control @error('sc_state') is-invalid @enderror" name="sc_state" id="sc_state"  value="{{ old('sc_state') }}">
-                            <option value="">Select State</option>
+                        <select class="form-control product @error('sc_state') is-invalid @enderror" data-related-regime="#regime" name="sc_state" id="product"  value="{{ old('sc_state') }}">
+                            
+                            <option value="" disabled="true" selected="true">Select State/UT</option>
+
+                                            {{-- <option value="0" disabled="true" selected="true">Select State</option>
                             <option value="Andhra Pradesh">Andhra Pradesh</option>
                             <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                             <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -115,7 +118,7 @@
                             <option value="Tripura">Tripura</option>
                             <option value="Uttar Pradesh">Uttar Pradesh</option>
                             <option value="Uttarakhand">Uttarakhand</option>
-                            <option value="West Bengal">West Bengal</option>
+                            <option value="West Bengal">West Bengal</option>--}}
                         </select>
                         @error('sc_state')
                         <span class="invalid-feedback" role="alert">
@@ -125,7 +128,10 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="study_centre">Study Centre</label>
-                        <input type="text" placeholder="Study Centre" class="form-control @error('study_centre') is-invalid @enderror" name="study_centre" id="study_centre"  value="{{ old('study_centre') }}">
+
+                        <select class="form-control regime @error('study_centre') is-invalid @enderror" data-related-category="" data-related-product="#product" name="study_centre" id="regime"  value="{{ old('study_centre') }}">
+                            <option value="" selected="selected">Please select State/UT first</option>
+                        </select>
                         @error('study_centre')
                         <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -344,12 +350,213 @@
                             <button type="submit" name="action" value="save-continue" class="btn btn-success btn-lg">Save & Continue</button>
                         </div>
                     </div>
+
             </form>
 
         </div>
     </div>
 </div>
 
+
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+
+
+ <script>
+    var products = [
+            {
+                "name": "Andhra Pradesh", "id": "Andhra Pradesh",
+                "regimes": [{"name": "Regional Institute of Education, Mysuru", "id": "Regional Institute of Education, Mysuru"}]
+            },
+            {
+                "name": "Andman and Nicobar Islands", "id": "Andman and Nicobar Islands",
+                "regimes": [{"name": "Regional Institute of Education, Bhubaneswar", "id": "Regional Institute of Education, Bhubaneswar"}]
+            },
+            {
+                "name": "Arunachal Pradesh", "id": "Arunachal Pradesh",
+                "regimes": [{"name": "North East Regional Institute of Education (NERIE), Shillong", "id": "North East Regional Institute of Education (NERIE), Shillong"}]
+            },
+            {
+                "name": "Assam", "id": "Assam",
+                "regimes": [{"name": "North East Regional Institute of Education (NERIE), Shillong", "id": "North East Regional Institute of Education (NERIE), Shillong"}]
+            },
+            {
+                "name": "Bihar", "id": "Bihar",
+                "regimes": [{"name": "Regional Institute of Education, Bhubaneswar", "id": "Regional Institute of Education, Bhubaneswar"}]
+            },
+            {
+                "name": "Chandigarh", "id": "Chandigarh",
+                "regimes": [{"name": "Department of Educational Psychology and Foundations of Education NCERT, New Delhi", "id": "Department of Educational Psychology and Foundations of Education NCERT, New Delhi"}]
+            },
+            {
+                "name": "Chhattisgarh", "id": "Chhattisgarh",
+                "regimes": [{"name": "Regional Institute of Education, Bhopal", "id": "Regional Institute of Education, Bhopal"}]
+            },
+            {
+                "name": "Daman and Diu, Dadra and Nagar Haveli", "id": "Daman and Diu, Dadra and Nagar Haveli",
+                "regimes": [{"name": "Regional Institute of Education, Bhopal", "id": "Regional Institute of Education, Bhopal"}]
+            },
+            /*{
+                "name": "Daman and Diu", "id": "Daman and Diu",
+                "regimes": [{"name": "Regional Institute of Education, Bhopal", "id": "Regional Institute of Education, Bhopal"}]
+            },*/
+            {
+                "name": "Delhi-NCR (viz.,Delhi, Gurgaon, Faridabad, Noida, Ghaziabad and other surrounding areas)", "id": "Delhi-NCR (viz.,Delhi, Gurgaon, Faridabad, Noida, Ghaziabad and other surrounding areas)",
+                "regimes": [{"name": "Department of Educational Psychology and Foundations of Education NCERT, New Delhi", "id": "Department of Educational Psychology and Foundations of Education NCERT, New Delhi"}]
+            },
+            {
+                "name": "Goa", "id": "Goa",
+                "regimes": [{"name": "Regional Institute of Education, Bhopal", "id": "Regional Institute of Education, Bhopal"}]
+            },
+            {
+                "name": "Gujrat", "id": "Gujrat",
+                "regimes": [{"name": "Regional Institute of Education, Bhopal", "id": "Regional Institute of Education, Bhopal"}]
+            },
+            {
+                "name": "Haryana", "id": "Haryana",
+                "regimes": [{"name": "Regional Institute of Education, Ajmer", "id": "Regional Institute of Education, Ajmer"}]
+            },
+            {
+                "name": "Himachal Pradesh", "id": "Himachal Pradesh",
+                "regimes": [{"name": "Regional Institute of Education, Ajmer", "id": "Regional Institute of Education, Ajmer"}]
+            },
+            {
+                "name": "Jammu and Kashmir", "id": "Jammu and Kashmir",
+                "regimes": [{"name": "Regional Institute of Education, Ajmer", "id": "Regional Institute of Education, Ajmer"}]
+            },
+            {
+                "name": "Jharkhand", "id": "Jharkhand",
+                "regimes": [{"name": "Regional Institute of Education, Bhubaneswar", "id": "Regional Institute of Education, Bhubaneswar"}]
+            },
+            {
+                "name": "Karnataka", "id": "Karnataka",
+                "regimes": [{"name": "Regional Institute of Education, Mysuru", "id": "Regional Institute of Education, Mysuru"}]
+            },
+            {
+                "name": "Kerala", "id": "Kerala",
+                "regimes": [{"name": "Regional Institute of Education, Mysuru", "id": "Regional Institute of Education, Mysuru"}]
+            },
+            {
+                "name": "Ladakh", "id": "Ladakh",
+                "regimes": [{"name": "Regional Institute of Education, Ajmer", "id": "Regional Institute of Education, Ajmer"}]
+            },
+            {
+                "name": "Lakshadweep", "id": "Lakshadweep",
+                "regimes": [{"name": "Regional Institute of Education, Mysuru", "id": "Regional Institute of Education, Mysuru"}]
+            },
+            {
+                "name": "Madhya pradesh", "id": "Madhya pradesh",
+                "regimes": [{"name": "Regional Institute of Education, Bhopal", "id": "Regional Institute of Education, Bhopal"}]
+            },
+            {
+                "name": "Maharashtra", "id": "Maharashtra",
+                "regimes": [{"name": "Regional Institute of Education, Bhopal", "id": "Regional Institute of Education, Bhopal"}]
+            },
+            {
+                "name": "Manipur", "id": "Manipur",
+                "regimes": [{"name": "North East Regional Institute of Education (NERIE), Shillong", "id": "North East Regional Institute of Education (NERIE), Shillong"}]
+            },
+            {
+                "name": "Meghalaya", "id": "Meghalaya",
+                "regimes": [{"name": "North East Regional Institute of Education (NERIE), Shillong", "id": "North East Regional Institute of Education (NERIE), Shillong"}]
+            },
+            {
+                "name": "Mizoram", "id": "Mizoram",
+                "regimes": [{"name": "North East Regional Institute of Education (NERIE), Shillong", "id": "North East Regional Institute of Education (NERIE), Shillong"}]
+            },
+            {
+                "name": "Nagaland", "id": "Nagaland",
+                "regimes": [{"name": "North East Regional Institute of Education (NERIE), Shillong", "id": "North East Regional Institute of Education (NERIE), Shillong"}]
+            },
+            {
+                "name": "Odisha", "id": "Odisha",
+                "regimes": [{"name": "Regional Institute of Education, Bhubaneswar", "id": "Regional Institute of Education, Bhubaneswar"}]
+            },
+            {
+                "name": "Puducherry", "id": "Puducherry",
+                "regimes": [{"name": "Regional Institute of Education, Mysuru", "id": "Regional Institute of Education, Mysuru"}]
+            },
+            {
+                "name": "Punjab", "id": "Punjab",
+                "regimes": [{"name": "Regional Institute of Education, Ajmer", "id": "Regional Institute of Education, Ajmer"}]
+            },
+            {
+                "name": "Rajasthan", "id": "Rajasthan",
+                "regimes": [{"name": "Regional Institute of Education, Ajmer", "id": "Regional Institute of Education, Ajmer"}]
+            },
+            {
+                "name": "Sikkim", "id": "Sikkim",
+                "regimes": [{"name": "North East Regional Institute of Education (NERIE), Shillong", "id": "North East Regional Institute of Education (NERIE), Shillong"}]
+            },
+            {
+                "name": "Tamil Nadu", "id": "Tamil Nadu",
+                "regimes": [{"name": "Regional Institute of Education, Mysuru", "id": "Regional Institute of Education, Mysuru"}]
+            },
+            {
+                "name": "Telangana", "id": "Telangana",
+                "regimes": [{"name": "Regional Institute of Education, Mysuru", "id": "Regional Institute of Education, Mysuru"}]
+            },
+            {
+                "name": "Tiripura", "id": "Tiripura",
+                "regimes": [{"name": "North East Regional Institute of Education (NERIE), Shillong", "id": "North East Regional Institute of Education (NERIE), Shillong"}]
+            },
+            {
+                "name": "Uttar Pradesh", "id": "Uttar Pradesh",
+                "regimes": [{"name": "Regional Institute of Education, Ajmer", "id": "Regional Institute of Education, Ajmer"}]
+            },
+            {
+                "name": "UttaraKhanad", "id": "UttaraKhanad",
+                "regimes": [{"name": "Regional Institute of Education, Ajmer", "id": "Regional Institute of Education, Ajmer"}]
+            },
+            {
+                "name": "West Bengal", "id": "West Bengal",
+                "regimes": [{"name": "Regional Institute of Education, Bhubaneswar", "id": "Regional Institute of Education, Bhubaneswar"}]
+            }
+            
+        ];
+    
+        $(function () {
+            $.each(products, function (index, value) {
+                $(".product").append('<option value="' + value.id + '">' + value.name + '</option>');
+            });
+    
+            $('.product').on('change', function (e) {
+                loadRegimeOptions($(this));
+            });
+    
+            $('.regime').on('change', function () {
+                loadCategories($(this));
+            });
+        });
+    
+        var loadRegimeOptions = function ($productElement) {
+            var $regimeElement = $($productElement.data('related-regime'));
+            var $categoryElement = $($regimeElement.data('related-category'));
+    
+            var selectedProductIndex = $productElement[0].selectedIndex - 1;
+    
+            $regimeElement.html('');
+            $.each(products[selectedProductIndex].regimes, function (index, value) {
+                $regimeElement.append('<option value="' + value.id + '">' + value.name + '</option>');
+            });
+            //...and blank out category since it no longer applies
+            $categoryElement.html('<option>-- Select --</option>');
+        };
+    
+        var loadCategories = function($regimeElement) {
+            var $productElement = $($regimeElement.data('related-product'));
+            var $categoryElement = $($regimeElement.data('related-category'));
+    
+            var selectedProductIndex = $productElement[0].selectedIndex - 1;
+            var selectedRegimeIndex = $regimeElement[0].selectedIndex - 1;
+    
+            $categoryElement.html('<option>-- Select --</option>');
+            $.each(products[selectedProductIndex].regimes[selectedRegimeIndex].categories, function (index, value) {
+                $categoryElement.append('<option value="' + value.id + '">' + value.name + '</option>');
+            });
+        };
+    </script>
+    
 
 
 

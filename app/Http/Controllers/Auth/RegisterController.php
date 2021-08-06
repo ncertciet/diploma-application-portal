@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -73,6 +73,8 @@ class RegisterController extends Controller
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
         ]);
+
+        return redirect(route('applicant.dashboard'));
     }
 
     // protected function authenticated(Request $request, User $user)
@@ -87,6 +89,40 @@ class RegisterController extends Controller
     //     }
     //     // to study-centre
     //     else if ($user->isStudyCentre()) {
+    //         return redirect(route('study-centre.dashboard'));
+    //     }
+
+    //     abort(404);
+    // }
+
+    // protected $redirectTo = '/home';
+
+    // protected function redirectTo()
+    //     {
+    //         if (auth()->user()->type == 'user') {
+    //             return redirect(route('applicant.dashboard'));
+    //         }
+    //         return '/home';
+    //     }
+
+
+    // protected function authenticated(Request $request, RegistersUsers $user)
+    // {
+    //     // to admin dashboard
+
+    //     dd($user);
+
+    //     if($user->isAdmin()) {
+    //         return redirect(route('admin.dashboard'));
+    //     }
+
+    //     // to user dashboard
+    //     else if($user->isApplicant()) {
+            
+    //     }
+
+    //     // to user study-centre
+    //     else if($user->isStudyCentre()) {
     //         return redirect(route('study-centre.dashboard'));
     //     }
 
