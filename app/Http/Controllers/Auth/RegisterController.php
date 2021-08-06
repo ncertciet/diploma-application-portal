@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -66,11 +67,29 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'reg_id' => rand(0, 999999).date('dmy'),
+            'reg_id' => rand(0, 999999) . date('dmy'),
             'name' => $data['name'],
             'email' => $data['email'],
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    // protected function authenticated(Request $request, User $user)
+    // {
+    //     // to admin dashboard
+    //     if ($user->isAdmin()) {
+    //         return redirect(route('admin.dashboard'));
+    //     }
+    //     // to user dashboard
+    //     else if ($user->isApplicant()) {
+    //         return redirect(route('applicant.dashboard'));
+    //     }
+    //     // to study-centre
+    //     else if ($user->isStudyCentre()) {
+    //         return redirect(route('study-centre.dashboard'));
+    //     }
+
+    //     abort(404);
+    // }
 }
