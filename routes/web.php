@@ -22,26 +22,14 @@ Route::get('/', 'App\Http\Controllers\HomeController@index');
 //     });
 // }
 
-// if (FacadesAuth::check()) {
-//     Route::get('', function () {
-//         return redirect('admin/dashboard');
-//     });
-//     if ($user = Auth::user()) {
 
-//         if ($user->type === 'admin') {
 
-//             Route::get('/', function () {
-//                 return redirect(route('applicant.dashboard'));
-//             });
-//         } else if ($user->type === 'rie') {
-//             Route::get('/', function () {
-//                 return redirect(route('study-centre.dashboard'));
-//             });
-//         } else if ($user->type === 'user') {
-            
-//         }
-//     }
-// }
+Route::group(['middleware' => ['auth',], 'prefix' => 'account'], function () {
+    Route::get('/profile', 'App\Http\Controllers\UserController@profile')->name('account.profile');
+    Route::POST('/profile', 'App\Http\Controllers\UserController@profileUpdate')->name('account.update');
+});
+
+
 
 
 
@@ -81,6 +69,8 @@ Route::group(['middleware' => ['auth', 'applicant'], 'prefix' => 'applicant'], f
     Route::get('/application/step2', function () {
         return view('applicant.application.form-step2');
     })->name('applicantion.form.step2');
+
+
 });
 
 // admin protected routes
@@ -92,6 +82,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     Route::get('/', function () {
         return redirect(route('applicant.dashboard'));
     });
+
 });
 
 // study Centre protected routes
@@ -99,4 +90,5 @@ Route::group(['middleware' => ['auth', 'studyCentre'], 'prefix' => 'study-centre
     Route::get('/dashboard', function () {
         return view('study-centre.dashboard');
     })->name('study-centre.dashboard');
+
 });

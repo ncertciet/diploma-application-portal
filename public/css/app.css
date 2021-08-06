@@ -10024,6 +10024,9 @@ h3 {
   right: 0;
   z-index: 1000;
 }
+.navbar .dropdown-menu {
+  min-width: 15rem;
+}
 
 .header .logo {
   width: 60px;
