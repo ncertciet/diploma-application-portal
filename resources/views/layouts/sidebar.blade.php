@@ -68,7 +68,7 @@
                                     $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default );
                                 @endphp
 
-                                <img width="35" class="img-fluid rounded-circle" src="{{ $grav_url }}" alt="" /> {{ Auth::user()->name }}
+                                <span class="date mr-2">{{ date('d-m-Y') }}</span> <img width="35" class="img-fluid rounded-circle" src="{{ $grav_url }}" alt="" /> {{ Auth::user()->name }}
                             </a>
 
 
@@ -77,7 +77,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-3 pr-0">
-                                        <img width="45" class="img-fluid rounded-circle" src="{{ $grav_url }}" alt="" />
+                                         <img width="45" class="img-fluid rounded-circle" src="{{ $grav_url }}" alt="" />
                                     </div>
                                     <div class="col-sm-8 pl-0">
                                         <strong>{{ Auth::user()->name }}</strong>

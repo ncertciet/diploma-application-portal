@@ -78,9 +78,9 @@
                     </div>
 
                     <div class="form-group col-md-3">
-                        <label for="sc_state">State/UT</label>
+                        <label for="product">State/UT</label>
                         <select class="form-control product @error('sc_state') is-invalid @enderror" data-related-regime="#regime" name="sc_state" id="product"  value="{{ old('sc_state') }}">
-                            
+
                             <option value="" disabled="true" selected="true">Select State/UT</option>
 
                                             {{-- <option value="0" disabled="true" selected="true">Select State</option>
@@ -127,7 +127,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="study_centre">Study Centre</label>
+                        <label for="regime">Study Centre</label>
 
                         <select class="form-control regime @error('study_centre') is-invalid @enderror" data-related-category="" data-related-product="#product" name="study_centre" id="regime"  value="{{ old('study_centre') }}">
                             <option value="" selected="selected">Please select State/UT first</option>
@@ -359,7 +359,7 @@
 
 
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
  <script>
@@ -512,29 +512,29 @@
                 "name": "West Bengal", "id": "West Bengal",
                 "regimes": [{"name": "Regional Institute of Education, Bhubaneswar", "id": "Regional Institute of Education, Bhubaneswar"}]
             }
-            
+
         ];
-    
+
         $(function () {
             $.each(products, function (index, value) {
                 $(".product").append('<option value="' + value.id + '">' + value.name + '</option>');
             });
-    
+
             $('.product').on('change', function (e) {
                 loadRegimeOptions($(this));
             });
-    
+
             $('.regime').on('change', function () {
                 loadCategories($(this));
             });
         });
-    
+
         var loadRegimeOptions = function ($productElement) {
             var $regimeElement = $($productElement.data('related-regime'));
             var $categoryElement = $($regimeElement.data('related-category'));
-    
+
             var selectedProductIndex = $productElement[0].selectedIndex - 1;
-    
+
             $regimeElement.html('');
             $.each(products[selectedProductIndex].regimes, function (index, value) {
                 $regimeElement.append('<option value="' + value.id + '">' + value.name + '</option>');
@@ -542,21 +542,21 @@
             //...and blank out category since it no longer applies
             $categoryElement.html('<option>-- Select --</option>');
         };
-    
+
         var loadCategories = function($regimeElement) {
             var $productElement = $($regimeElement.data('related-product'));
             var $categoryElement = $($regimeElement.data('related-category'));
-    
+
             var selectedProductIndex = $productElement[0].selectedIndex - 1;
             var selectedRegimeIndex = $regimeElement[0].selectedIndex - 1;
-    
+
             $categoryElement.html('<option>-- Select --</option>');
             $.each(products[selectedProductIndex].regimes[selectedRegimeIndex].categories, function (index, value) {
                 $categoryElement.append('<option value="' + value.id + '">' + value.name + '</option>');
             });
         };
     </script>
-    
+
 
 
 

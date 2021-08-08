@@ -11,6 +11,7 @@ use \Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth as Auth;
+use Illuminate\Support\Facades\DB;
 
 class ApplicationController extends Controller
 {
@@ -22,19 +23,26 @@ class ApplicationController extends Controller
     public function index()
     {
         //
+        $reg_id = Auth::user()->reg_id;
+//        dd($reg_id);
+        $application = DB::table('applications')->where('reg_id', $reg_id)->first();
+//        dd($application);
 
-        $application = Application::get();
-        dd($application);
+        if(empty($application)){
+            return view('applicant.application.form-step1');
+        }
 
         if($application->step === ''){
-            return view('applicant.applicant.form-step1');
-        }
-           
-        else if ($application->step === '1'){
-            return view('applicant.applicant.form-step2');
+            return redirect(route('applicantion.form.step1'));
         }
 
-        
+        else if ($application->step === '1'){
+            return redirect(route('applicantion.form.step2'));
+        }else{
+
+        }
+
+
     }
 
     /**
@@ -45,7 +53,7 @@ class ApplicationController extends Controller
     public function create(Request $request)
     {
         //
-    
+
     }
 
     /**
@@ -57,7 +65,7 @@ class ApplicationController extends Controller
     public function store(Request $request)
     {
         //
-        
+
         $rules = [
 			'name' => 'required',
             'gender' => 'required',
@@ -118,7 +126,7 @@ class ApplicationController extends Controller
                         $application->save();
 				        return redirect(route('applicant.dashboard'))->with('status',"Save successfully");
                         break;
-            
+
                     case 'save-continue':
                         // Preview model
                         $application->save();
@@ -126,14 +134,14 @@ class ApplicationController extends Controller
                         break;
                 }
 
-				
+
 			}
 			catch(Exception $e){
 				return redirect(route('applicantion.form.step1'))->with('failed',"Operation failed");
 			}
 		}
-    
-        
+
+
     }
 
     /**
@@ -212,7 +220,7 @@ class ApplicationController extends Controller
 //         $application->application_id = rand(0, 999999).date('dmy');
 //         $application->reg_id = Auth::user()->reg_id;
 
-         
+
 
 //         $application->saveOrFail();
 //         return redirect(route('applicant.dashboard'));

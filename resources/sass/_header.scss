@@ -55,6 +55,7 @@
         transition: all 350ms;
         margin-bottom: 10px;
         &.active {
+            @extend .shadow;
             background: $primary;
             a {
                 color: $white;
