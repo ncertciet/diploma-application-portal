@@ -13,7 +13,7 @@ $user = $user ?? null;
                     <div class="col-auto mt-4">
                         <h1 class="page-title"><i class="far fa-user mr-1"></i> Profile</h1>
                         <div class="page-header-subtitle">
-                            Update your Profile details
+                            Update your Profile details.
                         </div>
                     </div>
                 </div>

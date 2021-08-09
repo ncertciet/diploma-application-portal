@@ -22,14 +22,22 @@
 
             <div class="application-form shadow mb-5">
 
+                @if (session('status'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('status') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                @endif
+
                 <form method="POST" action="{{route('application.step2.store')}}">
                     @csrf
-    
-    
                     <h4 class="text-primary mt-2 mb-4">Details of Educational Qualifications (final school examination onwards):</h4>
                     <div class="color-box">
                         <div class="form-row">
-                            
+
                             <table id="myTable" class=" table order-list-school">
                                 <thead>
                                     <tr>
@@ -55,14 +63,14 @@
                                                 @endfor
                                             </select>
                                         </td>
-            
+
                                         <td class="col-sm-2">
                                             <input type="text" name="eq_marks_x"  class="form-control" placeholder="marks/grade" required>
                                         </td>
                                         <td class="col-sm-2">
                                             <input type="text" name="eq_subject_x"  class="form-control" placeholder="Subject" required>
                                         </td>
-                                        
+
                                     </tr>
                                     <tr>
                                         <td class="col-sm-2">
@@ -87,7 +95,7 @@
                                         <td class="col-sm-2">
                                             <input type="text" name="eq_subject_xii"  class="form-control" placeholder="Subject" required>
                                         </td>
-                                        
+
                                     </tr>
                                     <tr>
                                     <td class="col-sm-2">
@@ -112,11 +120,11 @@
                                         <input type="text" name="eq_subject_grad"  class="form-control" placeholder="Subject" required>
                                     </td>
                                     <td class="col-sm-2"><a class="deleteRow"></a>
-            
+
                                     </td>
                                 </tr>
-                                
-                                
+
+
                                 <tr>
                                     <td class="col-sm-2">
                                         <input type="text" name="eq_exam_pgrad" class="form-control" value="Post Graduation" readonly >
@@ -140,10 +148,10 @@
                                         <input type="text" name="eq_subject_pgrad"  class="form-control" placeholder="Subject" required>
                                     </td>
                                     <td class="col-sm-2"><a class="deleteRow"></a>
-            
+
                                     </td>
                                     <td class="col-sm-2"><a class="deleteRow"></a>
-            
+
                                     </td>
                                 </tr>
                                 </thead>
@@ -154,7 +162,7 @@
                             <input type="button" class="btn btn-primary" id="addrowschool" value="Add More Qualification"  />
                         </div>
                         <div class="form-group col-md-6">
-                            
+
                         </div>
                         <div class="form-group col-md-3">
                         </div>
@@ -197,7 +205,7 @@
                                           <input type="text" name="pq_subject"  class="form-control" placeholder="Subject" >
                                       </td>
                                       <td class="col-sm-2"><a class="deleteRow"></a>
-              
+
                                       </td>
                                   </tr>
                               </thead>
@@ -205,13 +213,13 @@
                               </tbody>
                           </table>
                         </div>
-                        
+
                         <div class="form-row">
                           <div class="form-group col-md-3 custom-btn">
                               <input type="button" class="btn btn-primary" id="addrow" value="Add More Qualification"  />
                           </div>
                           <div class="form-group col-md-6">
-                              
+
                           </div>
                           <div class="form-group col-md-3">
                           </div>
@@ -219,8 +227,8 @@
                       </div>
                       <div class="form-row justify-content-end mt-3">
                         <div class="col-sm-6 text-right">
-                            <button type="submit" name="action" value="save" class="btn btn-primary btn-lg mr-3">Save</button>
-                            <button type="submit" name="action" value="save-continue" class="btn btn-success btn-lg">Save & Continue</button>
+                            <button type="submit" name="action" value="save-step2" class="btn btn-primary btn-lg mr-3">Save</button>
+                            <button type="submit" name="action" value="save-continue-step2" class="btn btn-success btn-lg">Save & Continue</button>
                         </div>
                     </div>
                 </form>
@@ -249,7 +257,7 @@
                     cols += '<td><input type="number" class="form-control" name="eq_year_oth' + counter + '" placeholder="Year" /></td>';
                     cols += '<td><input type="text" class="form-control" name="eq_marks_oth' + counter + '" placeholder="marks/grade" /></td>';
                     cols += '<td><input type="text" class="form-control" name="eq_subject_oth' + counter + '" placeholder="Subject" /></td>';
-        
+
                     cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
                     $(newRow).append(cols); //add input box
                     $("table.order-list-school").append(newRow);
@@ -260,24 +268,24 @@
                 });
 
 
-            
-        
-        
-        
+
+
+
+
             $("table.order-list-school").on("click", ".ibtnDel", function (event) {
-                $(this).closest("tr").remove();       
+                $(this).closest("tr").remove();
                 counter -= 1
             });
-        
-        
+
+
         });
-        
-        
+
+
         function calculateRow(row) {
             var price = +row.find('input[name^="price"]').val();
-        
+
         }
-        
+
         function calculateGrandTotal() {
             var grandTotal = 0;
             $("table.order-list-school").find('input[name^="price"]').each(function () {
@@ -305,7 +313,7 @@
                 cols += '<td><input type="number" class="form-control" name="pq_year' + counter + '" placeholder="Year" /></td>';
                 cols += '<td><input type="text" class="form-control" name="pq_marks' + counter + '" placeholder="marks/grade" /></td>';
                 cols += '<td><input type="text" class="form-control" name="pq_subject' + counter + '" placeholder="Subject" /></td>';
-    
+
             cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
             newRow.append(cols);
             $("table.order-list").append(newRow);
@@ -313,26 +321,26 @@
             alert('You Reached the limits')
                 }
 
-            
+
         });
-    
-    
-    
+
+
+
         $("table.order-list").on("click", ".ibtnDel", function (event) {
-            $(this).closest("tr").remove();       
+            $(this).closest("tr").remove();
             counter -= 1
         });
-    
-    
+
+
     });
-    
-    
-    
+
+
+
     function calculateRow(row) {
         var price = +row.find('input[name^="price"]').val();
-    
+
     }
-    
+
     function calculateGrandTotal() {
         var grandTotal = 0;
         $("table.order-list").find('input[name^="price"]').each(function () {

@@ -3,6 +3,7 @@ $user = Auth::user();
 $reg_id = $user->reg_id;
 //dd($reg_id);
 $applications = \Illuminate\Support\Facades\DB::table('applications')->where('reg_id', $reg_id)->get();
+$count = count($applications);
 //dd($applications);
 ?>
 @extends('layouts.sidebar')
@@ -32,8 +33,12 @@ $applications = \Illuminate\Support\Facades\DB::table('applications')->where('re
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
                         @endif
+
 
                             <div class="table-responsive">
                                 <table class="table">
@@ -58,6 +63,36 @@ $applications = \Illuminate\Support\Facades\DB::table('applications')->where('re
                                     </tbody>
                                 </table>
                             </div>
+
+{{--                            @if(!$count === 0)--}}
+{{--                                <div class="table-responsive">--}}
+{{--                                    <table class="table">--}}
+{{--                                        <thead>--}}
+{{--                                        <tr>--}}
+{{--                                            <th>Application ID.</th>--}}
+{{--                                            <th>Step Completed</th>--}}
+{{--                                            <th>Application Status</th>--}}
+{{--                                            <th>Actions</th>--}}
+{{--                                        </tr>--}}
+{{--                                        </thead>--}}
+
+{{--                                        <tbody>--}}
+{{--                                        @foreach ($applications as $application)--}}
+{{--                                            <tr>--}}
+{{--                                                <td><strong>{{ $application->application_id }}</strong></td>--}}
+{{--                                                <td>{{ $application->step }} step completed out of 5</td>--}}
+{{--                                                <td>{{ ucfirst($application->status) }}</td>--}}
+{{--                                                <td><a href="#" class="btn btn-warning">Resume</a></td>--}}
+{{--                                            </tr>--}}
+{{--                                        @endforeach--}}
+{{--                                        </tbody>--}}
+{{--                                    </table>--}}
+{{--                                </div>--}}
+{{--                            @else--}}
+
+{{--                                <h3 class="text-center text-primary">You don't fill your Application <a href="{{ route('application.form.step1')}}" class="btn btn-success">Get Started Now</a></h3>--}}
+
+{{--                            @endif--}}
 
                     </div>
                 </div>
