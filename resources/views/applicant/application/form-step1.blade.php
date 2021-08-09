@@ -26,7 +26,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name" value="{{ $user->name }}" autofocus>
+                        <input type="text" readonly class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name" value="{{ $user->name }}" autofocus>
                         @error('name')
                         <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -82,43 +82,6 @@
                         <select class="form-control product @error('sc_state') is-invalid @enderror" data-related-regime="#regime" name="sc_state" id="product"  value="{{ old('sc_state') }}">
 
                             <option value="" disabled="true" selected="true">Select State/UT</option>
-
-                                            {{-- <option value="0" disabled="true" selected="true">Select State</option>
-                            <option value="Andhra Pradesh">Andhra Pradesh</option>
-                            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                            <option value="Assam">Assam</option>
-                            <option value="Bihar">Bihar</option>
-                            <option value="Chandigarh">Chandigarh</option>
-                            <option value="Chhattisgarh">Chhattisgarh</option>
-                            <option value="Dadar and Nagar Haveli">Daman and Diu, Dadar and Nagar Haveli</option>
-                            <option value="Delhi">Delhi</option>
-                            <option value="Lakshadweep">Lakshadweep</option>
-                            <option value="Puducherry">Puducherry</option>
-                            <option value="Goa">Goa</option>
-                            <option value="Gujarat">Gujarat</option>
-                            <option value="Haryana">Haryana</option>
-                            <option value="Himachal Pradesh">Himachal Pradesh</option>
-                            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                            <option value="Jharkhand">Jharkhand</option>
-                            <option value="Karnataka">Karnataka</option>
-                            <option value="Kerala">Kerala</option>
-                            <option value="Madhya Pradesh">Madhya Pradesh</option>
-                            <option value="Maharashtra">Maharashtra</option>
-                            <option value="Manipur">Manipur</option>
-                            <option value="Meghalaya">Meghalaya</option>
-                            <option value="Mizoram">Mizoram</option>
-                            <option value="Nagaland">Nagaland</option>
-                            <option value="Odisha">Odisha</option>
-                            <option value="Punjab">Punjab</option>
-                            <option value="Rajasthan">Rajasthan</option>
-                            <option value="Sikkim">Sikkim</option>
-                            <option value="Tamil Nadu">Tamil Nadu</option>
-                            <option value="Telangana">Telangana</option>
-                            <option value="Tripura">Tripura</option>
-                            <option value="Uttar Pradesh">Uttar Pradesh</option>
-                            <option value="Uttarakhand">Uttarakhand</option>
-                            <option value="West Bengal">West Bengal</option>--}}
                         </select>
                         @error('sc_state')
                         <span class="invalid-feedback" role="alert">
@@ -246,7 +209,7 @@
 
                         <div class="form-group col-sm-4">
                             <label for="p_email"> Email</label>
-                            <input type="email" class="form-control @error('p_email') is-invalid @enderror" name="p_email" id="p_email" placeholder="Email"  value="{{ $user->email }}">
+                            <input type="email" readonly class="form-control @error('p_email') is-invalid @enderror" name="p_email" id="p_email" placeholder="Email"  value="{{ $user->email }}">
                             @error('p_email')
                             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

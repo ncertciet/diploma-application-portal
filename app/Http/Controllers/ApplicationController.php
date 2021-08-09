@@ -190,39 +190,158 @@ class ApplicationController extends Controller
     }
 
 
-//     public function step1(Request $request)
-//     {
-//         $data = $request->validate([
-//             'name' => 'required',
-//             'gender' => 'required',
-//             'dob' => 'required',
-//             'nationality' => 'required',
-//             'sc_state' => 'required',
-//             'study_centre' => 'required',
-//             'p_address' => 'required',
-//             'p_city' => 'required',
-//             'p_state' => 'required',
-//             'p_zip' => 'required|digits:6',
-//             'p_telephone'=> '',
-//             'p_mobile' => 'required|digits:10',
-//             'p_email' => 'required',
-//             'occupation' => 'required',
-//             'o_address' => 'required',
-//             'o_city' => 'required',
-//             'o_state' => 'required',
-//             'o_zip' => 'required|digits:6',
-//         ]);
+    public function step2(Request $request)
+    {
+        $reg_id = Auth::user()->reg_id;
 
-//         dd($data);
+        $application = DB::table('applications')->where('reg_id', $reg_id)->first();
 
-//         $application = new Application;
-//         $application->step = '1';
-//         $application->application_id = rand(0, 999999).date('dmy');
-//         $application->reg_id = Auth::user()->reg_id;
+        $rules = [
+            'eq_exam_x'=> 'required',
+            'eq_board_x'=> 'required',
+            'eq_year_x'=> 'required',
+            'eq_marks_x'=> 'required',
+            'eq_subject_x'=> 'required',
+            'eq_exam_xii'=> 'required',
+            'eq_board_xii'=> 'required',
+            'eq_year_xii'=> 'required',
+            'eq_marks_xii'=> 'required',
+            'eq_subject_xii'=> 'required',
+            'eq_exam_grad'=> 'required',
+            'eq_board_grad'=> 'required',
+            'eq_year_grad'=> 'required',
+            'eq_marks_grad'=> 'required',
+            'eq_subject_grad'=> 'required',
+            'eq_exam_pgrad'=> ' ',
+            'eq_board_pgrad'=> ' ',
+            'eq_year_pgrad'=> ' ',
+            'eq_marks_pgrad'=> ' ',
+            'eq_subject_pgrad'=> ' ',
+            'eq_exam_oth1'=> ' ',
+            'eq_board_oth1'=> ' ',
+            'eq_year_oth1'=> ' ',
+            'eq_marks_oth1'=> ' ',
+            'eq_subject_oth1'=> ' ',
+            'eq_exam_oth2'=> ' ',
+            'eq_board_oth2'=> ' ',
+            'eq_year_oth2'=> ' ',
+            'eq_marks_oth2'=> ' ',
+            'eq_subject_oth2'=> ' ',
+            'eq_exam_oth3'=> ' ',
+            'eq_board_oth3'=> ' ',
+            'eq_year_oth3'=> ' ',
+            'eq_marks_oth3'=> ' ',
+            'eq_subject_oth3'=> ' ',
+            'pq_degree'=> 'required',
+            'pq_board'=> 'required',
+            'pq_year'=> 'required',
+            'pq_marks'=> 'required',
+            'pq_subject'=> 'required',
+            'pq_degree1'=> ' ',
+            'pq_board1'=> ' ',
+            'pq_year1'=> ' ',
+            'pq_marks1'=> ' ',
+            'pq_subject1'=> ' ',
+            'pq_degree2'=> ' ',
+            'pq_board2'=> ' ',
+            'pq_year2'=> ' ',
+            'pq_marks2'=> ' ',
+            'pq_subject2'=> ' ',
+            'pq_degree3'=> ' ',
+            'pq_board3'=> ' ',
+            'pq_year3'=> ' ',
+            'pq_marks3'=> ' ',
+            'pq_subject3'=> ' ',
+		];
+
+        $validator = Validator::make($request->all(),$rules);
+		if ($validator->fails()) {
+			return redirect(route('applicantion.form.step2'))
+			->withInput()
+			->withErrors($validator);
+		}
+		else{
+            $data = $request->input();
+			try{
+            $application->eq_exam_x = $data['eq_exam_x'];
+            $application->eq_year_x= $data['eq_year_x'];
+            $application->eq_marks_x= $data['eq_marks_x'];
+            $application->eq_subject_x= $data['eq_subject_x'];
+            $application->eq_exam_xii= $data['eq_exam_xii'];
+            $application->eq_board_xii= $data['eq_board_xii'];
+            $application->eq_year_xii= $data['eq_year_xii'];
+            $application->eq_marks_xii= $data['eq_marks_xii'];
+            $application->eq_subject_xii= $data['eq_subject_xii'];
+            $application->eq_exam_grad= $data['eq_exam_grad'];
+            $application->eq_board_grad= $data['eq_board_grad'];
+            $application->eq_year_grad= $data['eq_year_grad'];
+            $application->eq_marks_grad= $data['eq_marks_grad'];
+            $application->eq_subject_grad= $data['eq_subject_grad'];
+            $application->eq_exam_pgrad= $data['eq_exam_pgrad'];
+            $application->eq_board_pgrad= $data['eq_board_pgrad'];
+            $application->eq_year_pgrad= $data['eq_year_pgrad'];
+            $application->eq_marks_pgrad= $data['eq_marks_pgrad'];
+            $application->eq_subject_pgrad= $data['eq_subject_pgrad'];
+            $application->eq_exam_oth1= $data['eq_exam_oth1'];
+            $application->eq_board_oth1= $data['eq_board_oth1'];
+            $application->eq_year_oth1= $data['eq_year_oth1'];
+            $application->eq_marks_oth1= $data['eq_marks_oth1'];
+            $application->eq_subject_oth1= $data['eq_subject_oth1'];
+            $application->eq_exam_oth2= $data['eq_exam_oth2'];
+            $application->eq_board_oth2= $data['eq_board_oth2'];
+            $application->eq_year_oth2= $data['eq_year_oth2'];
+            $application->eq_marks_oth2= $data['eq_marks_oth2'];
+            $application->eq_subject_oth2= $data['eq_subject_oth2'];
+            $application->eq_exam_oth3= $data['eq_exam_oth3'];
+            $application->eq_board_oth3= $data['eq_board_oth3'];
+            $application->eq_year_oth3= $data['eq_year_oth3'];
+            $application->eq_marks_oth3= $data['eq_marks_oth3'];
+            $application->eq_subject_oth3= $data['eq_subject_oth3'];
+            $application->pq_degree= $data['pq_degree'];
+            $application->pq_board= $data['pq_board'];
+            $application->pq_year= $data['pq_year'];
+            $application->pq_marks= $data['pq_marks'];
+            $application->pq_subject= $data['pq_subject'];
+            $application->pq_degree= $data['pq_degree'];
+            $application->pq_board1= $data['pq_board1'];
+            $application->pq_year1= $data['pq_year1'];
+            $application->pq_marks1= $data['pq_marks1'];
+            $application->pq_subject1= $data['pq_subject1'];
+            $application->pq_degree2= $data['pq_degree2'];
+            $application->pq_board2= $data['pq_board2'];
+            $application->pq_year2= $data['pq_year2'];
+            $application->pq_marks= $data['pq_marks'];
+            $application->pq_subject2= $data['pq_subject2'];
+            $application->pq_degree3= $data['pq_degree3'];
+            $application->pq_board3= $data['pq_board3'];
+            $application->pq_year3= $data['pq_year3'];
+            $application->pq_marks3= $data['pq_marks3'];
+            $application->pq_subject3= $data['pq_subject3'];
+            $application->step = '2';
+                
+                switch($request->input('action')) {
+                    case 'save':
+                        // Save model
+                        // dd($application);
+                        $application->save();
+				        return redirect(route('applicant.dashboard'))->with('status',"Save successfully");
+                        break;
+
+                    case 'save-continue':
+                        // Preview model
+                        $application->save();
+				        return redirect(route('applicantion.form.step3'))->with('status',"Save successfully");
+                        break;
+                }
 
 
+			}
+			catch(Exception $e){
+				return redirect(route('applicantion.form.step2'))->with('failed',"Operation failed");
+			}
+		}
 
-//         $application->saveOrFail();
-//         return redirect(route('applicant.dashboard'));
-//     }
+
+    }
+
 }

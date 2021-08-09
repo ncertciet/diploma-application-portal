@@ -39,7 +39,8 @@ $applications = \Illuminate\Support\Facades\DB::table('applications')->where('re
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>Reg ID.</th>
+                                        <th>Application ID.</th>
+                                        <th>Step Completed</th>
                                         <th>Application Status</th>
                                         <th>Actions</th>
                                     </tr>
@@ -48,7 +49,8 @@ $applications = \Illuminate\Support\Facades\DB::table('applications')->where('re
                                     <tbody>
                                     @foreach ($applications as $application)
                                         <tr>
-                                            <td><strong>{{ $application->reg_id }}</strong></td>
+                                            <td><strong>{{ $application->application_id }}</strong></td>
+                                            <td>{{ $application->step }} step completed out of 5</td>
                                             <td>{{ ucfirst($application->status) }}</td>
                                             <td><a href="#" class="btn btn-warning">Resume</a></td>
                                         </tr>

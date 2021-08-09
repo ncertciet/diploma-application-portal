@@ -10122,3 +10122,9 @@ h3 {
 .application-form textarea {
   height: 37px;
 }
+.application-form .table td {
+  width: 20%;
+}
+.application-form .table th {
+  width: 20%;
+}

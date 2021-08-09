@@ -62,12 +62,15 @@ Route::group(['middleware' => ['auth', 'applicant'], 'prefix' => 'applicant'], f
 //        return view('applicant.application.form-step1');
 //    })->name('applicantion.form.step1');
 
-    Route::get('/application/step1', 'App\Http\Controllers\ApplicationController@index')->name('applicantion.form.step1');
+    Route::get('/application/step1', 'App\Http\Controllers\ApplicationController@index')->name('application.form.step1');
     Route::POST('/application/step1', 'App\Http\Controllers\ApplicationController@store')->name('application.step1.store');
+    
 
-        Route::get('/application/step2', function () {
+    Route::get('/application/step2', function () {
         return view('applicant.application.form-step2');
-    })->name('applicantion.form.step2');
+    })->name('application.form.step2');
+
+    Route::POST('/application/step2', 'App\Http\Controllers\ApplicationController@step2')->name('application.step2.store');
 
 
 

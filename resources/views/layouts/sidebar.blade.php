@@ -128,7 +128,7 @@
                 @if(Auth::user()->type === 'user')
                 <li class="{{ (request()->is('*/dashboard')) ? 'active' : '' }}"><a href="{{ route('applicant.dashboard')}}"><i
                     class="fas fa-chart-bar mr-1"></i> Dashboard</a></li>
-                <li class="{{ (request()->is('*/application/*')) ? 'active' : '' }}"><a href="{{ route('applicantion.form.step1')}}"><i
+                <li class="{{ (request()->is('*/application/*')) ? 'active' : '' }}"><a href="{{ route('application.form.step1')}}"><i
                     class="far fa-file-alt mr-1"></i> Application</a></li>
                 @endif
 
