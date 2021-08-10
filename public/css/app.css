@@ -10124,7 +10124,14 @@ h3 {
 }
 .application-form .table td {
   width: 20%;
+  border-top: none;
 }
 .application-form .table th {
   width: 20%;
+}
+.application-form .course .table td {
+  width: 25%;
+}
+.application-form .course .table th {
+  width: 25%;
 }

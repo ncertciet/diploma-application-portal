@@ -19,9 +19,20 @@
     .table {
         td {
             width: 20%;
+            border-top: none;
         }
         th {
             width: 20%;
+        }
+    }
+    .course {
+        .table {
+            td {
+                width: 25%;
+            }
+            th {
+                width: 25%;
+            }
         }
     }
 }

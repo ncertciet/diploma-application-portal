@@ -49,75 +49,150 @@
                                     </tr>
                                     <tr>
                                         <td class="col-sm-2">
-                                            <input type="text" name="eq_exam_x" class="form-control" value="High School" readonly  />
+                                            <input type="text" name="eq_exam_x" class="form-control @error('eq_exam_x') is-invalid @enderror" value="High School" readonly  />
+                                            @error('eq_exam_x')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>This Field is required.</strong>
+                                                </span>
+                                            @enderror
                                         </td>
                                         <td class="col-sm-2">
-                                            <input type="text" name="eq_board_x"  class="form-control" placeholder="Examining Body" required>
+                                            <input type="text" name="eq_board_x"  class="form-control @error('eq_board_x') is-invalid @enderror" placeholder="Examining Body" >
+                                            @error('eq_board_x')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>This Field is required.</strong>
+                                                </span>
+                                            @enderror
                                         </td>
                                         <td class="col-sm-2">
                                             @php($year=date('Y'))
-                                            <select name="eq_year_x" id="year" class="form-control" required>
+                                            <select name="eq_year_x" id="year" class="form-control @error('eq_year_x') is-invalid @enderror" >
                                                 <option value="" selected disabled>Select Year</option>
                                                 @for($i = 1960; $i <= $year; $i++)
                                                 <option value="{{ $i }}">{{ $i }}</option>
                                                 @endfor
                                             </select>
+                                            @error('eq_year_x')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>This Field is required.</strong>
+                                                </span>
+                                            @enderror
                                         </td>
 
                                         <td class="col-sm-2">
-                                            <input type="text" name="eq_marks_x"  class="form-control" placeholder="marks/grade" required>
+                                            <input type="text" name="eq_marks_x"  class="form-control @error('eq_marks_x') is-invalid @enderror" placeholder="marks/grade" >
+                                            @error('eq_marks_x')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>This Field is required.</strong>
+                                                </span>
+                                            @enderror
                                         </td>
                                         <td class="col-sm-2">
-                                            <input type="text" name="eq_subject_x"  class="form-control" placeholder="Subject" required>
+                                            <input type="text" name="eq_subject_x"  class="form-control @error('eq_subject_x') is-invalid @enderror" placeholder="Subject" >
+                                            @error('eq_subject_x')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>This Field is required.</strong>
+                                                </span>
+                                            @enderror
                                         </td>
 
                                     </tr>
                                     <tr>
                                         <td class="col-sm-2">
-                                            <input type="text" name="eq_exam_xii" class="form-control" value="Intermediate" readonly >
+                                            <input type="text" name="eq_exam_xii" class="form-control @error('eq_exam_xii') is-invalid @enderror" value="Intermediate" readonly >
+                                            @error('eq_exam_xii')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>This Field is required.</strong>
+                                                </span>
+                                            @enderror
                                         </td>
                                         <td class="col-sm-2">
-                                            <input type="text" name="eq_board_xii"  class="form-control" placeholder="Examining Body" required>
+                                            <input type="text" name="eq_board_xii"  class="form-control @error('eq_board_xii') is-invalid @enderror" placeholder="Examining Body" >
+                                            @error('eq_board_xii')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>This Field is required.</strong>
+                                                </span>
+                                            @enderror
                                         </td>
                                         <td class="col-sm-2">
 
                                             @php($year=date('Y'))
-                                            <select name="eq_year_xii" id="year" class="form-control" required>
+                                            <select name="eq_year_xii" id="year" class="form-control @error('eq_year_xii') is-invalid @enderror" >
                                                 <option value="" selected disabled>Select Year</option>
                                                 @for($i = 1960; $i <= $year; $i++)
                                                 <option value="{{ $i }}">{{ $i }}</option>
                                                 @endfor
                                             </select>
+                                            @error('eq_year_xii')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>This Field is required.</strong>
+                                                </span>
+                                            @enderror
                                         </td>
                                         <td class="col-sm-2">
-                                            <input type="text" name="eq_marks_xii"  class="form-control" placeholder="marks/grade" required>
+                                            <input type="text" name="eq_marks_xii"  class="form-control @error('eq_marks_xii') is-invalid @enderror" placeholder="marks/grade" >
+                                            @error('eq_marks_xii')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>This field is required</strong>
+                                                </span>
+                                            @enderror
                                         </td>
                                         <td class="col-sm-2">
-                                            <input type="text" name="eq_subject_xii"  class="form-control" placeholder="Subject" required>
+                                            <input type="text" name="eq_subject_xii"  class="form-control @error('eq_subject_xii') is-invalid @enderror" placeholder="Subject" >
+                                            @error('eq_subject_xii')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>This Field is required.</strong>
+                                                </span>
+                                            @enderror
                                         </td>
 
                                     </tr>
                                     <tr>
                                     <td class="col-sm-2">
-                                        <input type="text" name="eq_exam_grad" class="form-control" value="Graduation" readonly >
+                                        <input type="text" name="eq_exam_grad" class="form-control @error('eq_exam_grad') is-invalid @enderror" value="Graduation" readonly >
+                                        @error('eq_exam_grad')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>This Field is required.</strong>
+                                                </span>
+                                        @enderror
                                     </td>
                                     <td class="col-sm-2">
-                                        <input type="text" name="eq_board_grad"  class="form-control" placeholder="Examining Body" required>
+                                        <input type="text" name="eq_board_grad"  class="form-control @error('eq_board_grad') is-invalid @enderror" placeholder="Examining Body" >
+                                        @error('eq_board_grad')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>This Field is required.</strong>
+                                            </span>
+                                        @enderror
                                     </td>
                                     <td class="col-sm-2">
                                         @php($year=date('Y'))
-                                        <select name="eq_year_grad" id="year" class="form-control" required>
+                                        <select name="eq_year_grad" id="year" class="form-control @error('eq_year_grad') is-invalid @enderror" >
                                             <option value="" selected disabled>Select Year</option>
                                             @for($i = 1960; $i <= $year; $i++)
                                             <option value="{{ $i }}">{{ $i }}</option>
                                             @endfor
                                         </select>
+                                        @error('eq_year_grad')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>This Field is required.</strong>
+                                            </span>
+                                        @enderror
                                     </td>
                                     <td class="col-sm-2">
-                                        <input type="text" name="eq_marks_grad"  class="form-control" placeholder="marks/grade" required>
+                                        <input type="text" name="eq_marks_grad"  class="form-control @error('eq_marks_grad') is-invalid @enderror" placeholder="marks/grade" >
+                                        @error('eq_marks_grad')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>This Field is required.</strong>
+                                            </span>
+                                        @enderror
                                     </td>
                                         <td class="col-sm-2">
-                                        <input type="text" name="eq_subject_grad"  class="form-control" placeholder="Subject" required>
+                                        <input type="text" name="eq_subject_grad"  class="form-control @error('eq_subject_grad') is-invalid @enderror" placeholder="Subject" >
+                                        @error('eq_subject_grad')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>This Field is required.</strong>
+                                            </span>
+                                        @enderror
                                     </td>
                                     <td class="col-sm-2"><a class="deleteRow"></a>
 
@@ -127,25 +202,50 @@
 
                                 <tr>
                                     <td class="col-sm-2">
-                                        <input type="text" name="eq_exam_pgrad" class="form-control" value="Post Graduation" readonly >
+                                        <input type="text" name="eq_exam_pgrad" class="form-control @error('eq_exam_pgrad') is-invalid @enderror" value="Post Graduation" readonly >
+                                        @error('eq_exam_pgrad')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>This Field is required.</strong>
+                                            </span>
+                                        @enderror
                                     </td>
                                     <td class="col-sm-2">
-                                        <input type="text" name="eq_board_pgrad"  class="form-control" placeholder="Examining Body" required>
+                                        <input type="text" name="eq_board_pgrad"  class="form-control @error('eq_board_pgrad') is-invalid @enderror" placeholder="Examining Body" >
+                                        @error('eq_board_pgrad')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>This Field is required.</strong>
+                                            </span>
+                                        @enderror
                                     </td>
                                     <td class="col-sm-2">
                                         @php($year=date('Y'))
-                                        <select name="eq_year_pgrad" id="year" class="form-control" required>
+                                        <select name="eq_year_pgrad" id="year" class="form-control @error('eq_year_pgrad') is-invalid @enderror" >
                                             <option value="" selected disabled>Select Year</option>
                                             @for($i = 1960; $i <= $year; $i++)
                                             <option value="{{ $i }}">{{ $i }}</option>
                                             @endfor
                                         </select>
+                                        @error('eq_year_pgrad')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>This Field is required.</strong>
+                                            </span>
+                                        @enderror
                                     </td>
                                     <td class="col-sm-2">
-                                        <input type="text" name="eq_marks_pgrad"  class="form-control" placeholder="marks/grade" required>
+                                        <input type="text" name="eq_marks_pgrad"  class="form-control @error('eq_marks_pgrad') is-invalid @enderror" placeholder="marks/grade" >
+                                        @error('eq_marks_pgrad')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>This Field is required.</strong>
+                                            </span>
+                                        @enderror
                                     </td>
                                     <td class="col-sm-2">
-                                        <input type="text" name="eq_subject_pgrad"  class="form-control" placeholder="Subject" required>
+                                        <input type="text" name="eq_subject_pgrad"  class="form-control @error('eq_subject_pgrad') is-invalid @enderror" placeholder="Subject" >
+                                        @error('eq_subject_pgrad')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>This Field is required.</strong>
+                                            </span>
+                                        @enderror
                                     </td>
                                     <td class="col-sm-2"><a class="deleteRow"></a>
 
@@ -184,25 +284,50 @@
                                   </tr>
                                   <tr>
                                       <td class="col-sm-2">
-                                          <input type="text" name="pq_degree" class="form-control" placeholder="Name of the Degree" >
+                                          <input type="text" name="pq_degree" class="form-control @error('pq_degree') is-invalid @enderror" placeholder="Name of the Degree" >
+                                             @error('pq_degree')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>This Field is required.</strong>
+                                                </span>
+                                            @enderror
                                       </td>
                                       <td class="col-sm-2">
-                                          <input type="text" name="pq_board"  class="form-control" placeholder="Examining Body" >
+                                          <input type="text" name="pq_board"  class="form-control @error('pq_board') is-invalid @enderror" placeholder="Examining Body" >
+                                          @error('pq_board')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>This Field is required.</strong>
+                                                </span>
+                                            @enderror
                                       </td>
                                       <td class="col-sm-2">
                                         @php($year=date('Y'))
-                                        <select name="pq_year" id="year" class="form-control" required>
+                                        <select name="pq_year" id="year" class="form-control @error('pq_year') is-invalid @enderror" >
                                             <option value="" selected disabled>Select Year</option>
                                             @for($i = 1960; $i <= $year; $i++)
                                             <option value="{{ $i }}">{{ $i }}</option>
                                             @endfor
                                         </select>
+                                            @error('pq_year')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>This Field is required.</strong>
+                                                </span>
+                                            @enderror
                                       </td>
                                       <td class="col-sm-2">
-                                          <input type="text" name="pq_marks"  class="form-control" placeholder="marks/grade" >
+                                          <input type="text" name="pq_marks"  class="form-control @error('pq_marks') is-invalid @enderror" placeholder="marks/grade" >
+                                            @error('pq_marks')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>This Field is required.</strong>
+                                                </span>
+                                            @enderror
                                       </td>
                                       <td class="col-sm-2">
-                                          <input type="text" name="pq_subject"  class="form-control" placeholder="Subject" >
+                                          <input type="text" name="pq_subject"  class="form-control @error('pq_subject') is-invalid @enderror" placeholder="Subject" >
+                                            @error('pq_subject')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>This Field is required.</strong>
+                                                </span>
+                                            @enderror
                                       </td>
                                       <td class="col-sm-2"><a class="deleteRow"></a>
 
@@ -225,10 +350,10 @@
                           </div>
                         </div>
                       </div>
-                      <div class="form-row justify-content-end mt-3">
+                    <div class="form-row justify-content-end mt-3">
                         <div class="col-sm-6 text-right">
-                            <button type="submit" name="action" value="save-step2" class="btn btn-primary btn-lg mr-3">Save</button>
-                            <button type="submit" name="action" value="save-continue-step2" class="btn btn-success btn-lg">Save & Continue</button>
+                            <button type="submit" name="action" value="save" class="btn btn-primary btn-lg mr-3">Save</button>
+                            <button type="submit" name="action" value="save-continue" class="btn btn-success btn-lg">Save & Continue</button>
                         </div>
                     </div>
                 </form>
@@ -252,11 +377,11 @@
 
                 if (counter < limit) {
                     counter++;
-                    cols += '<td><input type="text" class="form-control" name="eq_exam_oth' + counter + '" placeholder="Other Examination" /></td>';
-                    cols += '<td><input type="text" class="form-control" name="eq_board_oth' + counter + '" placeholder="Examining Body" /></td>';
-                    cols += '<td><input type="number" class="form-control" name="eq_year_oth' + counter + '" placeholder="Year" /></td>';
-                    cols += '<td><input type="text" class="form-control" name="eq_marks_oth' + counter + '" placeholder="marks/grade" /></td>';
-                    cols += '<td><input type="text" class="form-control" name="eq_subject_oth' + counter + '" placeholder="Subject" /></td>';
+                    cols += '<td><input type="text" class="form-control @error('name') is-invalid @enderror" name="eq_exam_oth' + counter + '" placeholder="Other Examination" /></td>';
+                    cols += '<td><input type="text" class="form-control @error('name') is-invalid @enderror" name="eq_board_oth' + counter + '" placeholder="Examining Body" /></td>';
+                    cols += '<td><input type="number" class="form-control @error('name') is-invalid @enderror" name="eq_year_oth' + counter + '" placeholder="Year" /></td>';
+                    cols += '<td><input type="text" class="form-control @error('name') is-invalid @enderror" name="eq_marks_oth' + counter + '" placeholder="marks/grade" /></td>';
+                    cols += '<td><input type="text" class="form-control @error('name') is-invalid @enderror" name="eq_subject_oth' + counter + '" placeholder="Subject" /></td>';
 
                     cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
                     $(newRow).append(cols); //add input box
@@ -308,11 +433,11 @@
             if (counter < limit) {
                 counter++;
 
-                cols += '<td><input type="text" class="form-control" name="pq_degree' + counter + '" placeholder="Name of the Degree" /></td>';
-                cols += '<td><input type="text" class="form-control" name="pq_board' + counter + '" placeholder="Examining Body" /></td>';
-                cols += '<td><input type="number" class="form-control" name="pq_year' + counter + '" placeholder="Year" /></td>';
-                cols += '<td><input type="text" class="form-control" name="pq_marks' + counter + '" placeholder="marks/grade" /></td>';
-                cols += '<td><input type="text" class="form-control" name="pq_subject' + counter + '" placeholder="Subject" /></td>';
+                cols += '<td><input type="text" class="form-control @error('name') is-invalid @enderror" name="pq_degree' + counter + '" placeholder="Name of the Degree" /></td>';
+                cols += '<td><input type="text" class="form-control @error('name') is-invalid @enderror" name="pq_board' + counter + '" placeholder="Examining Body" /></td>';
+                cols += '<td><input type="number" class="form-control @error('name') is-invalid @enderror" name="pq_year' + counter + '" placeholder="Year" /></td>';
+                cols += '<td><input type="text" class="form-control @error('name') is-invalid @enderror" name="pq_marks' + counter + '" placeholder="marks/grade" /></td>';
+                cols += '<td><input type="text" class="form-control @error('name') is-invalid @enderror" name="pq_subject' + counter + '" placeholder="Subject" /></td>';
 
             cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
             newRow.append(cols);

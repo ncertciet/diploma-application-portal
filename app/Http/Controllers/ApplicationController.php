@@ -33,14 +33,18 @@ class ApplicationController extends Controller
         }
 
         if($application->step === ''){
-            return redirect(route('applicantion.form.step1'));
+            return redirect(route('application.form.step1'));
         }
 
         else if ($application->step === '1'){
-            return redirect(route('applicantion.form.step2'));
-        }else{
+            return redirect(route('application.form.step2'));
 
-        }
+        }else if($application->step === '2'){
+            return redirect(route('application.form.step3'));
+            
+        }else if($application->step === '3'){
+        return redirect(route('application.form.step4'));
+         }
 
 
     }
@@ -97,24 +101,6 @@ class ApplicationController extends Controller
             $data = $request->input();
 			try{
 				$application = new Application($data);
-//                $application->name = $data['name'];
-//                $application->gender = $data['gender'];
-//				$application->dob = $data['dob'];
-//                $application->nationality = $data['nationality'];
-//                $application->sc_state = $data['sc_state'];
-//                $application->study_centre = $data['study_centre'];
-//                $application->p_address = $data['p_address'];
-//                $application->p_city = $data['p_city'];
-//                $application->p_state = $data['p_state'];
-//                $application->p_zip = $data['p_zip'];
-//                $application->p_telephone = $data['p_telephone'];
-//                $application->p_mobile = $data['p_mobile'];
-//                $application->p_email = $data['p_email'];
-//                $application->occupation = $data['occupation'];
-//                $application->o_address = $data['o_address'];
-//                $application->o_city = $data['o_city'];
-//                $application->o_state = $data['o_state'];
-//                $application->o_zip = $data['o_zip'];
                 $application->step = '1';
                 $application->application_id = rand(0, 999999).date('dmy');
                 $application->reg_id = Auth::user()->reg_id;
@@ -130,7 +116,7 @@ class ApplicationController extends Controller
                     case 'save-continue':
                         // Preview model
                         $application->save();
-				        return redirect(route('applicantion.form.step2'))->with('status',"Step 1 is saved successfully");
+				        return redirect(route('application.form.step2'))->with('status',"Step 1 is saved successfully");
                         break;
                 }
 
@@ -213,14 +199,14 @@ class ApplicationController extends Controller
             'eq_year_grad'=> 'required',
             'eq_marks_grad'=> 'required',
             'eq_subject_grad'=> 'required',
-            'eq_exam_pgrad'=> '',
-            'eq_board_pgrad'=> '',
-            'eq_year_pgrad'=> '',
-            'eq_marks_pgrad'=> '',
-            'eq_subject_pgrad'=> '',
+            'eq_exam_pgrad'=> 'required',
+            'eq_board_pgrad'=> 'required',
+            'eq_year_pgrad'=> 'required',
+            'eq_marks_pgrad'=> 'required',
+            'eq_subject_pgrad'=> 'required',
             'eq_exam_oth1'=> '',
             'eq_board_oth1'=> '',
-            'eq_year_oth1'=> '',
+            'eq_year_oth1'=> 'nullable|digits:4',
             'eq_marks_oth1'=> '',
             'eq_subject_oth1'=> '',
             'eq_exam_oth2'=> '',
@@ -268,17 +254,17 @@ class ApplicationController extends Controller
             $application->step = '2';
 
                 switch($request->input('action')) {
-                    case 'save-step2':
+                    case 'save':
                         // Save model
                         // dd($application);
                         $application->save();
 				        return redirect(route('applicant.dashboard'))->with('status',"Step 2 is saved successfully");
                         break;
 
-                    case 'save-continue-step2':
+                    case 'save-continue':
                         // Preview model
                         $application->save();
-				        return redirect(route('applicantion.form.step3'))->with('status',"Step 2 is saved successfully");
+				        return redirect(route('application.form.step3'))->with('status',"Step 2 is saved successfully");
                         break;
                 }
 
@@ -286,6 +272,90 @@ class ApplicationController extends Controller
 			}
 			catch(Exception $e){
 				return redirect(route('applicantion.form.step2'))->with('failed',"Operation failed");
+			}
+		}
+
+
+    }
+
+
+    public function step3(Request $request)
+    {
+        $reg_id = Auth::user()->reg_id;
+
+        /** @var Application $application */
+        $application = Application::query()->where('reg_id', $reg_id)->first();
+
+        $rules = [
+            'work_exp_name'=> 'required',
+            'work_exp_position'=> 'required',
+            'work_exp_date_from'=> 'required',
+            'work_exp_date_to'=> 'required',
+            'work_exp_duty'=> 'required',
+            'work_exp_name1'=> '',
+            'work_exp_position1'=> '',
+            'work_exp_date_from1'=> '',
+            'work_exp_date_to1'=> '',
+            'work_exp_duty1'=> '',
+            'work_exp_name2'=> '',
+            'work_exp_position2'=> '',
+            'work_exp_date_from2'=> '',
+            'work_exp_date_to2'=> '',
+            'work_exp_duty2'=> '',
+            'work_exp_name3'=> '',
+            'work_exp_position3'=> '',
+            'work_exp_date_from3'=> '',
+            'work_exp_date_to3'=> '',
+            'work_exp_duty3'=> '',
+            'course'=> 'required',
+            'course_institute'=> 'required',
+            'course_year'=> 'required',
+            'course_duration'=> 'required',
+            'course1'=> '',
+            'course_institute1'=> '',
+            'course_year1'=> '',
+            'course_duration1'=> '',
+            'course2'=> '',
+            'course_institute2'=> '',
+            'course_year2'=> '',
+            'course_duration2'=> '',
+            'course3'=> '',
+            'course_institute3'=> '',
+            'course_year3'=> '',
+            'course_duration3'=> '',
+		];
+
+        $validator = Validator::make($request->all(),$rules);
+		if ($validator->fails()) {
+			return redirect(route('application.form.step3'))
+			->withInput()
+			->withErrors($validator);
+		}
+		else{
+            $data = $request->input();
+			try{
+            $application->fill( $data );
+            $application->step = '3';
+
+                switch($request->input('action')) {
+                    case 'save':
+                        // Save model
+                        // dd($application);
+                        $application->save();
+				        return redirect(route('applicant.dashboard'))->with('status',"Step 3 is saved successfully");
+                        break;
+
+                    case 'save-continue':
+                        // Preview model
+                        $application->save();
+				        return redirect(route('application.form.step4'))->with('status',"Step 3 is saved successfully");
+                        break;
+                }
+
+
+			}
+			catch(Exception $e){
+				return redirect(route('applicantion.form.step3'))->with('failed',"Operation failed");
 			}
 		}
 
