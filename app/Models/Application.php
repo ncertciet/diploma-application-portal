@@ -119,6 +119,14 @@ class Application extends Model
         'course_institute3',
         'course_year3',
         'course_duration3',
+        'disability',
+        'disability_content',
+        'disability_certificate',
+        'category',
+        'category_certificate',
+        'candidate_sign',
+        'candidate_photo',
+        'document',
         'status',
     ];
 }

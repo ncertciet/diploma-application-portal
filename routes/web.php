@@ -89,6 +89,8 @@ Route::group(['middleware' => ['auth', 'applicant'], 'prefix' => 'applicant'], f
         return view('applicant.application.form-step4');
     })->name('application.form.step4');
 
+    Route::POST('/application/step4', 'App\Http\Controllers\ApplicationController@step4')->name('application.step4.store');
+
 });
 
 // admin protected routes

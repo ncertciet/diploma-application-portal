@@ -35,7 +35,6 @@ class ApplicationController extends Controller
         if($application->step === ''){
             return redirect(route('application.form.step1'));
         }
-
         else if ($application->step === '1'){
             return redirect(route('application.form.step2'));
 
@@ -43,7 +42,7 @@ class ApplicationController extends Controller
             return redirect(route('application.form.step3'));
             
         }else if($application->step === '3'){
-        return redirect(route('application.form.step4'));
+            return redirect(route('application.form.step4'));
          }
 
 
@@ -349,6 +348,112 @@ class ApplicationController extends Controller
                         // Preview model
                         $application->save();
 				        return redirect(route('application.form.step4'))->with('status',"Step 3 is saved successfully");
+                        break;
+                }
+
+
+			}
+			catch(Exception $e){
+				return redirect(route('applicantion.form.step3'))->with('failed',"Operation failed");
+			}
+		}
+
+
+    }
+
+    public function step4(Request $request)
+    {
+        $reg_id = Auth::user()->reg_id;
+
+        /** @var Application $application */
+        $application = Application::query()->where('reg_id', $reg_id)->first();
+        $application_id = $application->application_id;
+
+        // dd($application);
+
+        $rules = [
+            'disability' =>'required',
+            'disability_content' => 'required_if:disability,Yes',
+            'disability_certificate' => 'required_if:disability,Yes|max:5120|mimes:doc,docx,jpg,jpeg,png,pdf',
+            'category' => 'required',
+            'category_certificate' => 'required_if:category,SC,ST,OBC,EWS|max:5120|mimes:doc,docx,jpg,jpeg,png,pdf',
+            'candidate_sign' => 'required|max:5120|mimes:jpg,jpeg,png',
+            'candidate_photo' => 'required|max:5120|mimes:jpg,jpeg,png',
+            'document' => 'required|max:5120|mimes:doc,docx,pdf',
+		];
+
+        $validator = Validator::make($request->all(),$rules);
+		if ($validator->fails()) {
+			return redirect(route('application.form.step4'))
+			->withInput()
+			->withErrors($validator);
+		}
+		else{
+            $data = $request->input();
+			try{
+            $application->fill( $data );
+
+            $application->step = '4';
+
+            $path_dis_certificate = '';
+            if($request->hasFile('disability_certificate')){
+                $fileValue     = $request->disability_certificate;
+                $getFileExt   = $fileValue->getClientOriginalExtension();
+                $custom_file_name = $application_id.'-disability-certificate'.'.'.$getFileExt;
+                $path_dis_certificate = $request->file('disability_certificate')->storeAs($application_id, $custom_file_name);
+            }
+
+            $path_cat_certificate = '';
+            if($request->hasFile('category_certificate')){
+                $fileValue     = $request->disability_certificate;
+                $getFileExt   = $fileValue->getClientOriginalExtension();
+                $custom_file_name = $application_id.'-category-certificate'.'.'.$getFileExt;
+                $path_cat_certificate = $request->file('category_certificate')->storeAs($application_id, $custom_file_name);
+            }
+
+            $path_sign = '';
+            if($request->hasFile('candidate_sign')){
+                $fileValue     = $request->candidate_sign;
+                $getFileExt   = $fileValue->getClientOriginalExtension();
+                $custom_file_name = $application_id.'-signature'.'.'.$getFileExt;
+                $path_sign = $request->file('candidate_sign')->storeAs($application_id, $custom_file_name);
+            }
+
+            $path_photo = '';
+            if($request->hasFile('candidate_photo')){
+                $fileValue     = $request->candidate_photo;
+                $getFileExt   = $fileValue->getClientOriginalExtension();
+                $custom_file_name = $application_id.'-photo'.'.'.$getFileExt;
+                $path_photo = $request->file('candidate_photo')->storeAs($application_id, $custom_file_name);
+            }
+
+            $path_doc = '';
+            if($request->hasFile('document')){
+                $fileValue     = $request->candidate_photo;
+                $getFileExt   = $fileValue->getClientOriginalExtension();
+                $custom_file_name = $application_id.'-document'.'.'.$getFileExt;
+                $path_photo = $request->file('document')->storeAs($application_id, $custom_file_name);
+            }
+
+            $application->disability_certificate = $path_dis_certificate;
+            $application->category_certificate = $path_cat_certificate;
+            $application->candidate_sign = $path_sign;
+            $application->candidate_photo = $path_photo;
+            $application->document = $path_doc;
+            
+
+                switch($request->input('action')) {
+                    case 'save':
+                        // Save model
+                        // dd($application);
+                        $application->save();
+				        return redirect(route('applicant.dashboard'))->with('status',"Step 4 is saved successfully");
+                        break;
+
+                    case 'save-continue':
+                        // Preview model
+                        $application->save();
+				        return redirect(route('application.form.step5'))->with('status',"Step 4 is saved successfully");
                         break;
                 }
 

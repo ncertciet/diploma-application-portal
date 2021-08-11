@@ -52,6 +52,7 @@ class AddStep3ColumnsToApplicationsTable extends Migration
             $table->text('course_institute3')->nullable()->after('course3');
             $table->text('course_year3')->nullable()->after('course_institute3');
             $table->text('course_duration3')->nullable()->after('course_year3');
+        
          
         });
     }

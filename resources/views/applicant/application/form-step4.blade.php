@@ -7,7 +7,7 @@
             <div class="page-header pt-4">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
-                        <h1 class="page-title"><i class="far fa-file-alt mr-1"></i> References</h1>
+                        <h1 class="page-title"><i class="far fa-file-alt mr-1"></i> Upload Documents</h1>
                         <div class="page-header-subtitle">
                             Please Fill up the form carefully.
                         </div>
@@ -32,145 +32,194 @@
 
                 @endif
 
-                <form method="POST" action="{{route('application.step2.store')}}">
-                    
-                    <div class="color-box">
-                        <h4 class="text-primary mt-2 mb-4">Name and Full Address of Two Referees</h4>
-                        <h5>Referees 1</h5>
-                         <div class="form-row">
-                                <div class="form-group col-md-4">
-                                   <label for="inputZip">Name</label>
-                                   <input type="text" name="ref_name1" class="form-control @error('ref_name1') is-invalid @enderror" value="{{ old('ref_name1') }}" id="" placeholder="Name" >
-                                   @error('ref_name1')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>This Field is required.</strong>
-                                        </span>
-                                    @enderror
-                               </div>
-                               <div class="form-group col-md-4">
-                                   <label for="inputZip">Address</label>
-                                   <input type="text" name="ref_add1" class="form-control @error('ref_add1') is-invalid @enderror" value="{{ old('') }}" id="" placeholder="Address" >
-                                    @error('ref_add1')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>This Field is required.</strong>
-                                    </span>
-                                    @enderror
-                               </div>
-                               <div class="form-group col-md-4">
-                                   <label for="inputZip">Pin Code</label>
-                                   <input type="text" name="ref_pin1" pattern="[0-9]{6}" class="form-control @error('ref_pin1') is-invalid @enderror" value="{{ old('') }}" id="pin" minlength="6" maxlength="6" placeholder="Six digit pin code" >
-                                   @error('ref_pin1')
-                                   <span class="invalid-feedback" role="alert">
-                                       <strong>This Field is required.</strong>
-                                   </span>
-                                   @enderror
-                                </div>
-                         </div>
-                         <div class="form-row">
-                             <div class="form-group col-md-4">
-                                 <label for="inputPassword4">Telephone number (with STD code):</label>
-                                 <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="ref_phone1" class="form-control @error('ref_phone1') is-invalid @enderror" value="{{ old('') }}" id="telephone" placeholder="e.g. 123-456-7890">
-                                 <small>Format: 123-456-7890</small>
-                                 @error('ref_phone1')
-                                   <span class="invalid-feedback" role="alert">
-                                       <strong>This Field is required.</strong>
-                                   </span>
-                                   @enderror
-                             </div>
-                             <div class="form-group col-md-4">
-                               <label for="inputAddress2">Mobile Number:</label>
-                               <input type="text" pattern="[6-9]{1}[0-9]{9}" name="ref_mobile1" class="form-control @error('ref_mobile1') is-invalid @enderror" value="{{ old('') }}" id="mobile" placeholder="e.g. 9999999999" title="Phone number with 7-9 and remaing 9 digit with 0-9" >
-                               <small>Format: Phone number with 7-9 and remaing 9 digit with 0-9</small>
-                               @error('ref_mobile1')
-                               <span class="invalid-feedback" role="alert">
-                                   <strong>This Field is required.</strong>
-                               </span>
-                               @enderror
-                             </div>
-                             <div class="form-group col-md-4">
-                                 <label for="inputEmail4">Email:</label>
-                                 <input type="email" name="ref_email1" class="form-control @error('ref_email1') is-invalid @enderror"  value="{{ old('') }}" id="email_address" placeholder="Email" >
-                                 @error('ref_email1')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>This Field is required.</strong>
-                                    </span>
-                                @enderror
+                <form method="POST" action="{{route('application.step4.store')}}" enctype="multipart/form-data">
+                    @csrf
 
-                              </div>
-                        </div>
-                        <h5>Referees 2</h5>
-                        <div class="form-row">
-                                 <div class="form-group col-md-4">
-                                   <label for="inputZip">Name</label>
-                                   <input type="text" name="ref_name2" class="form-control @error('ref_name2') is-invalid @enderror" value="{{ old('') }}" id="" placeholder="Name" >
-                                   @error('ref_name2')
-                                   <span class="invalid-feedback" role="alert">
-                                       <strong>This Field is required.</strong>
-                                   </span>
-                                    @enderror
+                    <div class="color-box">
+                         <div class="row">
+                            <div class="col-sm-6">
+
+                                <label for="inputZip">ANY Disability:</label>
+                                <div class="disabality" id="">
+                                    <div class="form-check-inline mb-4">
+                                        <input class="form-check-input" type="radio" name="disability" value="Yes" id="disability_yes" value="{{ old('disability') }}">
+                                        <label class="form-check-label" for="disability_yes">
+                                          Yes
+                                        </label>
+                                    
+                                      </div>
+                                      <div class="form-check-inline mb-4">
+                                        <input class="form-check-input" type="radio" name="disability" value="No" id="disability_no" value="{{ old('disability') }}">
+                                        <label class="form-check-label" for="disability_no">
+                                          No
+                                        </label>
+                                      </div>
+
+                                        @error('disability')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>This Field is required.</strong>
+                                            </span>
+                                        @enderror
+                                      
+                                      <div class="disability-content" style="display: none; @error('disability_certificate') display: block; @enderror" >
+                                        <div class="form-row">
+                                            <div class="form-group col-sm-7">
+                                                <label for="disability_content">Disability, (extent may be mentioned):</label>
+                                                <textarea class="form-control @error('disability_content') is-invalid @enderror" name="disability_content" id="disability_content" rows="1">{{ old('disability_content') }}</textarea>
+                                                <small class="text-primary">(Not exceeding 150 words)</small>
+                                                @error('disability_content')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>This Field is required.</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="disability_certificate">Attach Disability Cerificate:</label>
+                                                <input type="file" name="disability_certificate" class="form-control-file form-control form-control @error('disability_certificate') is-invalid @enderror" id="disability_certificate" value="{{ old('disability_certificate') }}">
+                                                <small class="text-primary">Maximum size of PDF file can be 5MB. </small>
+                                                @error('disability_certificate')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{$message}}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                          </div>
+                                      </div>
                                 </div>
-                               <div class="form-group col-md-4">
-                                   <label for="inputZip">Address</label>
-                                   <input type="text" name="ref_add2" class="form-control @error('ref_add2') is-invalid @enderror" value="{{ old('') }}" id="" placeholder="Address" >
-                                   @error('ref_add2')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>This Field is required.</strong>
-                                    </span>
-                                    @enderror
+
+                            
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="inputZip">Category:</label>
+                                <div class="category" id="">
+                                    <div class="form-check form-check-inline mb-4">
+                                        <input class="form-check-input" type="radio" name="category" id="General" value="General" value="{{ old('category') }}">
+                                        <label class="form-check-label" for="General">General</label>
+                                            
+                                      </div>
+                                      <div class="form-check form-check-inline mb-4">
+                                        <input class="form-check-input" type="radio" name="category" id="SC" value="SC" value="{{ old('category') }}">
+                                        <label class="form-check-label" for="SC">SC</label>
+                                        
+                                      </div>
+                                      <div class="form-check form-check-inline mb-4">
+                                        <input class="form-check-input" type="radio" name="category" id="ST" value="ST" value="{{ old('category') }}">
+                                        <label class="form-check-label" for="ST">ST</label>
+                                       
+                                      </div>
+                                      <div class="form-check form-check-inline mb-4">
+                                        <input class="form-check-input" type="radio" name="category" id="OBC" value="OBC" value="{{ old('category') }}">
+                                        <label class="form-check-label" for="OBC">OBC</label>
+                                        
+                                      </div>
+                                      <div class="form-check form-check-inline mb-4">
+                                        <input class="form-check-input" type="radio" name="category" id="EWS" value="EWS" value="{{ old('category') }}">
+                                        <label class="form-check-label" for="EWS">EWS</label>
+                                      </div>
+
+                                      @error('category')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{$message}}</strong>
+                                        </span>
+                                      @enderror
+
+                                      
+                                      <div class="category-content" style="display: none; @error('disability_content') display: block; @enderror">
+                                        <div class="form-row">
+                                            <div class="form-group col-sm-12">
+                                                <label for="category_certificate">Attach Category Cerificate:</label>
+                                                <input type="file" name="category_certificate" class="form-control-file form-control @error('category_certificate') is-invalid @enderror" id="category_certificate" value="{{ old('category_certificate') }}">
+                                                <small>Maximum size of PDF file can be 5MB. </small>
+                                                @error('category_certificate')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{$message}}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                          </div>
+                                      </div>
                                 </div>
-                               <div class="form-group col-md-4">
-                                   <label for="inputZip">Pin Code</label>
-                                   <input type="text" name="ref_pin2" pattern="[0-9]{6}" class="form-control @error('ref_pin2') is-invalid @enderror" value="{{ old('') }}" id="pin" minlength="6" maxlength="6" placeholder="Six digit pin code">
-                                   @error('ref_pin2')
-                                   <span class="invalid-feedback" role="alert">
-                                       <strong>This Field is required.</strong>
-                                   </span>
-                                    @enderror
-                                </div>
+                            </div>
                          </div>
                          <div class="form-row">
-                             <div class="form-group col-md-4">
-                                 <label for="inputPassword4">Telephone number (with STD code):</label>
-                                 <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="ref_phone2" class="form-control @error('ref_phone2') is-invalid @enderror" value="{{ old('') }}" id="telephone" placeholder="e.g. 123-456-7890">
-                                 <small>Format: 123-456-7890</small>
-                                 @error('ref_phone2')
-                                   <span class="invalid-feedback" role="alert">
-                                       <strong>This Field is required.</strong>
-                                   </span>
+                            <div class="form-group col-md-6">
+                                <label for="candidate_sign">Upload your scanned signature</label>
+                                <input type="file" name="candidate_sign" class="form-control-file form-control @error('candidate_sign') is-invalid @enderror" id="candidate_sign" value="{{ old('candidate_sign') }}">
+                                <small class="text-primary">The maximum size should be 200KB and maximum dimension should be 100 x 150px.</small>
+                                @error('candidate_sign')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{$message}}</strong>
+                                    </span>
                                 @enderror
-                             </div>
-                             <div class="form-group col-md-4">
-                               <label for="inputAddress2">Mobile Number:</label>
-                               <input type="text" pattern="[6-9]{1}[0-9]{9}" name="ref_mobile2" class="form-control @error('ref_mobile2') is-invalid @enderror" value="{{ old('') }}" id="mobile" placeholder="e.g. 9999999999" title="Phone number with 7-9 and remaing 9 digit with 0-9" >
-                               <small>Format: Phone number with 7-9 and remaing 9 digit with 0-9</small>
-                               @error('ref_mobile2')
-                                   <span class="invalid-feedback" role="alert">
-                                       <strong>This Field is required.</strong>
-                                   </span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="candidate_photo">Upload your passport size recent photograph</label>
+                                <input type="file" name="candidate_photo" class="form-control-file form-control @error('candidate_photo') is-invalid @enderror" id="candidate_photo" value="{{ old('candidate_photo') }}">
+                                <small class="text-primary">Upload passport size photo in JPG/PNG only.<br> Maximum size should be 200KB and maximum dimension should be 150 x 200px.</small>
+                                @error('candidate_photo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{$message}}</strong>
+                                    </span>
                                 @enderror
-                             </div>
-                             <div class="form-group col-md-4">
-                                 <label for="inputEmail4">Email:</label>
-                                 <input type="email" name="ref_email2" class="form-control @error('ref_email2') is-invalid @enderror" value="{{ old('') }}" id="email_address" placeholder="Email" >
-                                 @error('ref_email2')
-                                 <span class="invalid-feedback" role="alert">
-                                     <strong>This Field is required.</strong>
-                                 </span>
-                              @enderror
-                              </div>
-                        </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="document">Please attach Self-attested copies of all the Mark Sheets, Certificates, Professional Experience, etc. Create a PDF file with all your documents and then upload it.</label>
+                                <input type="file" name="document" class="form-control-file form-control @error('document') is-invalid @enderror" id="document" value="{{ old('document') }}">
+                                <small class="text-primary">Maximum size of PDF file can be 5MB. </small>
+                                @error('document')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{$message}}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                         </div>
                     </div>
 
                     <div class="form-row justify-content-end mt-3">
                         <div class="col-sm-6 text-right">
                             <button type="submit" name="action" value="save" class="btn btn-primary btn-lg mr-3">Save</button>
-                            <button type="submit" name="action" value="save-continue-step2" class="btn btn-success btn-lg">Save & Continue</button>
+                            <button type="submit" name="action" value="save-continue" class="btn btn-success btn-lg">Save & Continue</button>
                         </div>
                     </div>
-
                 </form>
             </div>
-        </div>   
-    </div>     
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("input[name$='disability']").click(function() {
+                var test = $(this).val();
+                // console.log(test);
+
+                if(test == 'Yes'){
+                    $('.disability-content').show("slow");
+                }else{
+                    $('.disability-content').hide("slow");
+                }
+            });
+
+            $("input[name$='category']").click(function() {
+                var test = $(this).val();
+                // console.log(test);
+
+                if(test == 'SC'){
+                    $('.category-content').show("slow");
+                }else if(test == 'ST'){
+                    $('.category-content').show("slow");
+                }else if(test == 'OBC'){
+                    $('.category-content').show("slow");
+                }else if(test == 'EWS'){
+                    $('.category-content').show("slow");
+                }else{
+                    $('.category-content').hide("slow");
+                }
+            });
+        });
+    </script>
 
     @endsection
