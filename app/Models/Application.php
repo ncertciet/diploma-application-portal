@@ -127,18 +127,6 @@ class Application extends Model
         'candidate_sign',
         'candidate_photo',
         'document',
-        'ref_name1',
-        'ref_add1',
-        'ref_pin1',
-        'ref_phone1',
-        'ref_mobile1',
-        'ref_email1',
-        'ref_name2',
-        'ref_add2',
-        'ref_pin2',
-        'ref_phone2',
-        'ref_mobile2',
-        'ref_email2',
         'status',
     ];
 }

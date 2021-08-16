@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth as Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redirect;
 
 class ApplicationController extends Controller
 {
@@ -44,15 +43,6 @@ class ApplicationController extends Controller
             
         }else if($application->step === '3'){
             return redirect(route('application.form.step4'));
-
-         }else if($application->step === '4'){
-            return redirect(route('application.form.step5'));
-
-         }else if($application->step === '5'){
-            return redirect(route('application.form.step6'));
-
-         }else if($application->step === '6'){
-            return redirect(route('application.thankyou'));
          }
 
 
@@ -132,7 +122,7 @@ class ApplicationController extends Controller
 
 			}
 			catch(Exception $e){
-				return redirect(route('application.form.step1'))->with('failed',"Operation failed");
+				return redirect(route('applicantion.form.step1'))->with('failed',"Operation failed");
 			}
 		}
 
@@ -280,7 +270,7 @@ class ApplicationController extends Controller
 
 			}
 			catch(Exception $e){
-				return redirect(route('application.form.step2'))->with('failed',"Operation failed");
+				return redirect(route('applicantion.form.step2'))->with('failed',"Operation failed");
 			}
 		}
 
@@ -364,7 +354,7 @@ class ApplicationController extends Controller
 
 			}
 			catch(Exception $e){
-				return redirect(route('application.form.step3'))->with('failed',"Operation failed");
+				return redirect(route('applicantion.form.step3'))->with('failed',"Operation failed");
 			}
 		}
 
@@ -470,125 +460,7 @@ class ApplicationController extends Controller
 
 			}
 			catch(Exception $e){
-				return redirect(route('application.form.step4'))->with('failed',"Operation failed");
-			}
-		}
-
-
-    }
-
-
-    public function step5(Request $request)
-    {
-        $reg_id = Auth::user()->reg_id;
-
-        /** @var Application $application */
-        $application = Application::query()->where('reg_id', $reg_id)->first();
-        $application_id = $application->application_id;
-
-        // dd($application);
-
-        $rules = [
-            'ref_name1' =>'',
-            'ref_add1' =>'',
-            'ref_pin1' =>'',
-            'ref_phone1' =>'',
-            'ref_mobile1' =>'',
-            'ref_email1' =>'',
-            'ref_name2' =>'',
-            'ref_add2' =>'',
-            'ref_pin2' =>'',
-            'ref_phone2' =>'',
-            'ref_mobile2' =>'',
-            'ref_email2' =>'',
-		];
-
-        $validator = Validator::make($request->all(),$rules);
-		if ($validator->fails()) {
-			return redirect(route('application.form.step5'))
-			->withInput()
-			->withErrors($validator);
-		}
-		else{
-            $data = $request->input();
-            // dd($data);
-			try{
-            $application->fill( $data );
-
-            // dd($application);
-
-            $application->step = '5';
-
-                switch($request->input('action')) {
-                    case 'save':
-                        // Save model
-                        // dd($application);
-                        $application->save();
-				        return redirect(route('applicant.dashboard'))->with('status',"Step 5 is saved successfully");
-                        break;
-
-                    case 'save-continue':
-                        // Preview model
-                        $application->save();
-                        // return view('applicant.application.form-step6')->with($application);
-				        return view('applicant.application.form-step6')->with('application', $application)->with('status',"Step 5 is saved successfully");
-                        break;
-                }
-
-
-			}
-			catch(Exception $e){
-				return redirect(route('application.form.step5'))->with('failed',"Operation failed");
-			}
-		}
-
-
-    }
-
-
-    public function step6(Request $request)
-    {
-        $reg_id = Auth::user()->reg_id;
-
-        /** @var Application $application */
-        $application = Application::query()->where('reg_id', $reg_id)->first();
-        $application_id = $application->application_id;
-
-        // dd($application);
-
-        $rules = [
-            'agree1' =>'required',
-            'agree2' =>'required',
-		];
-
-        $validator = Validator::make($request->all(),$rules);
-		if ($validator->fails()) {
-			return redirect(route('application.form.thankyou'))
-			->withInput()
-			->withErrors($validator);
-		}
-		else{
-            $data = $request->input();
-			try{
-            $application->fill( $data );
-
-            $application->step = '6';
-            $application->status = 'completed';
-            $application->submit_date = date('d-m-Y');
-
-                switch($request->input('action')) {
-                    case 'save':
-                        // Save model
-                        // dd($application);
-                        $application->save();
-				        return redirect(route('application.thankyou'))->with('status',"Application Submited successfully");
-                        break;
-                }
-
-
-			}
-			catch(Exception $e){
-				return redirect(route('applicantion.form.thankyou'))->with('failed',"Operation failed");
+				return redirect(route('applicantion.form.step3'))->with('failed',"Operation failed");
 			}
 		}
 

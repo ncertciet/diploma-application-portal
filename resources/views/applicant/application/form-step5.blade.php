@@ -7,7 +7,7 @@
             <div class="page-header pt-4">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
-                        <h1 class="page-title"><i class="far fa-file-alt mr-1"></i> References <small>(Optional)</small></h1>
+                        <h1 class="page-title"><i class="far fa-file-alt mr-1"></i> References</h1>
                         <div class="page-header-subtitle">
                             Please Fill up the form carefully.
                         </div>
@@ -32,10 +32,10 @@
 
                 @endif
 
-                <form method="POST" action="{{route('application.step5.store')}}">
-                    @csrf
+                <form method="POST" action="{{route('application.step2.store')}}">
+                    
                     <div class="color-box">
-                        <h4 class="text-primary mt-2 mb-4">Name and Full Address of Two Referees <button type="submit" name="action" value="save-continue-hgvhg" class="btn btn-secondary btn-lg mr-3 float-right">Skip</button></h4>
+                        <h4 class="text-primary mt-2 mb-4">Name and Full Address of Two Referees</h4>
                         <h5>Referees 1</h5>
                          <div class="form-row">
                                 <div class="form-group col-md-4">
@@ -164,7 +164,7 @@
                     <div class="form-row justify-content-end mt-3">
                         <div class="col-sm-6 text-right">
                             <button type="submit" name="action" value="save" class="btn btn-primary btn-lg mr-3">Save</button>
-                            <button type="submit" name="action" value="save-continue" class="btn btn-success btn-lg">Save & Continue</button>
+                            <button type="submit" name="action" value="save-continue-step2" class="btn btn-success btn-lg">Save & Continue</button>
                         </div>
                     </div>
 

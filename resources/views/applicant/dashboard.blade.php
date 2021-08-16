@@ -36,10 +36,9 @@ $count = count($applications);
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
-
-                                {{ session('status') }}
                             </div>
                         @endif
+
 
                             <div class="table-responsive">
                                 <table class="table">
@@ -56,20 +55,9 @@ $count = count($applications);
                                     @foreach ($applications as $application)
                                         <tr>
                                             <td><strong>{{ $application->application_id }}</strong></td>
-
-                                            <td>{{ $application->step }} step completed out of 6</td>
-
-                                            <?php if(($application->status) == 'pending'):?>
-                                            <td><h5><span class="badge badge-warning">{{ ucfirst($application->status) }}</span></h5></td>
-                                            <?php endif?>
-
-                                            <?php if(($application->status) == 'completed'):?>
-                                            <td><h5><span class="badge badge-success">{{ ucfirst($application->status) }}</span></h5></td>
-                                            <?php endif?>
-
-                                            
-                                            
-                                            <td><a href="/applicant/application/step{{($application->step)+1}}" class="btn btn-warning">Resume</a></td>
+                                            <td>{{ $application->step }} step completed out of 5</td>
+                                            <td>{{ ucfirst($application->status) }}</td>
+                                            <td><a href="#" class="btn btn-warning">Resume</a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>
