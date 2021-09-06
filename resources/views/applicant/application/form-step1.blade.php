@@ -35,7 +35,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="name">Name</label>
-                        <input type="text" readonly class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name" value="{{ $user->name }}" autofocus>
+                        <input type="text"  class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name" value="{{ $user->name }}" autofocus>
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

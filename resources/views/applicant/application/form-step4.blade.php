@@ -141,7 +141,7 @@
                                 </div>
                             </div>
                          </div>
-                         <div class="form-row">
+                        <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="candidate_sign">Upload your scanned signature</label>
                                 <input type="file" name="candidate_sign" class="form-control-file form-control @error('candidate_sign') is-invalid @enderror" id="candidate_sign" value="{{ old('candidate_sign') }}">
@@ -162,7 +162,10 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div>
 
+                        <div class="form-row">
+                            
                             <div class="form-group col-md-6">
                                 <label for="document">Please attach Self-attested copies of all the Mark Sheets, Certificates, Professional Experience, etc. Create a PDF file with all your documents and then upload it.</label>
                                 <input type="file" name="document" class="form-control-file form-control @error('document') is-invalid @enderror" id="document" value="{{ old('document') }}">
@@ -173,7 +176,19 @@
                                     </span>
                                 @enderror
                             </div>
-                         </div>
+                            <div class="form-group col-md-6">
+                                <label for="forwarding_letter">If you are currently in service, Please upload forwarding letter from your employer.</label>
+                                <input type="file" name="forwarding_letter" class="form-control-file form-control mt-3 @error('forwarding_letter') is-invalid @enderror" id="forwarding_letter" value="{{ old('forwarding_letter') }}">
+                                <small class="text-primary">Maximum size of PDF file can be 5MB. </small>
+                                @error('forwarding_letter')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{$message}}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>    
+                         
+                     </div>
                     </div>
 
                     <div class="form-row justify-content-end mt-3">

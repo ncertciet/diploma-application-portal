@@ -38,6 +38,14 @@ class AddStep4ColumnsToApplicationsTable extends Migration
     {
         Schema::table('applications', function (Blueprint $table) {
             //
+            $table->dropColumn('disability');
+            $table->dropColumn('disability_content');
+            $table->dropColumn('disability_certificate');
+            $table->dropColumn('category');
+            $table->dropColumn('category_certificate');
+            $table->dropColumn('candidate_sign');
+            $table->dropColumn('candidate_photo');
+            $table->dropColumn('document');
         });
     }
 }
