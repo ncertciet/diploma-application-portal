@@ -35,4 +35,30 @@
             }
         }
     }
+    .preview {
+        .table {
+            thead {
+                th {
+                    border-bottom: 2px solid #034085;
+                    background: #c6dbf3;
+                }
+            }
+            .bg {
+                background: #F2F2F2;
+            }
+            h5 {
+                color: #1d5590;
+                margin-top: 0.5rem;
+                font-weight: 600;
+            }
+        }
+        .table-bordered {
+            td {
+                border: 1px solid #034085;
+            }
+            th {
+                border: 1px solid #034085;
+            }
+        }
+    }
 }

@@ -60,7 +60,9 @@ $reg_id = $user->reg_id;
             </div>
 
             <div id="editor"></div>
-            <button id="cmd" class="btn btn-secondary" data-name="{{ $application->application_id }}">Download Receipt</button>
+            <a href="{{ route('export-pdf') }}" class="btn btn-primary" >Download Receipt</a>
+            <a href="{{ route('application.view-application') }}" class="btn btn-primary" >View Application</a>
+            {{-- <button id="cmd" class="btn btn-secondary" data-name="{{ $application->application_id }}">Download Receipt</button> --}}
 
         </div>
     </div>
@@ -71,7 +73,7 @@ $reg_id = $user->reg_id;
 
 
 
-
+{{-- 
 <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
 
@@ -95,7 +97,7 @@ $('#cmd').click(function () {
     doc.save($name+'.pdf');
 });
 
-</script>
+</script> --}}
 
 
 @endsection

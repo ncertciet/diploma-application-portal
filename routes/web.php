@@ -112,8 +112,12 @@ Route::group(['middleware' => ['auth', 'applicant'], 'prefix' => 'applicant'], f
     })->name('application.form.formedit');
     Route::POST('/application/formedit', 'App\Http\Controllers\ApplicationController@formedit')->name('application.formedit.store');
 
+    Route::get('/export-pdf', 'App\Http\Controllers\ApplicationController@downloadPdf')->name('export-pdf');
+    
+    Route::get('/application/view-application', function () {
+        return view('applicant.application.view-application');
+    })->name('application.view-application');
    
-
 });
 
 // admin protected routes

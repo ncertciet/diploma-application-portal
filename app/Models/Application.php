@@ -70,7 +70,7 @@ class Application extends Model
         'pq_subject',
         'pq_degree1',
         'pq_board1',
-        'pq_year1'.
+        'pq_year1',
         'pq_marks1',
         'pq_subject1',
         'pq_degree2',

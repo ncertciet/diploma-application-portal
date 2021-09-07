@@ -10135,3 +10135,21 @@ h3 {
 .application-form .course .table th {
   width: 25%;
 }
+.application-form .preview .table thead th {
+  border-bottom: 2px solid #034085;
+  background: #c6dbf3;
+}
+.application-form .preview .table .bg {
+  background: #F2F2F2;
+}
+.application-form .preview .table h5 {
+  color: #1d5590;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+.application-form .preview .table-bordered td {
+  border: 1px solid #034085;
+}
+.application-form .preview .table-bordered th {
+  border: 1px solid #034085;
+}

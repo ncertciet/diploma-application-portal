@@ -13,6 +13,8 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth as Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use PDF;
+
 
 class ApplicationController extends Controller
 {
@@ -856,6 +858,19 @@ class ApplicationController extends Controller
 
     }
 
+
+    public function downloadPdf()
+    {
+        $reg_id = Auth::user()->reg_id;
+
+        /** @var Application $application */
+        $application = Application::query()->where('reg_id', $reg_id)->first();
+
+        // share data to view
+        view()->share('applicant.application.receipt',$application);
+        $pdf = PDF::loadView('applicant.application.receipt', ['application' => $application]);
+        return $pdf->download('receipt.pdf');
+    }
 
 
 }
