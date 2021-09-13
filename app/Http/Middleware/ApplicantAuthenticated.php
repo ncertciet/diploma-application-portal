@@ -35,8 +35,13 @@ class ApplicantAuthenticated
             }
         }
 
+
+
         abort(404);  // for other user throw 404 error
         
+
+        
+
     
     }
 }

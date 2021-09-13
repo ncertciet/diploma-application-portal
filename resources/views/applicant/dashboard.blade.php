@@ -49,6 +49,11 @@ $count = count($applications);
                                         <th>Step Completed</th>
                                         <th>Application Status</th>
                                         <th>Actions</th>
+                                        @foreach ($applications as $application)
+                                            <?php if(($application->status) == 'completed'):?>
+                                            <th>View Application</th>
+                                            <?php endif?>
+                                        @endforeach
                                     </tr>
                                     </thead>
 
@@ -70,7 +75,12 @@ $count = count($applications);
                                             
                                             
                                             {{-- <td><a href="/applicant/application/step{{($application->step)+1}}" class="btn btn-warning">Resume</a></td> --}}
-                                            <td><a href="{{ route('application.form.step1')}}" class="btn btn-warning ">Resume</a></td>
+                                            <td><a href="{{ route('application.form.step1')}}" class="btn btn-primary ">Resume</a></td>
+
+
+                                            <?php if(($application->status) == 'completed'):?>
+                                            <td><a href="{{ route('application.view-application') }}" class="btn btn-danger " >View Application</a></td>
+                                            <?php endif?>
                                             
                                         </tr>
                                     @endforeach

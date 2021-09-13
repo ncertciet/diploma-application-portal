@@ -10147,6 +10147,13 @@ h3 {
   margin-top: 0.5rem;
   font-weight: 600;
 }
+.application-form .preview .table th {
+  padding: 0.45rem;
+  width: 10%;
+}
+.application-form .preview .table td {
+  padding: 0.45rem;
+}
 .application-form .preview .table-bordered td {
   border: 1px solid #034085;
 }

@@ -253,7 +253,7 @@ $application = \Illuminate\Support\Facades\DB::table('applications')->where('reg
                             </thead>
                             <tbody>
                                 <tr>
-                                        <td>{{$application->course}} <br> {{$application->course1}} <br> {{$application->course2}} <br> {{$application->course3}} </td>
+                                        <th>{{$application->course}} <br> {{$application->course1}} <br> {{$application->course2}} <br> {{$application->course3}} </th>
                                         <td>{{$application->course_institute}} <br> {{$application->course_institute1}} <br> {{$application->course_institute2}} <br> {{$application->course_institute3}}</td>
                                         <td>{{$application->course_year}} <br> {{$application->course_year1}} <br> {{$application->course_year2}} <br> {{$application->course_year3}}</td>
                                         <td>{{$application->course_duration}} <br> {{$application->course_duration1}} <br> {{$application->course_duration2}} <br> {{$application->course_duration3}}</td>

@@ -113,6 +113,10 @@ Route::group(['middleware' => ['auth', 'applicant'], 'prefix' => 'applicant'], f
     Route::POST('/application/formedit', 'App\Http\Controllers\ApplicationController@formedit')->name('application.formedit.store');
 
     Route::get('/export-pdf', 'App\Http\Controllers\ApplicationController@downloadPdf')->name('export-pdf');
+
+    Route::get('/export-pdf-application', 'App\Http\Controllers\ApplicationController@PdfApplications')->name('export-pdf-application');
+
+    
     
     Route::get('/application/view-application', function () {
         return view('applicant.application.view-application');

@@ -61,7 +61,8 @@ $reg_id = $user->reg_id;
 
             <div id="editor"></div>
             <a href="{{ route('export-pdf') }}" class="btn btn-primary" >Download Receipt</a>
-            <a href="{{ route('application.view-application') }}" class="btn btn-primary" >View Application</a>
+            <a href="{{ route('application.view-application') }}" class="btn btn-outline-secondary" >View Application</a>
+            <a href="{{ route('export-pdf-application') }}" class="btn btn-outline-secondary" >Download Application</a>
             {{-- <button id="cmd" class="btn btn-secondary" data-name="{{ $application->application_id }}">Download Receipt</button> --}}
 
         </div>

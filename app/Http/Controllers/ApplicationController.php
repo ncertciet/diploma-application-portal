@@ -27,7 +27,6 @@ class ApplicationController extends Controller
     {
         //
         $reg_id = Auth::user()->reg_id;
-//        dd($reg_id);
         $application = DB::table('applications')->where('reg_id', $reg_id)->first();
 //        dd($application);
 
@@ -59,6 +58,8 @@ class ApplicationController extends Controller
 
 
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -598,7 +599,7 @@ class ApplicationController extends Controller
                         break;
                 }
 
-
+ 
 			}
 			catch(Exception $e){
 				return redirect(route('applicantion.form.thankyou'))->with('failed',"Operation failed");
@@ -736,12 +737,12 @@ class ApplicationController extends Controller
             //  step 4
             'disability' =>'required',
             'disability_content' => 'required_if:disability,Yes',
-            'disability_certificate' => 'required_if:disability,Yes|max:5120|mimes:doc,docx,jpg,jpeg,png,pdf',
+            'disability_certificate' => 'max:5120|mimes:doc,docx,jpg,jpeg,png,pdf',
             'category' => 'required',
-            'category_certificate' => 'required_if:category,SC,ST,OBC,EWS|max:5120|mimes:doc,docx,jpg,jpeg,png,pdf',
-            'candidate_sign' => 'required|max:5120|mimes:jpg,jpeg,png',
-            'candidate_photo' => 'required|max:5120|mimes:jpg,jpeg,png',
-            'document' => 'required|max:5120|mimes:doc,docx,pdf',
+            'category_certificate' => 'max:5120|mimes:doc,docx,jpg,jpeg,png,pdf',
+            'candidate_sign' => 'max:5120|mimes:jpg,jpeg,png',
+            'candidate_photo' => 'max:5120|mimes:jpg,jpeg,png',
+            'document' => 'max:5120|mimes:doc,docx,pdf',
             'forwarding_letter' => 'max:5120|mimes:doc,docx,pdf,jpg,jpeg,png',
 
             //  step 5
@@ -772,61 +773,131 @@ class ApplicationController extends Controller
             $application->fill( $data );
             
             
-            $path_dis_certificate = '';
-            if($request->hasFile('disability_certificate')){
-                $fileValue     = $request->disability_certificate;
-                $getFileExt   = $fileValue->getClientOriginalExtension();
-                $custom_file_name = $application_id.'-disability-certificate'.'.'.$getFileExt;
-                $path_dis_certificate = $request->file('disability_certificate')->storeAs($application_id, $custom_file_name);
+            
+            if ($_FILES['disability_certificate']['size'] == 0){
+                //For empty result
+            }
+            else{    
+                $path_dis_certificate = '';
+                if($request->hasFile('disability_certificate')){
+                    $fileValue     = $request->disability_certificate;
+                    $getFileExt   = $fileValue->getClientOriginalExtension();
+                    $custom_file_name = $application_id.'-disability-certificate'.'.'.$getFileExt;
+                    $path_dis_certificate = $request->file('disability_certificate')->storeAs($application_id, $custom_file_name);
+                }
             }
 
-            $path_cat_certificate = '';
-            if($request->hasFile('category_certificate')){
-                $fileValue     = $request->disability_certificate;
-                $getFileExt   = $fileValue->getClientOriginalExtension();
-                $custom_file_name = $application_id.'-category-certificate'.'.'.$getFileExt;
-                $path_cat_certificate = $request->file('category_certificate')->storeAs($application_id, $custom_file_name);
+            if ($_FILES['category_certificate']['size'] == 0){
+                //For empty result
+            }
+            else{
+                $path_cat_certificate = '';
+                if($request->hasFile('category_certificate')){
+                    $fileValue     = $request->disability_certificate;
+                    $getFileExt   = $fileValue->getClientOriginalExtension();
+                    $custom_file_name = $application_id.'-category-certificate'.'.'.$getFileExt;
+                    $path_cat_certificate = $request->file('category_certificate')->storeAs($application_id, $custom_file_name);
+                }
             }
 
-            $path_sign = '';
-            if($request->hasFile('candidate_sign')){
-                $fileValue     = $request->candidate_sign;
-                $getFileExt   = $fileValue->getClientOriginalExtension();
-                $custom_file_name = $application_id.'-signature'.'.'.$getFileExt;
-                $path_sign = $request->file('candidate_sign')->storeAs($application_id, $custom_file_name);
+            if ($_FILES['candidate_sign']['size'] == 0){
+                //For empty result
+            }
+            else{
+                $path_sign = '';
+                if($request->hasFile('candidate_sign')){
+                    $fileValue     = $request->candidate_sign;
+                    $getFileExt   = $fileValue->getClientOriginalExtension();
+                    $custom_file_name = $application_id.'-signature'.'.'.$getFileExt;
+                    $path_sign = $request->file('candidate_sign')->storeAs($application_id, $custom_file_name);
+                }
             }
 
-            $path_photo = '';
-            if($request->hasFile('candidate_photo')){
-                $fileValue     = $request->candidate_photo;
-                $getFileExt   = $fileValue->getClientOriginalExtension();
-                $custom_file_name = $application_id.'-photo'.'.'.$getFileExt;
-                $path_photo = $request->file('candidate_photo')->storeAs($application_id, $custom_file_name);
+            if ($_FILES['candidate_photo']['size'] == 0){
+                //For empty result
+            }
+            else{
+                $path_photo = '';
+                if($request->hasFile('candidate_photo')){
+                    $fileValue     = $request->candidate_photo;
+                    $getFileExt   = $fileValue->getClientOriginalExtension();
+                    $custom_file_name = $application_id.'-photo'.'.'.$getFileExt;
+                    $path_photo = $request->file('candidate_photo')->storeAs($application_id, $custom_file_name);
+                }
             }
 
-            $path_doc = '';
-            if($request->hasFile('document')){
-                $fileValue     = $request->document;
-                $getFileExt   = $fileValue->getClientOriginalExtension();
-                $custom_file_name = $application_id.'-document'.'.'.$getFileExt;
-                $path_doc = $request->file('document')->storeAs($application_id, $custom_file_name);
+            if ($_FILES['document']['size'] == 0){
+                //For empty result
+            }
+            else{
+                $path_doc = '';
+                if($request->hasFile('document')){
+                    $fileValue     = $request->document;
+                    $getFileExt   = $fileValue->getClientOriginalExtension();
+                    $custom_file_name = $application_id.'-document'.'.'.$getFileExt;
+                    $path_doc = $request->file('document')->storeAs($application_id, $custom_file_name);
+                }
             }    
 
 
-            $path_f_letter = '';
-            if($request->hasFile('forwarding_letter')){
-                $fileValue     = $request->forwarding_letter;
-                $getFileExt   = $fileValue->getClientOriginalExtension();
-                $custom_file_name = $application_id.'-forwarding_letter'.'.'.$getFileExt;
-                $path_f_letter = $request->file('forwarding_letter')->storeAs($application_id, $custom_file_name);
+            if ($_FILES['forwarding_letter']['size'] == 0){
+                //For empty result
+            }
+            else{
+                $path_f_letter = '';
+                if($request->hasFile('forwarding_letter')){
+                    $fileValue     = $request->forwarding_letter;
+                    $getFileExt   = $fileValue->getClientOriginalExtension();
+                    $custom_file_name = $application_id.'-forwarding_letter'.'.'.$getFileExt;
+                    $path_f_letter = $request->file('forwarding_letter')->storeAs($application_id, $custom_file_name);
+                }
             }
 
-            $application->disability_certificate = $path_dis_certificate;
-            $application->category_certificate = $path_cat_certificate;
-            $application->candidate_sign = $path_sign;
-            $application->candidate_photo = $path_photo;
-            $application->document = $path_doc;
-            $application->forwarding_letter = $path_f_letter;
+
+
+       
+            
+            if ($_FILES['disability_certificate']['size'] == 0){
+                //For empty result
+            }
+            else{
+                $application->disability_certificate = $path_dis_certificate;
+            }
+            
+            if ($_FILES['category_certificate']['size'] == 0){
+                //For empty result
+            }
+            else{
+                $application->category_certificate = $path_cat_certificate;
+            }
+            
+            if ($_FILES['candidate_sign']['size'] == 0){
+                //For empty result
+            }
+            else{
+                $application->candidate_sign = $path_sign;
+            }
+
+            if ($_FILES['candidate_photo']['size'] == 0){
+                //For empty result
+            }
+            else{
+                $application->candidate_photo = $path_photo;
+            }
+            
+            if ($_FILES['document']['size'] == 0){
+                //For empty result
+            }
+            else{
+                $application->document = $path_doc;
+            }
+
+            if ($_FILES['forwarding_letter']['size'] == 0){
+                //For empty result
+            }
+            else{
+                $application->forwarding_letter = $path_f_letter;
+            }
 
             // dd($application);
 
@@ -870,6 +941,21 @@ class ApplicationController extends Controller
         view()->share('applicant.application.receipt',$application);
         $pdf = PDF::loadView('applicant.application.receipt', ['application' => $application]);
         return $pdf->download('receipt.pdf');
+
+
+    }
+
+    public function PdfApplications()
+    {
+        $reg_id = Auth::user()->reg_id;
+
+        /** @var Application $application */
+        $application = Application::query()->where('reg_id', $reg_id)->first();
+
+        // share data to view
+        view()->share('applicant.application.export-application',$application);
+        $pdf = PDF::loadView('applicant.application.export-application', ['application' => $application]);
+        return $pdf->download('export-application.pdf');
     }
 
 

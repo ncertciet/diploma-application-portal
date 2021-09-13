@@ -7,6 +7,29 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
   <body>
+
+    <style>
+        .table {
+            font-size:14px;
+        }
+        .table-bordered th {
+         border: 1px solid #034085;
+        }
+        .table-bordered td {
+         border: 1px solid #034085;
+        }
+        .table thead th {
+            border-bottom: 2px solid #034085;
+            background: #c6dbf3;
+        }
+        .bg{
+            background:#F2F2F2;
+        }
+        .table td {
+            font-weight: 400;
+        }
+        </style>
+
       <div class="container py-5">
           {{-- <div class="row">
               <div class="col-xl-12 text-right">
@@ -15,13 +38,19 @@
           </div> --}}
 
           <div class=" mt-4 mb-6">
-              <div >
+              {{-- <div >
                     <h5 class=" font-weight-bold text-center">Diploma Application Receipt</h4>
-              </div>
+              </div> --}}
 
               <div class="">
                     <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th colspan="2" class="bg font-weight-bold text-center"><h5>Diploma Application Receipt</h5></th>
+                            </tr>
+                        </thead>
                         <tbody>
+                            
                             <tr>
                                 <th scope="row">Application Id</th>
                                 <td>{{ $application->application_id }}</td>
@@ -31,11 +60,11 @@
                                 <td>{{ $application->name }}</td>
                             </tr> 
                             <tr>
-                                <th scope="row">Email</th>
+                                <th scope="row">Email Id</th>
                                 <td>{{ $application->p_email }}</td>
                             </tr> 
                             <tr>
-                                <th scope="row">submit Date</th>
+                                <th scope="row">Submit Date</th>
                                 <td>{{ $application->submit_date }}</td>
                             </tr>   
                         </tbody>
