@@ -121,14 +121,27 @@ Route::group(['middleware' => ['auth', 'applicant'], 'prefix' => 'applicant'], f
     Route::get('/application/view-application', function () {
         return view('applicant.application.view-application');
     })->name('application.view-application');
-   
+
 });
+
+
+// **************************************************************************
+// ***********************ADMIN PROTECTED ROUTES*****************************
+// **************************************************************************
 
 // admin protected routes
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+
+
+    Route::get('/applications', function () {
+        return view('admin.applications');
+    })->name('applications');
+
+
+
 
     Route::get('/', function () {
         return redirect(route('applicant.dashboard'));

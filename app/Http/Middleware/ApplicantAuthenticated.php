@@ -33,6 +33,9 @@ class ApplicantAuthenticated
             else if( Auth::user()->isApplicant() ) {
                  return $next($request);
             }
+
+
+            
         }
 
 

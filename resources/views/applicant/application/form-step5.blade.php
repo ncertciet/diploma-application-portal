@@ -35,7 +35,9 @@
                 <form method="POST" action="{{route('application.step5.store')}}">
                     @csrf
                     <div class="color-box">
-                        <h4 class="text-primary mt-2 mb-4">Name and Full Address of Two Referees <button type="submit" name="action" value="save-continue-hgvhg" class="btn btn-secondary btn-lg mr-3 float-right">Skip</button></h4>
+                        <h4 class="text-primary mt-2 mb-4">Name and Full Address of Two Referees 
+                            <button type="submit" name="action" value="save-continue" class="btn btn-secondary btn-lg mr-3 float-right">Skip</button>
+                        </h4>
                         <h5>Referees 1</h5>
                          <div class="form-row">
                                 <div class="form-group col-md-4">

@@ -54,10 +54,11 @@ class ApplicationController extends Controller
 
          }else if($application->step === '6'){
             return redirect(route('application.thankyou'));
+            //return view('applicant.application.thankyou')
          }
-
-
     }
+    
+    
 
 
 
@@ -545,7 +546,8 @@ class ApplicationController extends Controller
                         // Preview model
                         $application->save();
                         // return view('applicant.application.form-step6')->with($application);
-				        return view('applicant.application.form-step6')->with('application', $application)->with('status',"Step 5 is saved successfully");
+				        //return view('applicant.application.form-step6')->with('application', $application)->with('status',"Step 5 is saved successfully");
+                        return redirect(route('application.form.step6'))->with('status',"Step 5 is saved successfully");
                         break;
                 }
 
@@ -559,7 +561,7 @@ class ApplicationController extends Controller
 
     }
 
-
+       
     public function step6(Request $request)
     {
         $reg_id = Auth::user()->reg_id;
@@ -602,13 +604,12 @@ class ApplicationController extends Controller
  
 			}
 			catch(Exception $e){
-				return redirect(route('applicantion.form.thankyou'))->with('failed',"Operation failed");
+				return redirect(route('application.form.thankyou'))->with('failed',"Operation failed");
 			}
 		}
 
 
     }
-
 
 
     public function formedit(Request $request)
