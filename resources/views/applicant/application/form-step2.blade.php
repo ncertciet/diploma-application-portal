@@ -57,7 +57,7 @@
                                             @enderror
                                         </td>
                                         <td class="col-sm-2">
-                                            <input type="text" name="eq_board_x"  class="form-control @error('eq_board_x') is-invalid @enderror" placeholder="Examining Body" >
+                                            <input type="text" name="eq_board_x"  class="form-control @error('eq_board_x') is-invalid @enderror" value="{{ old('eq_board_x') }}" placeholder="Examining Body" >
                                             @error('eq_board_x')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>This Field is required.</strong>
@@ -66,7 +66,7 @@
                                         </td>
                                         <td class="col-sm-2">
                                             @php($year=date('Y'))
-                                            <select name="eq_year_x" id="year" class="form-control @error('eq_year_x') is-invalid @enderror" >
+                                            <select name="eq_year_x" id="year" class="form-control @error('eq_year_x') is-invalid @enderror" value="{{ old('eq_year_x') }}">
                                                 <option value="" selected disabled>Select Year</option>
                                                 @for($i = 1960; $i <= $year; $i++)
                                                 <option value="{{ $i }}">{{ $i }}</option>
@@ -80,7 +80,7 @@
                                         </td>
 
                                         <td class="col-sm-2">
-                                            <input type="text" name="eq_marks_x"  class="form-control @error('eq_marks_x') is-invalid @enderror" placeholder="marks/grade" >
+                                            <input type="text" name="eq_marks_x"  class="form-control @error('eq_marks_x') is-invalid @enderror" value="{{ old('eq_marks_x') }}" placeholder="marks/grade" >
                                             @error('eq_marks_x')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>This Field is required.</strong>
@@ -88,7 +88,7 @@
                                             @enderror
                                         </td>
                                         <td class="col-sm-2">
-                                            <input type="text" name="eq_subject_x"  class="form-control @error('eq_subject_x') is-invalid @enderror" placeholder="Subject" >
+                                            <input type="text" name="eq_subject_x"  class="form-control @error('eq_subject_x') is-invalid @enderror" value="{{ old('eq_subject_x') }}" placeholder="Subject" >
                                             @error('eq_subject_x')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>This Field is required.</strong>
@@ -107,7 +107,7 @@
                                             @enderror
                                         </td>
                                         <td class="col-sm-2">
-                                            <input type="text" name="eq_board_xii"  class="form-control @error('eq_board_xii') is-invalid @enderror" placeholder="Examining Body" >
+                                            <input type="text" name="eq_board_xii"  class="form-control @error('eq_board_xii') is-invalid @enderror" value="{{ old('eq_board_xii') }}" placeholder="Examining Body" >
                                             @error('eq_board_xii')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>This Field is required.</strong>
@@ -117,7 +117,7 @@
                                         <td class="col-sm-2">
 
                                             @php($year=date('Y'))
-                                            <select name="eq_year_xii" id="year" class="form-control @error('eq_year_xii') is-invalid @enderror" >
+                                            <select name="eq_year_xii" id="year" class="form-control @error('eq_year_xii') is-invalid @enderror" value="{{ old('eq_year_xii') }}">
                                                 <option value="" selected disabled>Select Year</option>
                                                 @for($i = 1960; $i <= $year; $i++)
                                                 <option value="{{ $i }}">{{ $i }}</option>
@@ -130,7 +130,7 @@
                                             @enderror
                                         </td>
                                         <td class="col-sm-2">
-                                            <input type="text" name="eq_marks_xii"  class="form-control @error('eq_marks_xii') is-invalid @enderror" placeholder="marks/grade" >
+                                            <input type="text" name="eq_marks_xii"  class="form-control @error('eq_marks_xii') is-invalid @enderror" value="{{ old('eq_marks_xii') }}" placeholder="marks/grade" >
                                             @error('eq_marks_xii')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>This field is required</strong>
@@ -138,7 +138,7 @@
                                             @enderror
                                         </td>
                                         <td class="col-sm-2">
-                                            <input type="text" name="eq_subject_xii"  class="form-control @error('eq_subject_xii') is-invalid @enderror" placeholder="Subject" >
+                                            <input type="text" name="eq_subject_xii"  class="form-control @error('eq_subject_xii') is-invalid @enderror" value="{{ old('eq_subject_xii') }}" placeholder="Subject" >
                                             @error('eq_subject_xii')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>This Field is required.</strong>
@@ -157,7 +157,7 @@
                                         @enderror
                                     </td>
                                     <td class="col-sm-2">
-                                        <input type="text" name="eq_board_grad"  class="form-control @error('eq_board_grad') is-invalid @enderror" placeholder="Examining Body" >
+                                        <input type="text" name="eq_board_grad"  class="form-control @error('eq_board_grad') is-invalid @enderror" value="{{ old('eq_board_grad') }}" placeholder="Examining Body" >
                                         @error('eq_board_grad')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>This Field is required.</strong>
@@ -166,7 +166,7 @@
                                     </td>
                                     <td class="col-sm-2">
                                         @php($year=date('Y'))
-                                        <select name="eq_year_grad" id="year" class="form-control @error('eq_year_grad') is-invalid @enderror" >
+                                        <select name="eq_year_grad" id="year" class="form-control @error('eq_year_grad') is-invalid @enderror" value="{{ old('eq_year_grad') }}">
                                             <option value="" selected disabled>Select Year</option>
                                             @for($i = 1960; $i <= $year; $i++)
                                             <option value="{{ $i }}">{{ $i }}</option>
@@ -179,7 +179,7 @@
                                         @enderror
                                     </td>
                                     <td class="col-sm-2">
-                                        <input type="text" name="eq_marks_grad"  class="form-control @error('eq_marks_grad') is-invalid @enderror" placeholder="marks/grade" >
+                                        <input type="text" name="eq_marks_grad"  class="form-control @error('eq_marks_grad') is-invalid @enderror" value="{{ old('eq_marks_grad') }}" placeholder="marks/grade" >
                                         @error('eq_marks_grad')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>This Field is required.</strong>
@@ -187,7 +187,7 @@
                                         @enderror
                                     </td>
                                         <td class="col-sm-2">
-                                        <input type="text" name="eq_subject_grad"  class="form-control @error('eq_subject_grad') is-invalid @enderror" placeholder="Subject" >
+                                        <input type="text" name="eq_subject_grad"  class="form-control @error('eq_subject_grad') is-invalid @enderror" value="{{ old('eq_subject_grad') }}" placeholder="Subject" >
                                         @error('eq_subject_grad')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>This Field is required.</strong>
@@ -210,7 +210,7 @@
                                         @enderror
                                     </td>
                                     <td class="col-sm-2">
-                                        <input type="text" name="eq_board_pgrad"  class="form-control @error('eq_board_pgrad') is-invalid @enderror" placeholder="Examining Body" >
+                                        <input type="text" name="eq_board_pgrad"  class="form-control @error('eq_board_pgrad') is-invalid @enderror" value="{{ old('eq_board_pgrad') }}" placeholder="Examining Body" >
                                         @error('eq_board_pgrad')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>This Field is required.</strong>
@@ -219,7 +219,7 @@
                                     </td>
                                     <td class="col-sm-2">
                                         @php($year=date('Y'))
-                                        <select name="eq_year_pgrad" id="year" class="form-control @error('eq_year_pgrad') is-invalid @enderror" >
+                                        <select name="eq_year_pgrad" id="year" class="form-control @error('eq_year_pgrad') is-invalid @enderror" value="{{ old('eq_year_pgrad') }}">
                                             <option value="" selected disabled>Select Year</option>
                                             @for($i = 1960; $i <= $year; $i++)
                                             <option value="{{ $i }}">{{ $i }}</option>
@@ -232,7 +232,7 @@
                                         @enderror
                                     </td>
                                     <td class="col-sm-2">
-                                        <input type="text" name="eq_marks_pgrad"  class="form-control @error('eq_marks_pgrad') is-invalid @enderror" placeholder="marks/grade" >
+                                        <input type="text" name="eq_marks_pgrad"  class="form-control @error('eq_marks_pgrad') is-invalid @enderror" value="{{ old('eq_marks_pgrad') }}" placeholder="marks/grade" >
                                         @error('eq_marks_pgrad')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>This Field is required.</strong>
@@ -240,7 +240,7 @@
                                         @enderror
                                     </td>
                                     <td class="col-sm-2">
-                                        <input type="text" name="eq_subject_pgrad"  class="form-control @error('eq_subject_pgrad') is-invalid @enderror" placeholder="Subject" >
+                                        <input type="text" name="eq_subject_pgrad"  class="form-control @error('eq_subject_pgrad') is-invalid @enderror" value="{{ old('eq_subject_pgrad') }}" placeholder="Subject" >
                                         @error('eq_subject_pgrad')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>This Field is required.</strong>
@@ -284,7 +284,7 @@
                                   </tr>
                                   <tr>
                                       <td class="col-sm-2">
-                                          <input type="text" name="pq_degree" class="form-control @error('pq_degree') is-invalid @enderror" placeholder="Name of the Degree" >
+                                          <input type="text" name="pq_degree" class="form-control @error('pq_degree') is-invalid @enderror" value="{{ old('pq_degree') }}" placeholder="Name of the Degree" >
                                              @error('pq_degree')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>This Field is required.</strong>
@@ -292,7 +292,7 @@
                                             @enderror
                                       </td>
                                       <td class="col-sm-2">
-                                          <input type="text" name="pq_board"  class="form-control @error('pq_board') is-invalid @enderror" placeholder="Examining Body" >
+                                          <input type="text" name="pq_board"  class="form-control @error('pq_board') is-invalid @enderror" value="{{ old('pq_board') }}" placeholder="Examining Body" >
                                           @error('pq_board')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>This Field is required.</strong>
@@ -301,7 +301,7 @@
                                       </td>
                                       <td class="col-sm-2">
                                         @php($year=date('Y'))
-                                        <select name="pq_year" id="year" class="form-control @error('pq_year') is-invalid @enderror" >
+                                        <select name="pq_year" id="year" class="form-control @error('pq_year') is-invalid @enderror" value="{{ old('pq_year') }}">
                                             <option value="" selected disabled>Select Year</option>
                                             @for($i = 1960; $i <= $year; $i++)
                                             <option value="{{ $i }}">{{ $i }}</option>
@@ -314,7 +314,7 @@
                                             @enderror
                                       </td>
                                       <td class="col-sm-2">
-                                          <input type="text" name="pq_marks"  class="form-control @error('pq_marks') is-invalid @enderror" placeholder="marks/grade" >
+                                          <input type="text" name="pq_marks"  class="form-control @error('pq_marks') is-invalid @enderror" value="{{ old('pq_marks') }}" placeholder="marks/grade" >
                                             @error('pq_marks')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>This Field is required.</strong>
@@ -322,7 +322,7 @@
                                             @enderror
                                       </td>
                                       <td class="col-sm-2">
-                                          <input type="text" name="pq_subject"  class="form-control @error('pq_subject') is-invalid @enderror" placeholder="Subject" >
+                                          <input type="text" name="pq_subject"  class="form-control @error('pq_subject') is-invalid @enderror" value="{{ old('pq_subject') }}" placeholder="Subject" >
                                             @error('pq_subject')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>This Field is required.</strong>

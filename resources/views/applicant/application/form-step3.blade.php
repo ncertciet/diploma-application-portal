@@ -48,7 +48,7 @@
                           <tbody>
                               <tr>
                                   <td class="col-sm-2">
-                                      <input type="text" name="work_exp_name" class="form-control" placeholder="Employer Name" >
+                                      <input type="text" name="work_exp_name" class="form-control" value="{{ old('work_exp_name') }}" placeholder="Employer Name" >
                                         @error('work_exp_name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>This Field is required.</strong>
@@ -56,7 +56,7 @@
                                         @enderror
                                   </td>
                                   <td class="col-sm-2">
-                                      <input type="text" name="work_exp_position"  class="form-control" placeholder="Position" >
+                                      <input type="text" name="work_exp_position"  class="form-control" value="{{ old('work_exp_position') }}" placeholder="Position" >
                                       @error('work_exp_position')
                                       <span class="invalid-feedback" role="alert">
                                           <strong>This Field is required.</strong>
@@ -64,7 +64,7 @@
                                   @enderror
                                   </td>
                                   <td class="col-sm-2">
-                                      <input type="date" name="work_exp_date_from" class="form-control" >
+                                      <input type="date" name="work_exp_date_from" class="form-control" value="{{ old('work_exp_date_from') }}">
                                       @error('work_exp_date_from')
                                       <span class="invalid-feedback" role="alert">
                                           <strong>This Field is required.</strong>
@@ -72,7 +72,7 @@
                                   @enderror
                                   </td>
                                   <td class="col-sm-2">
-                                      <input type="date" name="work_exp_date_to" class="form-control" >
+                                      <input type="date" name="work_exp_date_to" class="form-control" value="{{ old('work_exp_date_to') }}">
                                       @error('work_exp_date_to')
                                       <span class="invalid-feedback" role="alert">
                                           <strong>This Field is required.</strong>
@@ -80,7 +80,7 @@
                                   @enderror
                                   </td>
                                       <td class="col-sm-2">
-                                      <input type="text" name="work_exp_duty"  class="form-control" placeholder="Nature of Duties" >
+                                      <input type="text" name="work_exp_duty"  class="form-control" placeholder="Nature of Duties" value="{{ old('work_exp_duty') }}">
                                       @error('work_exp_duty')
                                       <span class="invalid-feedback" role="alert">
                                           <strong>This Field is required.</strong>
@@ -125,7 +125,7 @@
                           <tbody>
                               <tr>
                                   <td class="col-sm-2">
-                                      <input type="text" name="course" class="form-control" placeholder="Course" >
+                                      <input type="text" name="course" class="form-control" placeholder="Course" value="{{ old('course') }}">
                                       @error('course')
                                       <span class="invalid-feedback" role="alert">
                                           <strong>This Field is required.</strong>
@@ -133,7 +133,7 @@
                                   @enderror
                                   </td>
                                   <td class="col-sm-2">
-                                      <input type="text" name="course_institute"  class="form-control" placeholder="Institute" >
+                                      <input type="text" name="course_institute"  class="form-control" placeholder="Institute" value="{{ old('course_institute') }}">
                                         @error('course_institute')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>This Field is required.</strong>
@@ -142,7 +142,7 @@
                                   </td>
                                   <td class="col-sm-2">
                                     @php($year=date('Y'))
-                                    <select name="course_year" id="year" class="form-control @error('course_year') is-invalid @enderror" >
+                                    <select name="course_year" id="year" class="form-control @error('course_year') is-invalid @enderror" value="{{ old('course_year') }}">
                                         <option value="" selected disabled>Select Year</option>
                                         @for($i = 1960; $i <= $year; $i++)
                                         <option value="{{ $i }}">{{ $i }}</option>
@@ -155,7 +155,7 @@
                                     @enderror
                                   </td>
                                   <td class="col-sm-2">
-                                      <input type="text" name="course_duration"  class="form-control" placeholder="Duration in Days/Months" >
+                                      <input type="text" name="course_duration"  class="form-control" placeholder="Duration in Days/Months" value="{{ old('course_duration') }}">
                                       @error('course_duration')
                                       <span class="invalid-feedback" role="alert">
                                           <strong>This Field is required.</strong>

@@ -54,9 +54,275 @@ class ApplicationController extends Controller
 
          }else if($application->step === '6'){
             return redirect(route('application.thankyou'));
-            //return view('applicant.application.thankyou')
          }
     }
+
+    public function step2Show(){
+        // return view('applicant.application.form-step2');
+
+        $reg_id = Auth::user()->reg_id;
+        $application = DB::table('applications')->where('reg_id', $reg_id)->first();
+
+        if(empty($application)){
+            return redirect(route('application.form.step1'));
+        }
+
+        if($application->step === ''){
+            return redirect(route('application.form.step1'));
+        }
+        else if ($application->step === '1'){
+            return view('applicant.application.form-step2');
+
+        }else if($application->step === '2'){
+            return redirect(route('application.form.step3'));
+            
+        }else if($application->step === '3'){
+            return redirect(route('application.form.step4'));
+
+         }else if($application->step === '4'){
+            return redirect(route('application.form.step5'));
+
+         }else if($application->step === '5'){
+            return redirect(route('application.form.step6'));
+
+         }else if($application->step === '6'){
+            return redirect(route('application.thankyou'));
+         }
+    }
+
+    public function step3Show(){
+        // return view('applicant.application.form-step2');
+
+        $reg_id = Auth::user()->reg_id;
+        $application = DB::table('applications')->where('reg_id', $reg_id)->first();
+
+        if(empty($application)){
+            return redirect(route('application.form.step1'));
+        }
+
+        if($application->step === ''){
+            return redirect(route('application.form.step1'));
+        }
+        else if ($application->step === '1'){
+            return redirect(route('application.form.step2'));
+
+        }else if($application->step === '2'){
+            return view('applicant.application.form-step3');
+            
+        }else if($application->step === '3'){
+            return redirect(route('application.form.step4'));
+
+         }else if($application->step === '4'){
+            return redirect(route('application.form.step5'));
+
+         }else if($application->step === '5'){
+            return redirect(route('application.form.step6'));
+
+         }else if($application->step === '6'){
+            return redirect(route('application.thankyou'));
+         }
+    }
+
+    public function step4Show(){
+        // return view('applicant.application.form-step2');
+
+        $reg_id = Auth::user()->reg_id;
+        $application = DB::table('applications')->where('reg_id', $reg_id)->first();
+
+        if(empty($application)){
+            return redirect(route('application.form.step1'));
+        }
+
+        if($application->step === ''){
+            return redirect(route('application.form.step1'));
+        }
+        else if ($application->step === '1'){
+            return redirect(route('application.form.step2'));
+
+        }else if($application->step === '2'){
+            return redirect(route('application.form.step3'));
+            
+        }else if($application->step === '3'){
+            return view('applicant.application.form-step4');
+
+         }else if($application->step === '4'){
+            return redirect(route('application.form.step5'));
+
+         }else if($application->step === '5'){
+            return redirect(route('application.form.step6'));
+
+         }else if($application->step === '6'){
+            return redirect(route('application.thankyou'));
+         }
+    }
+
+    public function step5Show(){
+        // return view('applicant.application.form-step2');
+
+        $reg_id = Auth::user()->reg_id;
+        $application = DB::table('applications')->where('reg_id', $reg_id)->first();
+
+        if(empty($application)){
+            return redirect(route('application.form.step1'));
+        }
+
+        if($application->step === ''){
+            return redirect(route('application.form.step1'));
+        }
+        else if ($application->step === '1'){
+            return redirect(route('application.form.step2'));
+
+        }else if($application->step === '2'){
+            return redirect(route('application.form.step3'));
+            
+        }else if($application->step === '3'){
+            return redirect(route('application.form.step4'));
+
+         }else if($application->step === '4'){
+            return view('applicant.application.form-step5');
+
+         }else if($application->step === '5'){
+            return redirect(route('application.form.step6'));
+
+         }else if($application->step === '6'){
+            return redirect(route('application.thankyou'));
+         }
+    }
+
+    public function step6Show(){
+        // return view('applicant.application.form-step2');
+
+        $reg_id = Auth::user()->reg_id;
+        $application = DB::table('applications')->where('reg_id', $reg_id)->first();
+
+        if(empty($application)){
+            return redirect(route('application.form.step1'));
+        }
+
+        if($application->step === ''){
+            return redirect(route('application.form.step1'));
+        }
+        else if ($application->step === '1'){
+            return redirect(route('application.form.step2'));
+
+        }else if($application->step === '2'){
+            return redirect(route('application.form.step3'));
+            
+        }else if($application->step === '3'){
+            return redirect(route('application.form.step4'));
+
+         }else if($application->step === '4'){
+            return redirect(route('application.form.step5'));
+
+         }else if($application->step === '5'){
+            return view('applicant.application.form-step6');
+
+         }else if($application->step === '6'){
+            return redirect(route('application.thankyou'));
+         }
+    }
+
+    public function formeditShow(){
+        // return view('applicant.application.form-step2');
+
+        $reg_id = Auth::user()->reg_id;
+        $application = DB::table('applications')->where('reg_id', $reg_id)->first();
+
+        if(empty($application)){
+            return redirect(route('application.form.step1'));
+        }
+
+        if($application->step === ''){
+            return redirect(route('application.form.step1'));
+        }
+        else if ($application->step === '1'){
+            return redirect(route('application.form.step2'));
+
+        }else if($application->step === '2'){
+            return redirect(route('application.form.step3'));
+            
+        }else if($application->step === '3'){
+            return redirect(route('application.form.step4'));
+
+         }else if($application->step === '4'){
+            return redirect(route('application.form.step5'));
+
+         }else if($application->status === 'pending'){
+            return view('applicant.application.formedit');
+         }
+    }
+
+    
+
+
+    // public function formeditShow(){
+    //     // return view('applicant.application.form-step2');
+
+    //     $reg_id = Auth::user()->reg_id;
+    //     $application = DB::table('applications')->where('reg_id', $reg_id)->first();
+
+    //     if(empty($application)){
+    //         return redirect(route('application.form.step1'));
+    //     }
+
+    //     if($application->step === ''){
+    //         return redirect(route('application.form.step1'));
+    //     }
+    //     else if ($application->step === '1'){
+    //         return redirect(route('application.form.step2'));
+
+    //     }else if($application->step === '2'){
+    //         return redirect(route('application.form.step3'));
+            
+    //     }else if($application->step === '3'){
+    //         return redirect(route('application.form.step4'));
+
+    //      }else if($application->step === '4'){
+    //         return redirect(route('application.form.step5'));
+
+    //      }else if($application->step === '5'){
+    //         return redirect(route('application.form-step6'));
+
+    //      }else if($application->status === 'completed'){
+    //         //return view('applicant.application.thankyou');
+    //         return redirect(route('application.thankyou'));
+            
+    //      }
+    // }
+
+    // public function thankyouShow(){
+    //     // return view('applicant.application.form-step2');
+
+    //     $reg_id = Auth::user()->reg_id;
+    //     $application = DB::table('applications')->where('reg_id', $reg_id)->first();
+
+    //     if(empty($application)){
+    //         return redirect(route('application.form.step1'));
+    //     }
+
+    //     if($application->step === ''){
+    //         return redirect(route('application.form.step1'));
+    //     }
+    //     else if ($application->step === '1'){
+    //         return redirect(route('application.form.step2'));
+
+    //     }else if($application->step === '2'){
+    //         return redirect(route('application.form.step3'));
+            
+    //     }else if($application->step === '3'){
+    //         return redirect(route('application.form.step4'));
+
+    //      }else if($application->step === '4'){
+    //         return redirect(route('application.form.step5'));
+
+    //      }else if($application->step === '5'){
+    //         return redirect(route('application.form-step6'));
+
+    //      }else if($application->status === 'completed'){
+    //         //return view('applicant.application.thankyou');
+    //         return redirect(route('application.thankyou'));
+    //      }
+    // }
     
     
 
@@ -124,12 +390,14 @@ class ApplicationController extends Controller
                         // Save model
                         $application->save();
 				        return redirect(route('applicant.dashboard'))->with('status',"Step 1 is saved successfully");
+                        //return view('applicant.dashboard')->with('application', $application)->with('status',"Step 1 is saved successfully");
                         break;
 
                     case 'save-continue':
                         // Preview model
                         $application->save();
 				        return redirect(route('application.form.step2'))->with('status',"Step 1 is saved successfully");
+                        //return view('application.form.step2')->with('application', $application)->with('status',"Step 1 is saved successfully");
                         break;
                 }
 

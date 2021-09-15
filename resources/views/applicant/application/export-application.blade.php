@@ -38,6 +38,9 @@
         .table th {
             
         }
+        .pdf-title{
+            color:#981f4d;
+        }
         
         
         </style>
@@ -51,6 +54,12 @@
 
         <div class='preview mt-4'>
             <div class="data ">
+
+                <div class="text-center">
+                    <h3>Application Form</h3>
+                    <h4 class="pdf-title">Diploma Course in Guidance and Counselling (2021)</h4>
+                    <br>
+                </div>
 
                 <table class="table table-striped table-bordered">
                     <tr>
@@ -212,7 +221,7 @@
                       </tr>
                     </tbody>
                 </table>
-
+                <br>
                 <table class="table table-bordered">
                         <thead>
                             <tr>

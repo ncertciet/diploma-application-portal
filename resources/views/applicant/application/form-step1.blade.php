@@ -86,7 +86,7 @@
                         @enderror
                     </div>
 
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-6">
                         <label for="product">State/UT</label>
                         <select class="form-control product @error('sc_state') is-invalid @enderror" data-related-regime="#regime" name="sc_state" id="product"  value="{{ old('sc_state') }}">
 
@@ -98,7 +98,7 @@
                         </span>
                         @enderror
                     </div>
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-6">
                         <label for="regime">Study Centre</label>
 
                         <select class="form-control regime @error('study_centre') is-invalid @enderror" data-related-category="" data-related-product="#product" name="study_centre" id="regime"  value="{{ old('study_centre') }}">

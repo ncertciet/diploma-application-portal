@@ -28,9 +28,12 @@
         .table td {
             font-weight: 400;
         }
+        .pdf-title{
+            color:#981f4d;
+        }
         </style>
 
-      <div class="container py-5">
+      <div class="containerss py-5">
           {{-- <div class="row">
               <div class="col-xl-12 text-right">
                   <a href="{{ route('export-pdf') }}" class="btn btn-success btn-sm">Export to PDF</a>
@@ -38,9 +41,12 @@
           </div> --}}
 
           <div class=" mt-4 mb-6">
-              {{-- <div >
-                    <h5 class=" font-weight-bold text-center">Diploma Application Receipt</h4>
-              </div> --}}
+                <div class="text-center">
+                    <h3>Application Receipt</h3>
+                    <h4 class="pdf-title">Diploma Course in Guidance and Counselling (2021)</h4>
+                    <br>
+                </div>
+
 
               <div class="">
                     <table class="table table-bordered table-striped">

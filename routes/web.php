@@ -66,9 +66,11 @@ Route::group(['middleware' => ['auth', 'applicant'], 'prefix' => 'applicant'], f
     Route::POST('/application/step1', 'App\Http\Controllers\ApplicationController@store')->name('application.step1.store');
     
 
-    Route::get('/application/step2', function () {
-        return view('applicant.application.form-step2');
-    })->name('application.form.step2');
+    // Route::get('/application/step2', function () {
+    //     return view('applicant.application.form-step2');
+    // })->name('application.form.step2');
+
+    Route::get('/application/step2', 'App\Http\Controllers\ApplicationController@step2Show')->name('application.form.step2');
 
     Route::POST('/application/step2', 'App\Http\Controllers\ApplicationController@step2')->name('application.step2.store');
 
@@ -78,38 +80,47 @@ Route::group(['middleware' => ['auth', 'applicant'], 'prefix' => 'applicant'], f
     //     return view('applicant.application.form-step2');
     // })->name('application.form.step2');
 
-    Route::get('/application/step3', function () {
-        return view('applicant.application.form-step3');
-    })->name('application.form.step3');
+    // Route::get('/application/step3', function () {
+    //     return view('applicant.application.form-step3');
+    // })->name('application.form.step3');
 
+    Route::get('/application/step3', 'App\Http\Controllers\ApplicationController@step3Show')->name('application.form.step3');
     Route::POST('/application/step3', 'App\Http\Controllers\ApplicationController@step3')->name('application.step3.store');
 
 
-    Route::get('/application/step4', function () {
-        return view('applicant.application.form-step4');
-    })->name('application.form.step4');
+    // Route::get('/application/step4', function () {
+    //     return view('applicant.application.form-step4');
+    // })->name('application.form.step4');
 
+    Route::get('/application/step4', 'App\Http\Controllers\ApplicationController@step4Show')->name('application.form.step4'); 
     Route::POST('/application/step4', 'App\Http\Controllers\ApplicationController@step4')->name('application.step4.store');
 
-    Route::get('/application/step5', function () {
-        return view('applicant.application.form-step5');
-    })->name('application.form.step5');
+    // Route::get('/application/step5', function () {
+    //     return view('applicant.application.form-step5');
+    // })->name('application.form.step5');
 
+    Route::get('/application/step5', 'App\Http\Controllers\ApplicationController@step5Show')->name('application.form.step5'); 
     Route::POST('/application/step5', 'App\Http\Controllers\ApplicationController@step5')->name('application.step5.store');
 
-    Route::get('/application/step6', function () {
-        return view('applicant.application.form-step6');
-    })->name('application.form.step6');
+    // Route::get('/application/step6', function () {
+    //     return view('applicant.application.form-step6');
+    // })->name('application.form.step6');
 
+    Route::get('/application/step6', 'App\Http\Controllers\ApplicationController@step6Show')->name('application.form.step6');
     Route::POST('/application/step6', 'App\Http\Controllers\ApplicationController@step6')->name('application.step6.store');
 
     Route::get('/application/thankyou', function () {
         return view('applicant.application.thankyou');
     })->name('application.thankyou');
 
-    Route::get('/application/formedit', function () {
-        return view('applicant.application.formedit');
-    })->name('application.form.formedit');
+    //Route::get('/application/thankyou', 'App\Http\Controllers\ApplicationController@thankyouShow')->name('application.form.thankyou');
+
+    // Route::get('/application/formedit', function () {
+    //     return view('applicant.application.formedit');
+    // })->name('application.form.formedit');
+
+    Route::get('/application/formedit', 'App\Http\Controllers\ApplicationController@formeditShow')->name('application.form.formedit');
+    //Route::get('/application/formedit', 'App\Http\Controllers\ApplicationController@formeditShow')->name('application.form.formedit');
     Route::POST('/application/formedit', 'App\Http\Controllers\ApplicationController@formedit')->name('application.formedit.store');
 
     Route::get('/export-pdf', 'App\Http\Controllers\ApplicationController@downloadPdf')->name('export-pdf');

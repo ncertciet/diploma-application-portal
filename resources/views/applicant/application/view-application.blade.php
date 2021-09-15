@@ -40,7 +40,7 @@ $application = \Illuminate\Support\Facades\DB::table('applications')->where('reg
 
             @endif
             <div class="text-right">
-                <a href="{{ route('export-pdf-application') }}" class="btn btn-secondary text-right" >Download Application</a>    
+                <a href="{{ route('export-pdf-application') }}" class="btn btn-success text-right" ><i class="fas fa-download"></i> Download Application</a>    
             </div>    
             <div class='preview mt-4'>
                 <div class="data ">

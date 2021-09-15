@@ -42,7 +42,7 @@ $count = count($applications);
                         @endif
 
                             <div class="table-responsive">
-                                <table class="table">
+                                <table class="table table-bordered">
                                     <thead>
                                     <tr>
                                         <th>Application ID.</th>
@@ -65,21 +65,21 @@ $count = count($applications);
                                             <td>{{ $application->step }} step completed out of 6</td>
 
                                             <?php if(($application->status) == 'pending'):?>
-                                            <td><h5><span class="badge badge-warning">{{ ucfirst($application->status) }}</span></h5></td>
+                                            <td><h5><span class="badge badge-warning"><i class="fas fa-exclamation-triangle"></i> {{ ucfirst($application->status) }}</span></h5></td>
                                             <?php endif?>
 
                                             <?php if(($application->status) == 'completed'):?>
-                                            <td><h5><span class="badge badge-success">{{ ucfirst($application->status) }}</span></h5></td>
+                                            <td><h5><span class="badge badge-success"><i class="far fa-check-circle"></i> {{ ucfirst($application->status) }}</span></h5></td>
                                             <?php endif?>
 
                                             
                                             
                                             {{-- <td><a href="/applicant/application/step{{($application->step)+1}}" class="btn btn-warning">Resume</a></td> --}}
-                                            <td><a href="{{ route('application.form.step1')}}" class="btn btn-primary ">Resume</a></td>
+                                            <td><a href="{{ route('application.form.step1')}}" class="btn btn-primary "><i class="fas fa-redo"></i> Resume</a></td>
 
 
                                             <?php if(($application->status) == 'completed'):?>
-                                            <td><a href="{{ route('application.view-application') }}" class="btn btn-danger " >View Application</a></td>
+                                            <td><a href="{{ route('application.view-application') }}" class="btn btn-danger " ><i class="far fa-eye"></i> View Application</a></td>
                                             <?php endif?>
                                             
                                         </tr>
