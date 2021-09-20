@@ -177,6 +177,8 @@ return [
 
         Barryvdh\DomPDF\ServiceProvider::class,
 
+        Yajra\DataTables\DataTablesServiceProvider::class,
+
     ],
 
     /*
@@ -232,6 +234,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'PDF' => Barryvdh\DomPDF\Facade::class,
+
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
     ],
 

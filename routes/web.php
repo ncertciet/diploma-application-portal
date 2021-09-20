@@ -147,9 +147,15 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     })->name('admin.dashboard');
 
 
-    Route::get('/applications', function () {
-        return view('admin.applications');
-    })->name('applications');
+    // Route::get('/applications', function () {
+    //     return view('admin.applications');
+    // })->name('applications');
+
+
+    Route::get('/applications', 'App\Http\Controllers\ApplicationController@ApplicationIndex')->name('applications');
+    Route::get('/application/{application}', 'App\Http\Controllers\ApplicationController@show')->name('application.show');
+
+    // Route::get('/export-pdf-application', 'App\Http\Controllers\ApplicationController@PdfApplications')->name('export-pdf-application');
 
 
 
@@ -157,6 +163,20 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     Route::get('/', function () {
         return redirect(route('applicant.dashboard'));
     });
+
+    // Route::get('/applications', ['uses'=>'App\Http\Controllers\ApplicationController@Datatable', 'as'=>'applications.index']);
+   // Route::get('/applications', 'App\Http\Controllers\ApplicationController@Datatable')->name('applications');
+
+
+    Route::get('/applicants', function () {
+        return view('admin.index');
+    })->name('admin.index');
+
+    Route::get('/applicants', function () {
+        return view('admin.applicants');
+    })->name('admin.applicants');
+
+    //Route::get('/applicants', 'App\Http\Controllers\ApplicationController@ApplicantsDetail')->name('applicants');
 
 });
 

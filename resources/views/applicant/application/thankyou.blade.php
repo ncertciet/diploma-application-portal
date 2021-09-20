@@ -41,7 +41,7 @@ $reg_id = $user->reg_id;
             <div class="row justify-content-center text-center py-4" >
                 <div class="col-sm-6">
                     <h3 class="text-success mb-3">Your application has been submitted successfully.</h3>
-                    <h4>Your application number @foreach ($applications as $application)<strong>{{ $application->application_id }}</strong>@endforeach</h4>
+                    <h4>Your application Id @foreach ($applications as $application)<strong>{{ $application->application_id }}</strong>@endforeach</h4>
                     {{-- {{ $application->name }} --}}
                     <p>Please note it for future refrence.</p>
                 </div>

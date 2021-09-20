@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Auth as Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use PDF;
-
+use DataTables;
+use Dflydev\DotAccessData\Data;
+use PhpParser\Node\Expr\Cast\String_;
 
 class ApplicationController extends Controller
 {
@@ -420,6 +422,7 @@ class ApplicationController extends Controller
     public function show(Application $application)
     {
         //
+        return view('admin.applicant',compact('application'));
     }
 
     /**
@@ -1228,4 +1231,48 @@ class ApplicationController extends Controller
     }
 
 
+
+
+    // public function Datatable(Request $request)
+    // {
+    //     if ($request->ajax()) {
+    //         $application = Application::all();
+    //         return DataTables::of($application)
+    //                 ->addIndexColumn()
+    //                 ->addColumn('action', function($row){
+   
+    //                        $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+    //                        //$btn = '<button type="button" name="view" id='.$application->application_id.' class="edit btn btn-primary btn-sm">view</button>';
+     
+    //                         return $btn;
+    //                 })
+    //                 ->rawColumns(['action'])
+    //                 ->make(true);
+    //     }
+      
+    //     return view('admin.applications');
+    // }
+
+    // public function alldata(){
+    //     $application = DB::select('select * from applications');
+    //     return view('applications',['applications'=>$application]);
+    // }
+
+    public function ApplicationIndex(){
+        $applications = Application::query()->status('completed')->paginate(4);
+        // dd($applications);
+        return view('admin.applications',compact('applications'));
+    }
+
+
+
+    public function ApplicantsDetail(){
+            $application = DB::select('select * from applications');
+            return view('applications',['applications'=>$application]);
+        }
+    
+
 }
+
+
+

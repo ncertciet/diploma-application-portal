@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -142,4 +143,10 @@ class Application extends Model
         'ref_email2',
         'status',
     ];
+
+
+    public function scopeStatus(Builder $query, $value = NULL ){
+        if( $value === NULL ) return $query;
+        return $query->where('status', $value);
+    }
 }

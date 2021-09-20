@@ -11,6 +11,8 @@
     <title>{{ config('app.name', 'NCERT Diploma Application') }}</title>
 
     <!-- Scripts -->
+    
+    
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -20,7 +22,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
+
+    {{-- @yield('css') --}}
+</head>   
 
 <body>
     <div id="app">

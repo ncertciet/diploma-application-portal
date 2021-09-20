@@ -1,226 +1,39 @@
-@php
+{{-- @php
 $user = Auth::user();
 $reg_id = $user->reg_id;
-$application = \Illuminate\Support\Facades\DB::table('applications')->where('reg_id', $reg_id)->first();    
-@endphp
+// $application = \Illuminate\Support\Facades\DB::table('applications')->get();   
+$application = DB::select('select * from applications where status = "completed"');
+@endphp --}}
 
 @extends('layouts.sidebar')
 
+@section('css')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
+@endsection
+
+
 @section('content')
 
-
 {{-- @dd($application) --}}
-@php($user = Auth::user())
+{{-- @php($user = Auth::user()) --}}
 
     <div class="hero-section">
         <div class="container-xl">
             <div class="page-header pt-4">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
-                        <h1 class="page-title"><i class="far fa-file-alt mr-1"></i> Applicants Detail</h1>
+                        <h1 class="page-title"><i class="far fa-file-alt mr-1"></i> Applications</h1>
                         <div class="page-header-subtitle">
                             Diploma Course in Guidance and Counselling (2021)
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-<style>
-    body {
-  background: #f7f7f7;
-}
 
-.table {
-  border-spacing: 0 0.85rem !important;
-}
-
-.table .dropdown {
-  display: inline-block;
-}
-
-.table td,
-.table th {
-  vertical-align: middle;
-  margin-bottom: 10px;
-  border: none;
-}
-
-.table thead tr,
-.table thead th {
-  border: none;
-  font-size: 12px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  background: transparent;
-}
-
-.table td {
-  background: #fff;
-}
-
-.table td:first-child {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-
-.table td:last-child {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-.avatar {
-  width: 2.75rem;
-  height: 2.75rem;
-  line-height: 3rem;
-  border-radius: 50%;
-  display: inline-block;
-  background: transparent;
-  position: relative;
-  text-align: center;
-  color: #868e96;
-  font-weight: 700;
-  vertical-align: bottom;
-  font-size: 1rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.avatar-sm {
-  width: 2.5rem;
-  height: 2.5rem;
-  font-size: 0.83333rem;
-  line-height: 1.5;
-}
-
-.avatar-img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-}
-
-.avatar-blue {
-  background-color: #c8d9f1;
-  color: #467fcf;
-}
-
-table.dataTable.dtr-inline.collapsed
-  > tbody
-  > tr[role="row"]
-  > td:first-child:before,
-table.dataTable.dtr-inline.collapsed
-  > tbody
-  > tr[role="row"]
-  > th:first-child:before {
-  top: 28px;
-  left: 14px;
-  border: none;
-  box-shadow: none;
-}
-
-table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child,
-table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child {
-  padding-left: 48px;
-}
-
-table.dataTable > tbody > tr.child ul.dtr-details {
-  width: 100%;
-}
-
-table.dataTable > tbody > tr.child span.dtr-title {
-  min-width: 50%;
-}
-
-table.dataTable.dtr-inline.collapsed > tbody > tr > td.child,
-table.dataTable.dtr-inline.collapsed > tbody > tr > th.child,
-table.dataTable.dtr-inline.collapsed > tbody > tr > td.dataTables_empty {
-  padding: 0.75rem 1rem 0.125rem;
-}
-
-div.dataTables_wrapper div.dataTables_length label,
-div.dataTables_wrapper div.dataTables_filter label {
-  margin-bottom: 0;
-}
-
-@media (max-width: 767px) {
-  div.dataTables_wrapper div.dataTables_paginate ul.pagination {
-    -ms-flex-pack: center !important;
-    justify-content: center !important;
-    margin-top: 1rem;
-  }
-}
-
-.btn-icon {
-  background: #fff;
-}
-.btn-icon .bx {
-  font-size: 20px;
-}
-
-.btn .bx {
-  vertical-align: middle;
-  font-size: 20px;
-}
-
-.dropdown-menu {
-  padding: 0.25rem 0;
-}
-
-.dropdown-item {
-  padding: 0.5rem 1rem;
-}
-
-.badge {
-  padding: 0.5em 0.75em;
-}
-
-.badge-success-alt {
-  background-color: #d7f2c2;
-  color: #7bd235;
-}
-
-.table a {
-  color: #212529;
-}
-
-.table a:hover,
-.table a:focus {
-  text-decoration: none;
-}
-
-table.dataTable {
-  margin-top: 12px !important;
-}
-
-.icon > .bx {
-  display: block;
-  min-width: 1.5em;
-  min-height: 1.5em;
-  text-align: center;
-  font-size: 1.0625rem;
-}
-
-.btn {
-  font-size: 0.9375rem;
-  font-weight: 500;
-  padding: 0.5rem 0.75rem;
-}
-
-.avatar-blue {
-      background-color: #c8d9f1;
-      color: #467fcf;
-    }
-
-    .avatar-pink {
-      background-color: #fcd3e1;
-      color: #f66d9b;
-    }
-</style>
-
+    
 
 <div class="container-fluid">
     <div class="inner-container container-xl">
@@ -235,134 +48,152 @@ table.dataTable {
 
             @endif
                
-            All Applications will display here
 
-            <div class="container">
-                <div class="row py-5">
-                  <div class="col-12">
-                    <table id="example" class="table table-hover responsive nowrap" style="width:100%">
-                      <thead>
-                        <tr>
-                          <th>Client Name</th>
-                          <th>Phone Number</th>
-                          <th>Profession</th>
-                          <th>Date of Birth</th>
-                          <th>App Access</th>
-                          <th>Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <a href="#">
-                              <div class="d-flex align-items-center">
-                                <div class="avatar avatar-blue mr-3">EB</div>
-              
-                                <div class="">
-                                  <p class="font-weight-bold mb-0">Ethan Black</p>
-                                  <p class="text-muted mb-0">ethan-black@example.com</p>
-                                </div>
-                              </div>
-                            </a>
-                          </td>
-                          <td>(784) 667 8768</td>
-                          <td>Designer</td>
-                          <td>09/04/1996</td>
-                          <td>
-                            <div class="badge badge-success badge-success-alt">Enabled</div>
-                          </td>
-                          <td>
-                            <div class="dropdown">
-                              <button class="btn btn-sm btn-icon" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="bx bx-dots-horizontal-rounded" data-toggle="tooltip" data-placement="top"
-                                      title="Actions"></i>
-                                  </button>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                <a class="dropdown-item" href="#"><i class="bx bxs-pencil mr-2"></i> Edit Profile</a>
-                                <a class="dropdown-item text-danger" href="#"><i class="bx bxs-trash mr-2"></i> Remove</a>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-              
-                        <tr>
-                          <td>
-                            <a href="#">
-                              <div class="d-flex align-items-center">
-                                <div class="avatar avatar-pink mr-3">JR</div>
-              
-                                <div class="">
-                                  <p class="font-weight-bold mb-0">Julie Richards</p>
-                                  <p class="text-muted mb-0">julie_89@example.com</p>
-                                </div>
-                              </div>
-                            </a>
-                          </td>
-                          <td> (937) 874 6878</td>
-                          <td>Investment Banker</td>
-                          <td>13/01/1989</td>
-                          <td>
-                            <div class="badge badge-success badge-success-alt">Enabled</div>
-                          </td>
-                          <td>
-                            <div class="dropdown">
-                              <button class="btn btn-sm btn-icon" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="bx bx-dots-horizontal-rounded" data-toggle="tooltip" data-placement="top"
-                                      title="Actions"></i>
-                                  </button>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                <a class="dropdown-item" href="#"><i class="bx bxs-pencil mr-2"></i> Edit Profile</a>
-                                <a class="dropdown-item text-danger" href="#"><i class="bx bxs-trash mr-2"></i> Remove</a>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+        <div class='preview mt-4'>
+            <div class="row">
+                <div class="col-sm-10"></div>
+                <div class="col-sm-2">
+                    <div class="form-group mb-2">
+                        <input id="myInput" type="text" class="form-control" placeholder="Search..">
+                    </div>
                 </div>
-              </div>
-              
-              
+            </div>
+            
+            
+           <table id="myTable" class="table table-bordered table-striped table-class" >
+            <thead>
+                <tr>
+                    <th >Name <span class="sort-right"><i class="fas fa-sort"></i></span></th>
+                    <th>Gender <span class="sort-right"><i class="fas fa-sort"></i></span></th>
+                    <th>Category <span class="sort-right"><i class="fas fa-sort"></i></span></th>
+                    <th>Mobile <span class="sort-right"><i class="fas fa-sort"></i></span></th>
+                    <th>Email <span class="sort-right"><i class="fas fa-sort"></i></span></th>
+                    {{-- <th>Study Centre <span class="sort-right"><i class="fas fa-sort"></i></span></th> --}}
+                    <th>View</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+
+            {{-- @dd($applications); --}}
+              @foreach ($applications as $application)
+              <tr>
+              <td>{{ $application->name }}</td>
+              <td>{{ $application->gender }}</td>
+              <td>{{ $application->category }}</td>
+              <td>{{ $application->p_mobile }}</td>
+              <td>{{ $application->p_email }}</td>
+              {{-- <td>{{ $application->study_centre }}</td> --}}
+              <td><a href="{{ route('application.show', $application) }}" class="btn btn-primary"> View </a></td>
+              <td><a href="" class="btn btn-secondary"> Download </a></td>
+              </tr>
+              @endforeach
+            </table>
+
+
+            <div class="row">
+                <div class="col-sm-6">Showing {{ $applications->count()}} of {{ $applications->total()}} results</div>
+                <div class="col-sm-6 text-right">{{ $applications->links() }}</div>
+            </div>
+            {{-- <div class="card mt-3">
+                <div class="card-body p-2">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6">Showing {{ $applications->count()}} of {{ $applications->total()}} results</div>
+                        <div class="col-sm-6 text-right">{{ $applications->links() }}</div>
+                    </div>
+                </div>
+            </div>
+             --}}
+        </div>
+
+
+           
             
         </div>
     </div>
 </div>
 
 
-
-
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function() {
-    $("#example").DataTable({
-        aaSorting: [],
-        responsive: true,
-
-        columnDefs: [
-        {
-            responsivePriority: 1,
-            targets: 0
-        },
-        {
-            responsivePriority: 2,
-            targets: -1
-        }
-        ]
-    });
-
-    $(".dataTables_filter input")
-        .attr("placeholder", "Search here...")
-        .css({
-        width: "300px",
-        display: "inline-block"
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
-
-    $('[data-toggle="tooltip"]').tooltip();
+      });
     });
 
-</script>
 
+
+
+
+    $(function() {
+  const ths = $("th");
+  let sortOrder = 1;
+
+  ths.on("click", function() {
+    const rows = sortRows(this);
+    rebuildTbody(rows);
+    updateClassName(this);
+    sortOrder *= -1; //反転
+  })
+
+  function sortRows(th) {
+    const rows = $.makeArray($('tbody > tr'));
+    const col = th.cellIndex;
+    const type = th.dataset.type;
+    rows.sort(function(a, b) {
+      return compare(a, b, col, type) * sortOrder;      
+    });
+    return rows;
+  }
+
+  function compare(a, b, col, type) {
+    let _a = a.children[col].textContent;
+    let _b = b.children[col].textContent;
+    if (type === "number") {
+      _a *= 1;
+      _b *= 1;
+    } else if (type === "string") {
+      //全て小文字に揃えている。toLowerCase()
+      _a = _a.toLowerCase();
+      _b = _b.toLowerCase();
+    }
+
+    if (_a < _b) {
+      return -1;
+    }
+    if (_a > _b) {
+      return 1;
+    }
+    return 0;
+  }
+
+  function rebuildTbody(rows) {
+    const tbody = $("tbody");
+    while (tbody.firstChild) {
+      tbody.remove(tbody.firstChild);
+    }
+
+    let j;
+    for (j=0; j<rows.length; j++) {
+      tbody.append(rows[j]);
+    }
+  }
+
+  function updateClassName(th) {
+    let k;
+    for (k=0; k<ths.length; k++) {
+      ths[k].className = "";
+    }
+    th.className = sortOrder === 1 ? "asc" : "desc";   
+  }
+  
+});
+
+
+    </script>
 
 @endsection
+

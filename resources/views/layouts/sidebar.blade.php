@@ -11,6 +11,7 @@
     <title>{{ config('app.name', 'NCERT Diploma Application') }}</title>
 
     <!-- Scripts -->
+    
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -121,6 +122,8 @@
                 @if(Auth::user()->type === 'admin')
                 <li class="{{ (request()->is('*/dashboard')) ? 'active' : '' }}"><a href="{{ route('admin.dashboard')}}"><i
                     class="fas fa-chart-bar mr-1"></i> Dashboard</a></li>
+                <li class="{{ (request()->is('*/applications')) ? 'active' : '' }}"><a href="{{ route('applications')}}"><i
+                    class="far fa-file-alt mr-1"></i> Applications </a></li>
                 @endif
 
 

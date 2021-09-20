@@ -10160,3 +10160,11 @@ h3 {
 .application-form .preview .table-bordered th {
   border: 1px solid #034085;
 }
+
+.pagination {
+  float: right;
+}
+
+.sort-right {
+  float: right;
+}
