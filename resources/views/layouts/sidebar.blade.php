@@ -41,7 +41,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <a href="/" class="h3 mb-0 text-dark">Diploma Application Portal</a>
+                        <a href="/" class="h3 mb-0 text-dark">Diploma Course in Guidance and Counselling</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

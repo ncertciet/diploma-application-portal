@@ -352,6 +352,7 @@ class ApplicationController extends Controller
         //
 
         $rules = [
+            'title' => 'required',
 			'name' => 'required',
             'gender' => 'required',
             'dob' => 'required',
@@ -365,16 +366,16 @@ class ApplicationController extends Controller
             'p_telephone'=> '',
             'p_mobile' => 'required|digits:10',
             'p_email' => 'required',
-            'occupation' => 'required',
-            'o_address' => 'required',
-            'o_city' => 'required',
-            'o_state' => 'required',
-            'o_zip' => 'required|digits:6',
+            'occupation' => '',
+            'o_address' => '',
+            'o_city' => '',
+            'o_state' => '',
+            'o_zip' => '',
 		];
 
         $validator = Validator::make($request->all(),$rules);
 		if ($validator->fails()) {
-			return redirect(route('applicantion.form.step1'))
+			return redirect(route('application.form.step1'))
 			->withInput()
 			->withErrors($validator);
 		}
@@ -571,11 +572,11 @@ class ApplicationController extends Controller
         $application = Application::query()->where('reg_id', $reg_id)->first();
 
         $rules = [
-            'work_exp_name'=> 'required',
-            'work_exp_position'=> 'required',
-            'work_exp_date_from'=> 'required',
-            'work_exp_date_to'=> 'required',
-            'work_exp_duty'=> 'required',
+            'work_exp_name'=> '',
+            'work_exp_position'=> '',
+            'work_exp_date_from'=> '',
+            'work_exp_date_to'=> '',
+            'work_exp_duty'=> '',
             'work_exp_name1'=> '',
             'work_exp_position1'=> '',
             'work_exp_date_from1'=> '',
@@ -591,10 +592,10 @@ class ApplicationController extends Controller
             'work_exp_date_from3'=> '',
             'work_exp_date_to3'=> '',
             'work_exp_duty3'=> '',
-            'course'=> 'required',
-            'course_institute'=> 'required',
-            'course_year'=> 'required',
-            'course_duration'=> 'required',
+            'course'=> '',
+            'course_institute'=> '',
+            'course_year'=> '',
+            'course_duration'=> '',
             'course1'=> '',
             'course_institute1'=> '',
             'course_year1'=> '',
@@ -905,11 +906,11 @@ class ApplicationController extends Controller
             'p_telephone'=> '',
             'p_mobile' => 'required|digits:10',
             'p_email' => 'required',
-            'occupation' => 'required',
-            'o_address' => 'required',
-            'o_city' => 'required',
-            'o_state' => 'required',
-            'o_zip' => 'required|digits:6',
+            'occupation' => '',
+            'o_address' => '',
+            'o_city' => '',
+            'o_state' => '',
+            'o_zip' => '',
 
             //  step 2
             'eq_exam_x'=> 'required',
@@ -969,11 +970,11 @@ class ApplicationController extends Controller
             'pq_subject3'=> '',
             
             //  step 3
-            'work_exp_name'=> 'required',
-            'work_exp_position'=> 'required',
-            'work_exp_date_from'=> 'required',
-            'work_exp_date_to'=> 'required',
-            'work_exp_duty'=> 'required',
+            'work_exp_name'=> '',
+            'work_exp_position'=> '',
+            'work_exp_date_from'=> '',
+            'work_exp_date_to'=> '',
+            'work_exp_duty'=> '',
             'work_exp_name1'=> '',
             'work_exp_position1'=> '',
             'work_exp_date_from1'=> '',
@@ -989,10 +990,10 @@ class ApplicationController extends Controller
             'work_exp_date_from3'=> '',
             'work_exp_date_to3'=> '',
             'work_exp_duty3'=> '',
-            'course'=> 'required',
-            'course_institute'=> 'required',
-            'course_year'=> 'required',
-            'course_duration'=> 'required',
+            'course'=> '',
+            'course_institute'=> '',
+            'course_year'=> '',
+            'course_duration'=> '',
             'course1'=> '',
             'course_institute1'=> '',
             'course_year1'=> '',
@@ -1065,7 +1066,7 @@ class ApplicationController extends Controller
             else{
                 $path_cat_certificate = '';
                 if($request->hasFile('category_certificate')){
-                    $fileValue     = $request->disability_certificate;
+                    $fileValue     = $request->category_certificate;
                     $getFileExt   = $fileValue->getClientOriginalExtension();
                     $custom_file_name = $application_id.'-category-certificate'.'.'.$getFileExt;
                     $path_cat_certificate = $request->file('category_certificate')->storeAs($application_id, $custom_file_name);

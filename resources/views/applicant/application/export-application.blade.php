@@ -69,7 +69,7 @@
                     </tr>
                     <tr>
                         <th>Name</th>
-                        <td colspan="2">{{$application->name}}</td>
+                        <td colspan="2">{{$application->title}} {{$application->name}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Gender</th>
@@ -382,7 +382,7 @@
                           </tr>
                           <tr>
                               
-                              <th scope="row">Referees 1</th>
+                              <th scope="row">Referee 1</th>
                               <td>
                                   <p>{{$application->ref_name1}}</p>
                                   <p>{{$application->ref_add1}}</p>
@@ -391,7 +391,7 @@
                                   <p>{{$application->ref_mobile1}}</p>
                                   <p>{{$application->ref_email1}}</p>
                               </td>
-                              <th scope="row">Referees 2</th>
+                              <th scope="row">Referee 2</th>
                               <td>
                                 <p>{{$application->ref_name2}}</p>
                                 <p>{{$application->ref_add2}}</p>

@@ -118,6 +118,17 @@ $count = count($applications);
 
 {{--                            @endif--}}
 
+
+                            <div class="instruction-box my-5 px-3 py-3 ">
+                                <h4 class="ml-4 mb-3">Eligibility</h4>
+                                <ul class="list">
+                                    <li>In-service teachers - Graduates with teaching degree. <br>&nbsp;&nbsp;&nbsp; Certification by the Head of the School/Institution (for presently employed candidates) - <a href="/images/performa.png" download><b>click here to download Performa</b></a></li>
+                                    <li>Presently not working - Graduates with teaching degree and at least two years of teaching or related experience.</li>
+                                    <li>Postgraduates in Psychology/educational/social work/child development/special education. Preference will be given to those with at least one year of teaching or related experience.</li>
+                                    <li>Minimum % of marks for all target groups is 50% (5% relaxation for SC/ST).</li>
+                                </ul>
+                            </div>
+
                     </div>
                 </div>
             </div>

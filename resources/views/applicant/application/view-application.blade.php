@@ -40,7 +40,7 @@ $application = \Illuminate\Support\Facades\DB::table('applications')->where('reg
 
             @endif
             <div class="text-right">
-                <a href="{{ route('export-pdf-application') }}" class="btn btn-success text-right" ><i class="fas fa-download"></i> Download Application</a>    
+                <a href="{{ route('export-pdf-application') }}" class="btn btn-danger text-right" ><i class="fas fa-download"></i> Download Application</a>    
             </div>    
             <div class='preview mt-4'>
                 <div class="data ">
@@ -119,7 +119,7 @@ $application = \Illuminate\Support\Facades\DB::table('applications')->where('reg
                               <th scope="row"></th>
                               <td></td>
                           </tr>
-                          <tr>
+                          {{-- <tr>
                               <td colspan="6" class="bg"><h5>Present Occupation and Official Address</h5></td>
                           </tr>
                           <tr>
@@ -137,7 +137,7 @@ $application = \Illuminate\Support\Facades\DB::table('applications')->where('reg
                               <td>{{$application->o_zip}}</td>
                               <th scope="row"></th>
                               <td></td>
-                          </tr>
+                          </tr> --}}
                         </tbody>
                       </table>
 
@@ -270,15 +270,38 @@ $application = \Illuminate\Support\Facades\DB::table('applications')->where('reg
                                     <th scope="row">If you are currently in service, Please upload forwarding letter from your employer</th>
                                     <td><a href="{{ asset('storage/'.$application->forwarding_letter) }}" target="_blank" class="btn btn-primary">View</a>
                                 </tr>
-
                                 <tr>
+                                    <th scope="row">Disability</th>
+                                    <td>{{ $application->disability }}</td>
+                                </tr>
+
+                                <?php 
+                                if($application->disability_certificate === 'Yes')
+                                { ?>
+                                    <tr>
+                                        <th scope="row">Attach Disability Cerificate:</th>
+                                        <td><a href="{{ asset('storage/'.$application->disability_certificate) }}" target="_blank" class="btn btn-primary">View</a>
+                                    </tr>
+                                <?php }else{}?>
+
+                                {{-- <tr>
                                     <th scope="row">Attach Disability Cerificate:</th>
                                     <td><a href="{{ asset('storage/'.$application->disability_certificate) }}" target="_blank" class="btn btn-primary">View</a>
-                                </tr>
-                                <tr>
+                                </tr> --}}
+
+                                <?php 
+                                if($application->category === 'General')
+                                { }else{?>
+                                    <tr>
+                                        <th scope="row">Attach Cerificate if belong into SC, ST, OBC and EWS category</th>
+                                        <td><a href="{{ asset('storage/'.$application->category_certificate) }}" target="_blank" class="btn btn-primary">View</a>
+                                    </tr>
+                                <?php } ?>
+
+                                {{-- <tr>
                                     <th scope="row">Attach Cerificate if belong into SC, ST, OBC and EWS category</th>
                                     <td><a href="{{ asset('storage/'.$application->category_certificate) }}" target="_blank" class="btn btn-primary">View</a>
-                                </tr>
+                                </tr> --}}
                                 <tr>
                                     <th scope="row">Upload your scanned signature</th>
                                     <td><a href="{{ asset('storage/'.$application->candidate_sign) }}" target="_blank" class="btn btn-primary">View</a>
@@ -301,7 +324,7 @@ $application = \Illuminate\Support\Facades\DB::table('applications')->where('reg
                               </tr>
                               <tr>
                                   
-                                  <th scope="row">Referees 1</th>
+                                  <th scope="row">Referee 1</th>
                                   <td>
                                       <p>{{$application->ref_name1}}</p>
                                       <p>{{$application->ref_add1}}</p>
@@ -310,7 +333,7 @@ $application = \Illuminate\Support\Facades\DB::table('applications')->where('reg
                                       <p>{{$application->ref_mobile1}}</p>
                                       <p>{{$application->ref_email1}}</p>
                                   </td>
-                                  <th scope="row">Referees 2</th>
+                                  <th scope="row">Referee 2</th>
                                   <td>
                                     <p>{{$application->ref_name2}}</p>
                                     <p>{{$application->ref_add2}}</p>

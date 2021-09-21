@@ -55,7 +55,7 @@ $application = \Illuminate\Support\Facades\DB::table('applications')->where('reg
                                     </tr>
                                     <tr>
                                         <th scope="row">Name</th>
-                                        <td colspan="3">{{$application->name}}</td>
+                                        <td colspan="3">{{$application->title}} {{$application->name}}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Gender</th>

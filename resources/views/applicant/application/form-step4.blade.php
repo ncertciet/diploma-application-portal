@@ -39,7 +39,7 @@
                          <div class="row">
                             <div class="col-sm-6">
 
-                                <label for="inputZip">ANY Disability:</label>
+                                <label for="inputZip">Do You have ANY Disability:</label>
                                 <div class="disabality" id="">
                                     <div class="form-check-inline mb-4">
                                         <input class="form-check-input" type="radio" name="disability" value="Yes" id="disability_yes" value="{{ old('disability') }}">
@@ -64,7 +64,7 @@
                                       <div class="disability-content" style="display: none; @error('disability_certificate') display: block; @enderror" >
                                         <div class="form-row">
                                             <div class="form-group col-sm-7">
-                                                <label for="disability_content">Disability, (extent may be mentioned):</label>
+                                                <label for="disability_content">Disability extent may be mentioned:</label>
                                                 <textarea class="form-control @error('disability_content') is-invalid @enderror" name="disability_content" id="disability_content" rows="1">{{ old('disability_content') }}</textarea>
                                                 <small class="text-primary">(Not exceeding 150 words)</small>
                                                 @error('disability_content')

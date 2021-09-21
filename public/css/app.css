@@ -10168,3 +10168,26 @@ h3 {
 .sort-right {
   float: right;
 }
+
+.instruction-box {
+  box-shadow: 0px 0px 15px #ccc;
+}
+
+.btn-danger {
+  background-color: #a92a22;
+  border-color: #a92a22;
+}
+
+.btn-success {
+  background-color: #148845;
+  border-color: #148845;
+}
+
+.btn-secondary {
+  background-color: #585858;
+  border-color: #585858;
+}
+
+.text-success {
+  color: #148845 !important;
+}

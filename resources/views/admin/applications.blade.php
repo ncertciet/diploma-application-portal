@@ -83,8 +83,8 @@ $application = DB::select('select * from applications where status = "completed"
               <td>{{ $application->p_mobile }}</td>
               <td>{{ $application->p_email }}</td>
               {{-- <td>{{ $application->study_centre }}</td> --}}
-              <td><a href="{{ route('application.show', $application) }}" class="btn btn-primary"> View </a></td>
-              <td><a href="" class="btn btn-secondary"> Download </a></td>
+              <td><a href="{{ route('application.show', $application) }}" class="btn btn-secondary"> View </a></td>
+              <td><a href="" class="btn btn-danger"> Download </a></td>
               </tr>
               @endforeach
             </table>

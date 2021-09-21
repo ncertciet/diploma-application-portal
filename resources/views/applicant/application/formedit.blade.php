@@ -39,6 +39,21 @@ $application = \Illuminate\Support\Facades\DB::table('applications')->where('reg
             <form method="POST" action="{{route('application.formedit.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row">
+                    <div class="form-group col-md-1">
+                        <label for="name">Title</label>
+                        <select class="form-control  @error('title') is-invalid @enderror"  name="title" id="title"  value="{{ old('title') }}">
+
+                            <option value="{{ $application->title }}"  selected="true">{{ $application->title }}</option>
+                            <option value="Mr.">Mr.</option>
+                            <option value="Ms.">Ms.</option>
+                            <option value="Dr.">Dr.</option>
+                        </select>
+                        @error('title')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                     <div class="form-group col-md-3">
                         <label for="name">Name</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name"  value="{{$application->name}}" autofocus>
@@ -73,7 +88,7 @@ $application = \Illuminate\Support\Facades\DB::table('applications')->where('reg
                     </span>
                         @enderror
                     </div>
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-2">
                         <label for="dob">Date of Birth</label>
                         <input type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" id="dob"   value="{{$application->dob}}">
                         @error('dob')
@@ -233,7 +248,7 @@ $application = \Illuminate\Support\Facades\DB::table('applications')->where('reg
                         </div>
                     </div>
 
-
+                    <!--
                     <h4 class="text-primary mt-4">Present Occupation and Official Address</h4>
 
                     <div class="form-row">
@@ -321,7 +336,7 @@ $application = \Illuminate\Support\Facades\DB::table('applications')->where('reg
                         </span>
                             @enderror
                         </div>
-                    </div>
+                    </div>-->
 
                     {{-- step 2 --}}
                     <h4 class="text-primary mt-2 mb-4">Details of Educational Qualifications (final school examination onwards):</h4>

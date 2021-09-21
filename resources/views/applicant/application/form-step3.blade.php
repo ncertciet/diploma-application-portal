@@ -186,6 +186,7 @@
                 
                 <div class="form-row justify-content-end mt-3">
                     <div class="col-sm-6 text-right">
+                        <button type="submit" name="action" value="save-continue" class="btn btn-danger btn-lg mr-3">Skip</button>
                         <button type="submit" name="action" value="save" class="btn btn-primary btn-lg mr-3">Save</button>
                         <button type="submit" name="action" value="save-continue" class="btn btn-success btn-lg">Save & Continue</button>
                     </div>

@@ -33,8 +33,23 @@
             <form method="POST" action="{{route('application.step1.store')}}">
                 @csrf
                 <div class="form-row">
+                    <div class="form-group col-md-1">
+                        <label for="name">Title</label>
+                        <select class="form-control  @error('title') is-invalid @enderror"  name="title" id="title"  value="{{ old('title') }}">
+
+                            <option value="" disabled="true" selected="true">Title</option>
+                            <option value="Mr.">Mr.</option>
+                            <option value="Ms.">Ms.</option>
+                            <option value="Dr.">Dr.</option>
+                        </select>
+                        @error('title')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                     <div class="form-group col-md-3">
-                        <label for="name">Name</label>
+                        <label for="name">Full Name</label>
                         <input type="text"  class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name" value="{{ $user->name }}" autofocus>
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -67,7 +82,7 @@
                     </span>
                         @enderror
                     </div>
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-2">
                         <label for="dob">Date of Birth</label>
                         <input type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" id="dob"  value="{{ old('dob') }}">
                         @error('dob')
@@ -227,8 +242,8 @@
                         </div>
                     </div>
 
-
-                    <h4 class="text-primary mt-4">Present Occupation and Official Address</h4>
+                   
+                    {{-- <h4 class="text-primary mt-4">Present Occupation and Official Address</h4>
 
                     <div class="form-row">
                         <div class="form-group col-sm-3">
@@ -315,7 +330,7 @@
                         </span>
                             @enderror
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="form-row justify-content-end mt-3">
                         <div class="col-sm-6 text-right">
                             <button type="submit" name="action" value="save" class="btn btn-primary btn-lg mr-3">Save</button>
