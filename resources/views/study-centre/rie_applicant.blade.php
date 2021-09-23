@@ -36,7 +36,7 @@ $application = DB::select('select * from applications where status = "completed"
         <div class="inner-container container-xl">
             <div class="application-form shadow">
                 <div class="text-right">
-                    <a href="{{ route('export-pdf-application-admin', $application) }}" class="btn btn-danger text-right" ><i class="fas fa-download"></i> Download Application</a>    
+                    <a href="{{ route('export-pdf-application-rie', $application) }}" class="btn btn-danger text-right" ><i class="fas fa-download"></i> Download Application</a>    
                 </div>    
                 <div class='preview mt-4'>
                     <div class="data ">

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>{{$application->application_id}}</title>
+    <title>Receipt</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -46,7 +46,11 @@
         </style>
 
     <div class="containevnvr py-5">
-         
+          {{-- <div class="row">
+              <div class="col-xl-12 text-right">
+                  <a href="{{ route('export-pdf') }}" class="btn btn-success btn-sm">Export to PDF</a>
+              </div>
+          </div> --}}
 
         <div class='preview mt-4'>
             <div class="data ">
@@ -65,7 +69,7 @@
                     </tr>
                     <tr>
                         <th>Name</th>
-                        <td colspan="2">{{$application->name}}</td>
+                        <td colspan="2">{{$application->title}} {{$application->name}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Gender</th>
@@ -196,7 +200,7 @@
                           <th scope="row"></th>
                           <td></td>
                       </tr>
-                      {{-- <tr>
+                      <tr>
                           <td colspan="6" class="bg"><h5>Present Occupation and Official Address</h5></td>
                       </tr>
                       <tr>
@@ -214,7 +218,7 @@
                           <td>{{$application->o_zip}}</td>
                           <th scope="row"></th>
                           <td></td>
-                      </tr> --}}
+                      </tr>
                     </tbody>
                 </table>
                 <br>
@@ -378,7 +382,7 @@
                           </tr>
                           <tr>
                               
-                              <th scope="row">Referees 1</th>
+                              <th scope="row">Referee 1</th>
                               <td>
                                   <p>{{$application->ref_name1}}</p>
                                   <p>{{$application->ref_add1}}</p>
@@ -387,7 +391,7 @@
                                   <p>{{$application->ref_mobile1}}</p>
                                   <p>{{$application->ref_email1}}</p>
                               </td>
-                              <th scope="row">Referees 2</th>
+                              <th scope="row">Referee 2</th>
                               <td>
                                 <p>{{$application->ref_name2}}</p>
                                 <p>{{$application->ref_add2}}</p>

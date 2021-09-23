@@ -150,4 +150,9 @@ class Application extends Model
         if( $value === NULL ) return $query;
         return $query->where('status', $value);
     }
+
+    public function scopeStudyCentre(Builder $query, $value = NULL ){
+        if( $value === NULL ) return $query;
+        return $query->where('study_centre', $value);
+    }
 }

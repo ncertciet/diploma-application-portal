@@ -100,3 +100,50 @@
 .text-success {
     color: #148845 !important;
 }
+
+.dashboard-page {
+    .stat {
+        background: #e0eafc;
+        border-radius: 50%;
+        height: 50px;
+        padding: .75rem;
+        width: 50px;
+    }
+    .stat img {
+        height: 30px;
+        width: 30px;
+    }
+    .illustration {
+        background: #e0eafc;
+        color: #0135a2;
+        font-weight: 600 !important;
+    }
+    .card {
+        margin-bottom: 1.5rem;
+        margin-top: 1.5rem;
+        box-shadow: 1px 2px 7px #cacacabd;
+        border: 0px solid #f1f1f1;
+    }
+    .illustration .stat {
+        background: #b5ccf7;
+    }
+    li {
+        border-bottom: 1px solid #e0eafc;
+        padding-top: 1rem;
+    }
+    .nmbr {
+        color: #0135a2;
+    }
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+}
+
+.badge-danger {
+    background-color: #a92a22;
+}
+
+.badge-success {
+    background-color: #148845 !important;
+}

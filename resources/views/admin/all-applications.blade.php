@@ -22,7 +22,7 @@ $application = DB::select('select * from applications where status = "completed"
             <div class="page-header pt-4">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
-                        <h1 class="page-title"><i class="far fa-file-alt mr-1"></i> Applications</h1>
+                        <h1 class="page-title"><i class="far fa-file-alt mr-1"></i>All Applications</h1>
                         <div class="page-header-subtitle">
                             Diploma Course in Guidance and Counselling (2021)
                         </div> 
@@ -63,28 +63,32 @@ $application = DB::select('select * from applications where status = "completed"
            <table id="myTable" class="table table-bordered table-striped table-class" >
             <thead>
                 <tr>
+                    <th >Application Id <span class="sort-right"><i class="fas fa-sort"></i></span></th>
                     <th >Name <span class="sort-right"><i class="fas fa-sort"></i></span></th>
                     <th>Gender <span class="sort-right"><i class="fas fa-sort"></i></span></th>
-                    <th>Category <span class="sort-right"><i class="fas fa-sort"></i></span></th>
                     <th>Mobile <span class="sort-right"><i class="fas fa-sort"></i></span></th>
                     <th>Email <span class="sort-right"><i class="fas fa-sort"></i></span></th>
-                    {{-- <th>Study Centre <span class="sort-right"><i class="fas fa-sort"></i></span></th> --}}
-                    <th>View</th>
-                    <th>Download</th>
+                    <th>Steps <span class="sort-right"><i class="fas fa-sort"></i></span></th>
+                    <th>Status</th>
                 </tr>
             </thead>
 
             {{-- @dd($applications); --}}
               @foreach ($applications as $application)
               <tr>
-              <td>{{ $application->name }}</td>
-              <td>{{ $application->gender }}</td>
-              <td>{{ $application->category }}</td>
-              <td>{{ $application->p_mobile }}</td>
-              <td>{{ $application->p_email }}</td>
-              {{-- <td>{{ $application->study_centre }}</td> --}}
-              <td><a href="{{ route('application.show', $application) }}" class="btn btn-secondary"> View </a></td>
-              <td><a href="{{ route('export-pdf-application-admin', $application) }}" class="btn btn-danger text-right" > Download</a>  </td>
+                <td>{{ $application->application_id }}</td>
+                <td>{{ $application->title }} {{ $application->name }}</td>
+                <td>{{ $application->gender }}</td>
+                <td>{{ $application->p_mobile }}</td>
+                <td>{{ $application->p_email }}</td>
+                <td>{{ $application->step }}</td>
+                <?php if(($application->status) == 'pending'):?>
+                    <td><h5><span class="badge badge-danger"><i class="fas fa-exclamation-triangle"></i> {{ $application->status }}</span></h5></td>
+                <?php endif?>
+                <?php if(($application->status) == 'completed'):?>
+                <td><h5><span class="badge badge-success"><i class="far fa-check-circle"></i> {{ $application->status }}</span></h5></td>
+                <?php endif?>
+                {{-- <td>{{ $application->status }}</td> --}}
               </tr>
               @endforeach
             </table>

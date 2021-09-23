@@ -155,7 +155,10 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     Route::get('/applications', 'App\Http\Controllers\ApplicationController@ApplicationIndex')->name('applications');
     Route::get('/application/{application}', 'App\Http\Controllers\ApplicationController@show')->name('application.show');
 
-    // Route::get('/export-pdf-application', 'App\Http\Controllers\ApplicationController@PdfApplications')->name('export-pdf-application');
+     Route::get('/export-pdf-application-admin/{application}', 'App\Http\Controllers\ApplicationController@PdfApplicationsAdmin')->name('export-pdf-application-admin');
+
+    Route::get('/all-applications', 'App\Http\Controllers\ApplicationController@ApplicationIndexAll')->name('all-applications');
+
 
 
 
@@ -180,10 +183,23 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
 
 });
 
+
+
+
+// **************************************************************************
+// ***********************STUDY CENTER PROTECTED ROUTES*****************************
+// **************************************************************************
+
 // study Centre protected routes
 Route::group(['middleware' => ['auth', 'studyCentre'], 'prefix' => 'study-centre'], function () {
     Route::get('/dashboard', function () {
         return view('study-centre.dashboard');
     })->name('study-centre.dashboard');
+
+
+    Route::get('/rie-applications', 'App\Http\Controllers\ApplicationController@ApplicationRie')->name('rie-applications');
+    Route::get('/rie-comp-applications', 'App\Http\Controllers\ApplicationController@ApplicationRieComplete')->name('rie-comp-applications');
+    Route::get('/rie-comp-applications/{application}', 'App\Http\Controllers\ApplicationController@RieApplicantshow')->name('rie-comp-applications.show');
+    Route::get('/export-pdf-application-rie/{application}', 'App\Http\Controllers\ApplicationController@PdfApplicationsRie')->name('export-pdf-application-rie');
 
 });

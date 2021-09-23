@@ -1231,6 +1231,22 @@ class ApplicationController extends Controller
         return $pdf->download('export-application.pdf');
     }
 
+    public function PdfApplicationsAdmin(Application $application)
+    {
+        // $reg_id = Auth::user()->reg_id;
+
+        // /** @var Application $application */
+        // $application = Application::query()->where('reg_id', $reg_id)->first();
+
+        // share data to view
+        view()->share('admin.export-application',$application);
+        $pdf = PDF::loadView('admin.export-application', ['application' => $application]);
+        $application_number = $application->application_id;
+        // dd($application_number);
+        return $pdf->download($application_number.'.pdf');
+        
+    }
+
 
 
 
@@ -1264,13 +1280,47 @@ class ApplicationController extends Controller
         // dd($applications);
         return view('admin.applications',compact('applications'));
     }
+    
+    public function ApplicationIndexAll(){
+        $applications = Application::query()->paginate(10);
+        // dd($applications);
+        return view('admin.all-applications',compact('applications'));
+    }
+
+   
 
 
 
-    public function ApplicantsDetail(){
-            $application = DB::select('select * from applications');
-            return view('applications',['applications'=>$application]);
-        }
+    public function ApplicationRie(){
+         $study_centre = Auth::user()->study_centre;
+        $applications = DB::table('applications')->where('study_centre', $study_centre)->paginate(10);
+       
+        return view('study-centre.rie-applications',compact('applications'));
+    }
+
+    public function ApplicationRieComplete(){
+        $study_centre = Auth::user()->study_centre;
+       $applications = Application::query()->StudyCentre($study_centre)->status('completed')->paginate(4);
+       return view('study-centre.rie-comp-applications',compact('applications'));
+   }
+
+   public function RieApplicantshow(Application $application)
+    {
+        return view('study-centre.rie_applicant',compact('application'));
+    }
+
+
+
+    public function PdfApplicationsRie(Application $application)
+    {
+        
+        view()->share('study-centre.export-application',$application);
+        $pdf = PDF::loadView('study-centre.export-application', ['application' => $application]);
+        $application_number = $application->application_id;
+        // dd($application_number);
+        return $pdf->download($application_number.'.pdf');
+        
+    }
     
 
 }

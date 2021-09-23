@@ -68,7 +68,7 @@ $application = DB::select('select * from applications where status = "completed"
                     <th>Category <span class="sort-right"><i class="fas fa-sort"></i></span></th>
                     <th>Mobile <span class="sort-right"><i class="fas fa-sort"></i></span></th>
                     <th>Email <span class="sort-right"><i class="fas fa-sort"></i></span></th>
-                    {{-- <th>Study Centre <span class="sort-right"><i class="fas fa-sort"></i></span></th> --}}
+                    <th>Study Centre <span class="sort-right"><i class="fas fa-sort"></i></span></th>
                     <th>View</th>
                     <th>Download</th>
                 </tr>
@@ -82,9 +82,10 @@ $application = DB::select('select * from applications where status = "completed"
               <td>{{ $application->category }}</td>
               <td>{{ $application->p_mobile }}</td>
               <td>{{ $application->p_email }}</td>
-              {{-- <td>{{ $application->study_centre }}</td> --}}
-              <td><a href="{{ route('application.show', $application) }}" class="btn btn-secondary"> View </a></td>
-              <td><a href="{{ route('export-pdf-application-admin', $application) }}" class="btn btn-danger text-right" > Download</a>  </td>
+              <td>{{ $application->study_centre }}</td> 
+              <td><a href="{{ route('rie-comp-applications.show', $application) }}" class="btn btn-secondary"> View </a></td>
+              <td><a href="{{ route('export-pdf-application-rie', $application) }}" class="btn btn-danger text-right" > Download</a> </td>
+              
               </tr>
               @endforeach
             </table>
@@ -94,15 +95,6 @@ $application = DB::select('select * from applications where status = "completed"
                 <div class="col-sm-6">Showing {{ $applications->count()}} of {{ $applications->total()}} results</div>
                 <div class="col-sm-6 text-right">{{ $applications->links() }}</div>
             </div>
-            {{-- <div class="card mt-3">
-                <div class="card-body p-2">
-                    <div class="row align-items-center">
-                        <div class="col-sm-6">Showing {{ $applications->count()}} of {{ $applications->total()}} results</div>
-                        <div class="col-sm-6 text-right">{{ $applications->links() }}</div>
-                    </div>
-                </div>
-            </div>
-             --}}
         </div>
 
 
