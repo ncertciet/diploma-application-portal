@@ -63,7 +63,6 @@ $application = DB::select('select * from applications where status = "completed"
            <table id="myTable" class="table table-bordered table-striped table-class" >
             <thead>
                 <tr>
-                    <th>Study Centre <span class="sort-right"><i class="fas fa-sort"></i></span></th>
                     <th >Application Id <span class="sort-right"><i class="fas fa-sort"></i></span></th>
                     <th >Name <span class="sort-right"><i class="fas fa-sort"></i></span></th>
                     <th>Gender <span class="sort-right"><i class="fas fa-sort"></i></span></th>
@@ -77,7 +76,6 @@ $application = DB::select('select * from applications where status = "completed"
             {{-- @dd($applications); --}}
               @foreach ($applications as $application)
               <tr>
-                <td class="table-w">{{ $application->study_centre }}</td>
                 <td>{{ $application->application_id }}</td>
                 <td>{{ $application->title }} {{ $application->name }}</td>
                 <td>{{ $application->gender }}</td>

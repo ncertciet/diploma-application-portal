@@ -37,7 +37,7 @@ $application = DB::select('select * from applications where status = "completed"
 
 <div class="container-fluid">
     <div class="inner-container container-xl">
-        <div class="application-form shadow">
+        <div class="application-form shadow ">
             @if (session('status'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('status') }}
@@ -63,12 +63,13 @@ $application = DB::select('select * from applications where status = "completed"
            <table id="myTable" class="table table-bordered table-striped table-class" >
             <thead>
                 <tr>
+                    <th>Study Centre <span class="sort-right"><i class="fas fa-sort"></i></span></th>
+                    <th >Application Id <span class="sort-right"><i class="fas fa-sort"></i></span></th>
                     <th >Name <span class="sort-right"><i class="fas fa-sort"></i></span></th>
                     <th>Gender <span class="sort-right"><i class="fas fa-sort"></i></span></th>
-                    <th>Category <span class="sort-right"><i class="fas fa-sort"></i></span></th>
                     <th>Mobile <span class="sort-right"><i class="fas fa-sort"></i></span></th>
                     <th>Email <span class="sort-right"><i class="fas fa-sort"></i></span></th>
-                    <th>Study Centre <span class="sort-right"><i class="fas fa-sort"></i></span></th>
+                    <th>Status</th>
                     <th>View</th>
                     <th>Download</th>
                 </tr>
@@ -77,15 +78,15 @@ $application = DB::select('select * from applications where status = "completed"
             {{-- @dd($applications); --}}
               @foreach ($applications as $application)
               <tr>
-              <td>{{ $application->name }}</td>
-              <td>{{ $application->gender }}</td>
-              <td>{{ $application->category }}</td>
-              <td>{{ $application->p_mobile }}</td>
-              <td>{{ $application->p_email }}</td>
-              <td>{{ $application->study_centre }}</td> 
-              <td><a href="{{ route('rie-comp-applications.show', $application) }}" class="btn btn-secondary"> View </a></td>
-              <td><a href="{{ route('export-pdf-application-rie', $application) }}" class="btn btn-danger text-right" > Download</a> </td>
-              
+                <td class="table-w">{{ $application->study_centre }}</td>
+                <td>{{ $application->application_id }}</td>
+                <td>{{ $application->title }} {{ $application->name }}</td>
+                <td>{{ $application->gender }}</td>
+                <td>{{ $application->p_mobile }}</td>
+                <td>{{ $application->p_email }}</td>
+                <td><h5><span class="badge badge-success"><i class="far fa-check-circle"></i> {{ $application->status }}</span></h5></td>
+                <td><a href="{{ route('rie-comp-applications.show', $application) }}" class="btn btn-secondary"> View </a></td>
+                <td><a href="{{ route('export-pdf-application-rie', $application) }}" class="btn btn-danger text-right" > Download</a> </td>
               </tr>
               @endforeach
             </table>

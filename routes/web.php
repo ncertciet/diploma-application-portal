@@ -153,6 +153,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
 
 
     Route::get('/applications', 'App\Http\Controllers\ApplicationController@ApplicationIndex')->name('applications');
+    Route::get('/pending-applications', 'App\Http\Controllers\ApplicationController@ApplicationPending')->name('pending-applications');
     Route::get('/application/{application}', 'App\Http\Controllers\ApplicationController@show')->name('application.show');
 
      Route::get('/export-pdf-application-admin/{application}', 'App\Http\Controllers\ApplicationController@PdfApplicationsAdmin')->name('export-pdf-application-admin');
@@ -199,6 +200,8 @@ Route::group(['middleware' => ['auth', 'studyCentre'], 'prefix' => 'study-centre
 
     Route::get('/rie-applications', 'App\Http\Controllers\ApplicationController@ApplicationRie')->name('rie-applications');
     Route::get('/rie-comp-applications', 'App\Http\Controllers\ApplicationController@ApplicationRieComplete')->name('rie-comp-applications');
+    Route::get('/rie-pending-applications', 'App\Http\Controllers\ApplicationController@ApplicationRiePending')->name('rie-pending-applications');
+    
     Route::get('/rie-comp-applications/{application}', 'App\Http\Controllers\ApplicationController@RieApplicantshow')->name('rie-comp-applications.show');
     Route::get('/export-pdf-application-rie/{application}', 'App\Http\Controllers\ApplicationController@PdfApplicationsRie')->name('export-pdf-application-rie');
 

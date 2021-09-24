@@ -4,16 +4,19 @@
 // $application = \Illuminate\Support\Facades\DB::table('applications')->get();
 
 $study_centre = Auth::user()->study_centre;
-
+//dd($study_centre);
 //$registration = DB::select('select * from users where type = "user"');
 //$applications_all = DB::select('select * from applications where study_centre = $study_centre'); 
 // $applications_comp = DB::select('select * from applications where status = "completed"');
 // $applications_all = DB::select('select * from applications');
 //$applications_pending = DB::select('select * from applications where status = "pending"');
-// $applications_all = DB::table('applications')->where('study_centre', $study_centre);
 
+ $applications_all = DB::table('applications')->where('study_centre', $study_centre)->get();
+ $applications_comp = DB::table('applications')->where('study_centre', $study_centre)->where('status', 'completed')->get();
+ $applications_pending = DB::table('applications')->where('study_centre', $study_centre)->where('status', 'pending')->get();
 
- //dd($applications_all)
+ //$applications_all = DB::select('select * from applications where study_centre = $study_centre'); 
+ 
 @endphp
 
 @extends('layouts.sidebar')
@@ -58,8 +61,8 @@ $study_centre = Auth::user()->study_centre;
                                         <div class="card-body py-4">
                                             <div class="d-flex align-items-start">
                                                 <div class="flex-grow-1">
-                                                    <h3 class="mb-2">0000</h3>
-                                                    <p class="mb-2">DEPFE</p>
+                                                    <h3 class="mb-2">{{ $user->name }}</h3>
+                                                    <p class="mb-2"></p>
                                                 </div>
                                                 <div class="d-inline-block ms-3">
                                                     <div class="stat">
@@ -76,7 +79,7 @@ $study_centre = Auth::user()->study_centre;
                                             <a href="{{ route('rie-applications') }}">
                                                 <div class="d-flex align-items-start">
                                                     <div class="flex-grow-1">
-                                                        <h3 class="mb-2">0000</h3>
+                                                        <h3 class="mb-2">{{ count($applications_all) }}</h3>
                                                         <p class="mb-2">Started Filling Application</p>
                                                     </div>
                                                     <div class="d-inline-block ms-3">
@@ -95,7 +98,7 @@ $study_centre = Auth::user()->study_centre;
                                             <a href="{{ route('rie-comp-applications') }}">
                                                 <div class="d-flex align-items-start">
                                                     <div class="flex-grow-1">
-                                                        <h3 class="mb-2">0000</h3>
+                                                        <h3 class="mb-2">{{ count($applications_comp) }}</h3>
                                                         <p class="mb-2">Complete Application</p>
                                                     </div>
                                                     <div class="d-inline-block ms-3">
@@ -111,17 +114,19 @@ $study_centre = Auth::user()->study_centre;
                                 <div class="col-12 col-sm-3 col-xxl-3 d-flex">
                                     <div class="card flex-fill">
                                         <div class="card-body py-4">
-                                            <div class="d-flex align-items-start">
-                                                <div class="flex-grow-1">
-                                                    <h3 class="mb-2">0000</h3>
-                                                    <p class="mb-2">Pending Application</p>
-                                                </div>
-                                                <div class="d-inline-block ms-3">
-                                                    <div class="stat">
-                                                        <img src="https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/64/000000/external-time-delivery-kiranshastry-gradient-kiranshastry.png"/>
+                                            <a href="{{ route('rie-pending-applications') }}">
+                                                <div class="d-flex align-items-start">
+                                                    <div class="flex-grow-1">
+                                                        <h3 class="mb-2">{{ count($applications_pending) }}</h3>
+                                                        <p class="mb-2">Pending Application</p>
+                                                    </div>
+                                                    <div class="d-inline-block ms-3">
+                                                        <div class="stat">
+                                                            <img src="https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/64/000000/external-time-delivery-kiranshastry-gradient-kiranshastry.png"/>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

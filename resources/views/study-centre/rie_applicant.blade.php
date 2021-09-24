@@ -53,7 +53,7 @@ $application = DB::select('select * from applications where status = "completed"
                                         </tr>
                                         <tr>
                                             <th scope="row">Name</th>
-                                            <td colspan="3">{{$application->name}}</td>
+                                            <td colspan="3">{{ $application->title }} {{$application->name}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Gender</th>
@@ -115,7 +115,7 @@ $application = DB::select('select * from applications where status = "completed"
                                 <th scope="row"></th>
                                 <td></td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <td colspan="6" class="bg"><h5>Present Occupation and Official Address</h5></td>
                             </tr>
                             <tr>
@@ -133,7 +133,7 @@ $application = DB::select('select * from applications where status = "completed"
                                 <td>{{$application->o_zip}}</td>
                                 <th scope="row"></th>
                                 <td></td>
-                            </tr>
+                            </tr> --}}
                             </tbody>
                         </table>
 
@@ -260,21 +260,43 @@ $application = DB::select('select * from applications where status = "completed"
                             </table>
 
                             <table class="table table-bordered">
-                        
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">If you are currently in service, Please upload forwarding letter from your employer</th>
-                                        <td><a href="{{ asset('storage/'.$application->forwarding_letter) }}" target="_blank" class="btn btn-primary">View</a>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">Attach Disability Cerificate:</th>
-                                        <td><a href="{{ asset('storage/'.$application->disability_certificate) }}" target="_blank" class="btn btn-primary">View</a>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Attach Cerificate if belong into SC, ST, OBC and EWS category</th>
-                                        <td><a href="{{ asset('storage/'.$application->category_certificate) }}" target="_blank" class="btn btn-primary">View</a>
-                                    </tr>
+                                    <?php 
+                                        if(!empty($application->forwarding_letter))
+                                    { ?>
+                                        <tr>
+                                            <th scope="row">If you are currently in service, Please upload forwarding letter from your employer</th>
+                                            <td><a href="{{ asset('storage/'.$application->forwarding_letter) }}" target="_blank" class="btn btn-primary">View</a>
+                                        </tr>
+                                    <?php } else { } ?>
+    
+                                    <?php 
+                                        if($application->disability === 'Yes')
+                                        { ?>
+                                            <tr>
+                                                <th scope="row">Disability</th>
+                                                <td>{{ $application->disability }} , {{ $application->disability_content }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Attach Disability Cerificate:</th>
+                                                <td><a href="{{ asset('storage/'.$application->disability_certificate) }}" target="_blank" class="btn btn-primary">View</a>
+                                            </tr>
+                                        <?php }else{ ?>
+                                            <tr>
+                                                <th scope="row">Disability</th>
+                                                <td>{{ $application->disability }}</td>
+                                            </tr>
+                                        <?php } ?>
+    
+                                    <?php 
+                                        if($application->category === 'General')
+                                        { }else{?>
+                                            <tr>
+                                                <th scope="row">Attach Cerificate if belong into SC, ST, OBC and EWS category</th>
+                                                <td><a href="{{ asset('storage/'.$application->category_certificate) }}" target="_blank" class="btn btn-primary">View</a>
+                                            </tr>
+                                        <?php } ?>
+    
                                     <tr>
                                         <th scope="row">Upload your scanned signature</th>
                                         <td><a href="{{ asset('storage/'.$application->candidate_sign) }}" target="_blank" class="btn btn-primary">View</a>

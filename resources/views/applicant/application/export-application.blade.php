@@ -200,7 +200,7 @@
                           <th scope="row"></th>
                           <td></td>
                       </tr>
-                      <tr>
+                      {{-- <tr>
                           <td colspan="6" class="bg"><h5>Present Occupation and Official Address</h5></td>
                       </tr>
                       <tr>
@@ -218,7 +218,7 @@
                           <td>{{$application->o_zip}}</td>
                           <th scope="row"></th>
                           <td></td>
-                      </tr>
+                      </tr> --}}
                     </tbody>
                 </table>
                 <br>

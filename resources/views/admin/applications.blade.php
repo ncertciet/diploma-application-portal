@@ -68,7 +68,7 @@ $application = DB::select('select * from applications where status = "completed"
                     <th>Category <span class="sort-right"><i class="fas fa-sort"></i></span></th>
                     <th>Mobile <span class="sort-right"><i class="fas fa-sort"></i></span></th>
                     <th>Email <span class="sort-right"><i class="fas fa-sort"></i></span></th>
-                    {{-- <th>Study Centre <span class="sort-right"><i class="fas fa-sort"></i></span></th> --}}
+                    <th>Status</th>
                     <th>View</th>
                     <th>Download</th>
                 </tr>
@@ -77,12 +77,12 @@ $application = DB::select('select * from applications where status = "completed"
             {{-- @dd($applications); --}}
               @foreach ($applications as $application)
               <tr>
-              <td>{{ $application->name }}</td>
+              <td>{{ $application->title }} {{ $application->name }}</td>
               <td>{{ $application->gender }}</td>
               <td>{{ $application->category }}</td>
               <td>{{ $application->p_mobile }}</td>
               <td>{{ $application->p_email }}</td>
-              {{-- <td>{{ $application->study_centre }}</td> --}}
+              <td><h5><span class="badge badge-success"><i class="far fa-check-circle"></i> {{ $application->status }}</span></h5></td>
               <td><a href="{{ route('application.show', $application) }}" class="btn btn-secondary"> View </a></td>
               <td><a href="{{ route('export-pdf-application-admin', $application) }}" class="btn btn-danger text-right" > Download</a>  </td>
               </tr>

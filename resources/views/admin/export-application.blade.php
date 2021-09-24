@@ -65,7 +65,7 @@
                     </tr>
                     <tr>
                         <th>Name</th>
-                        <td colspan="2">{{$application->name}}</td>
+                        <td colspan="2">{{ $application->title }} {{$application->name}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Gender</th>

@@ -200,7 +200,7 @@
                           <th scope="row"></th>
                           <td></td>
                       </tr>
-                      <tr>
+                      {{-- <tr>
                           <td colspan="6" class="bg"><h5>Present Occupation and Official Address</h5></td>
                       </tr>
                       <tr>
@@ -218,7 +218,7 @@
                           <td>{{$application->o_zip}}</td>
                           <th scope="row"></th>
                           <td></td>
-                      </tr>
+                      </tr> --}}
                     </tbody>
                 </table>
                 <br>
@@ -343,37 +343,7 @@
                             </tr>
                         </tbody>
                     </table>
-
-                    {{-- <table class="table table-bordered">
-                
-                        <tbody>
-                            <tr>
-                                <th scope="row">If you are currently in service, Please upload forwarding letter from your employer</th>
-                                <td><a href="{{ asset('storage/'.$application->forwarding_letter) }}" target="_blank" class="btn btn-primary">View</a>
-                            </tr>
-
-                            <tr>
-                                <th scope="row">Attach Disability Cerificate:</th>
-                                <td><a href="{{ asset('storage/'.$application->disability_certificate) }}" target="_blank" class="btn btn-primary">View</a>
-                            </tr>
-                            <tr>
-                                <th scope="row">Attach Cerificate if belong into SC, ST, OBC and EWS category</th>
-                                <td><a href="{{ asset('storage/'.$application->category_certificate) }}" target="_blank" class="btn btn-primary">View</a>
-                            </tr>
-                            <tr>
-                                <th scope="row">Upload your scanned signature</th>
-                                <td><a href="{{ asset('storage/'.$application->candidate_sign) }}" target="_blank" class="btn btn-primary">View</a>
-                            </tr>
-                            <tr>
-                                <th scope="row">Upload your passport size recent photograph</th>
-                                <td><a href="{{ asset('storage/'.$application->candidate_photo) }}" target="_blank" class="btn btn-primary">View</a>
-                            </tr>
-                            <tr>
-                                <th scope="row">Attach Self-attested copies of all the Mark Sheets, Certificates, Professional Experience, etc.</th>
-                                <td><a href="{{ asset('storage/'.$application->document) }}" target="_blank" class="btn btn-primary">View</a>
-                            </tr>
-                        </tbody>
-                    </table> --}}
+                   
 
                     <table class="table table-bordered">
                         <tbody>

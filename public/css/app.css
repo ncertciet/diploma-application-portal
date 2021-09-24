@@ -10236,3 +10236,7 @@ h3 {
 .badge-success {
   background-color: #148845 !important;
 }
+
+.table-w {
+  width: 40% !important;
+}

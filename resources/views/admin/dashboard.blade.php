@@ -117,22 +117,19 @@ $rie_shillong = DB::select('select * from applications where study_centre = "Nor
                             <div class="col-12 col-sm-3 col-xxl-3 d-flex">
                                 <div class="card flex-fill">
                                     <div class="card-body py-4">
-                                        <div class="d-flex align-items-start">
-                                            <div class="flex-grow-1">
-                                                <h3 class="mb-2">{{ count($applications_pending) }}</h3>
-                                                <p class="mb-2">Pending Application</p>
-                                                {{-- <div class="mb-0">
-                                                    <span class="badge badge-soft-success me-2"> <i class="mdi mdi-arrow-bottom-right"></i> +8.65% </span>
-                                                    <span class="text-muted">Since last week</span>
-                                                </div> --}}
-                                            </div>
-                                            <div class="d-inline-block ms-3">
-                                                <div class="stat">
-                                                    {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign align-middle text-info"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> --}}
-                                                    <img src="https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/64/000000/external-time-delivery-kiranshastry-gradient-kiranshastry.png"/>
+                                        <a href="{{ route('pending-applications') }}">
+                                            <div class="d-flex align-items-start">
+                                                <div class="flex-grow-1">
+                                                    <h3 class="mb-2">{{ count($applications_pending) }}</h3>
+                                                    <p class="mb-2">Pending Application</p>
+                                                </div>
+                                                <div class="d-inline-block ms-3">
+                                                    <div class="stat">
+                                                        <img src="https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/64/000000/external-time-delivery-kiranshastry-gradient-kiranshastry.png"/>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -205,6 +202,13 @@ $rie_shillong = DB::select('select * from applications where study_centre = "Nor
                                     </div>
                                 </div>
                             </div>
+
+
+                            <div class="col-12 col-sm-6  d-flex">
+                                
+                            </div>
+                            
+
                         
                         </div>
 

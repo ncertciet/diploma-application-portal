@@ -1276,9 +1276,15 @@ class ApplicationController extends Controller
     // }
 
     public function ApplicationIndex(){
-        $applications = Application::query()->status('completed')->paginate(4);
+        $applications = Application::query()->status('completed')->paginate(10);
         // dd($applications);
         return view('admin.applications',compact('applications'));
+    }
+
+    public function ApplicationPending(){
+        $applications = Application::query()->status('pending')->paginate(10);
+        // dd($applications);
+        return view('admin.pending-applications',compact('applications'));
     }
     
     public function ApplicationIndexAll(){
@@ -1300,15 +1306,23 @@ class ApplicationController extends Controller
 
     public function ApplicationRieComplete(){
         $study_centre = Auth::user()->study_centre;
-       $applications = Application::query()->StudyCentre($study_centre)->status('completed')->paginate(4);
+       $applications = Application::query()->StudyCentre($study_centre)->status('completed')->paginate(10);
        return view('study-centre.rie-comp-applications',compact('applications'));
    }
+
+   public function ApplicationRiePending(){
+        $study_centre = Auth::user()->study_centre;
+        $applications = Application::query()->StudyCentre($study_centre)->status('pending')->paginate(10);
+        return view('study-centre.rie-pending-applications',compact('applications'));
+    }
 
    public function RieApplicantshow(Application $application)
     {
         return view('study-centre.rie_applicant',compact('application'));
     }
 
+    
+    
 
 
     public function PdfApplicationsRie(Application $application)
