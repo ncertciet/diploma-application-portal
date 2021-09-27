@@ -55,7 +55,7 @@ class ApplicationController extends Controller
             return redirect(route('application.form.step6'));
 
          }else if($application->step === '6'){
-            return redirect(route('application.thankyou'));
+            return redirect(route('application.form.thankyou'));
          }
     }
 
@@ -88,7 +88,7 @@ class ApplicationController extends Controller
             return redirect(route('application.form.step6'));
 
          }else if($application->step === '6'){
-            return redirect(route('application.thankyou'));
+            return redirect(route('application.form.thankyou'));
          }
     }
 
@@ -121,7 +121,7 @@ class ApplicationController extends Controller
             return redirect(route('application.form.step6'));
 
          }else if($application->step === '6'){
-            return redirect(route('application.thankyou'));
+            return redirect(route('application.form.thankyou'));
          }
     }
 
@@ -154,7 +154,7 @@ class ApplicationController extends Controller
             return redirect(route('application.form.step6'));
 
          }else if($application->step === '6'){
-            return redirect(route('application.thankyou'));
+            return redirect(route('application.form.thankyou'));
          }
     }
 
@@ -187,7 +187,7 @@ class ApplicationController extends Controller
             return redirect(route('application.form.step6'));
 
          }else if($application->step === '6'){
-            return redirect(route('application.thankyou'));
+            return redirect(route('application.form.thankyou'));
          }
     }
 
@@ -206,21 +206,27 @@ class ApplicationController extends Controller
         }
         else if ($application->step === '1'){
             return redirect(route('application.form.step2'));
+            // abort(404);
 
         }else if($application->step === '2'){
             return redirect(route('application.form.step3'));
+            // abort(404);
             
         }else if($application->step === '3'){
             return redirect(route('application.form.step4'));
+            // abort(404);
 
          }else if($application->step === '4'){
             return redirect(route('application.form.step5'));
+            // abort(404);
 
          }else if($application->step === '5'){
             return view('applicant.application.form-step6');
+            // abort(404);
 
          }else if($application->step === '6'){
-            return redirect(route('application.thankyou'));
+            return redirect(route('application.form.thankyou'));
+            // abort(404);
          }
     }
 
@@ -286,45 +292,56 @@ class ApplicationController extends Controller
     //         return redirect(route('application.form-step6'));
 
     //      }else if($application->status === 'completed'){
-    //         //return view('applicant.application.thankyou');
-    //         return redirect(route('application.thankyou'));
+    //         //return view('applicant.application.form.thankyou');
+    //         return redirect(route('application.form.thankyou'));
             
     //      }
     // }
 
-    // public function thankyouShow(){
-    //     // return view('applicant.application.form-step2');
+    public function thankyouShow(){
+        // return view('applicant.application.form-step2');
 
-    //     $reg_id = Auth::user()->reg_id;
-    //     $application = DB::table('applications')->where('reg_id', $reg_id)->first();
+        $reg_id = Auth::user()->reg_id;
+        $application = DB::table('applications')->where('reg_id', $reg_id)->first();
 
-    //     if(empty($application)){
-    //         return redirect(route('application.form.step1'));
-    //     }
+        if(empty($application)){
+            // return redirect(route('application.form.step1'));
+            abort(404);
+        }
 
-    //     if($application->step === ''){
-    //         return redirect(route('application.form.step1'));
-    //     }
-    //     else if ($application->step === '1'){
-    //         return redirect(route('application.form.step2'));
+        if($application->step === ''){
+            // return redirect(route('application.form.step1'));
+            abort(404);
+        }
+        else if ($application->step === '1'){
+            // return redirect(route('application.form.step2'));
+            abort(404);
 
-    //     }else if($application->step === '2'){
-    //         return redirect(route('application.form.step3'));
+
+        }else if($application->step === '2'){
+            // return redirect(route('application.form.step3'));
+            abort(404);
+
             
-    //     }else if($application->step === '3'){
-    //         return redirect(route('application.form.step4'));
+        }else if($application->step === '3'){
+            // return redirect(route('application.form.step4'));
+            abort(404);
 
-    //      }else if($application->step === '4'){
-    //         return redirect(route('application.form.step5'));
 
-    //      }else if($application->step === '5'){
-    //         return redirect(route('application.form-step6'));
+         }else if($application->step === '4'){
+            // return redirect(route('application.form.step5'));
+            abort(404);
 
-    //      }else if($application->status === 'completed'){
-    //         //return view('applicant.application.thankyou');
-    //         return redirect(route('application.thankyou'));
-    //      }
-    // }
+         }else if($application->step === '5'){
+            // return redirect(route('application.form.step6'));
+            abort(404);
+
+
+         }else if($application->status === 'completed'){
+            return view('applicant.application.thankyou');
+            // return redirect(route('application.form.thankyou'));
+         }
+    }
     
     
 
@@ -869,14 +886,14 @@ class ApplicationController extends Controller
                         // Save model
                         // dd($application);
                         $application->save();
-				        return redirect(route('application.thankyou'))->with('status',"Application Submited successfully");
+				        return redirect(route('application.form.thankyou'))->with('status',"Application Submited successfully");
                         break;
                 }
 
  
 			}
 			catch(Exception $e){
-				return redirect(route('application.form.thankyou'))->with('failed',"Operation failed");
+				return redirect(route('application.form.step6'))->with('failed',"Operation failed");
 			}
 		}
 

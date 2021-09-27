@@ -15,7 +15,13 @@ $study_centre = Auth::user()->study_centre;
  $applications_comp = DB::table('applications')->where('study_centre', $study_centre)->where('status', 'completed')->get();
  $applications_pending = DB::table('applications')->where('study_centre', $study_centre)->where('status', 'pending')->get();
 
- //$applications_all = DB::select('select * from applications where study_centre = $study_centre'); 
+ $applications_general = DB::table('applications')->where('study_centre', $study_centre)->where('category', 'General')->where('status', 'completed')->get();
+ $applications_obc = DB::table('applications')->where('study_centre', $study_centre)->where('category', 'OBC')->where('status', 'completed')->get();
+ $applications_sc = DB::table('applications')->where('study_centre', $study_centre)->where('category', 'SC')->where('status', 'completed')->get();
+ $applications_st = DB::table('applications')->where('study_centre', $study_centre)->where('category', 'ST')->where('status', 'completed')->get();
+ $applications_ews = DB::table('applications')->where('study_centre', $study_centre)->where('category', 'EWS')->where('status', 'completed')->get();
+ $applications_dis = DB::table('applications')->where('study_centre', $study_centre)->where('disability', 'Yes')->where('status', 'completed')->get();
+
  
 @endphp
 
@@ -61,8 +67,8 @@ $study_centre = Auth::user()->study_centre;
                                         <div class="card-body py-4">
                                             <div class="d-flex align-items-start">
                                                 <div class="flex-grow-1">
-                                                    <h3 class="mb-2">{{ $user->name }}</h3>
                                                     <p class="mb-2"></p>
+                                                    <p class="mb-2 font-weight-bold">Summary of applications for their study center.</p>
                                                 </div>
                                                 <div class="d-inline-block ms-3">
                                                     <div class="stat">
@@ -99,7 +105,7 @@ $study_centre = Auth::user()->study_centre;
                                                 <div class="d-flex align-items-start">
                                                     <div class="flex-grow-1">
                                                         <h3 class="mb-2">{{ count($applications_comp) }}</h3>
-                                                        <p class="mb-2">Complete Application</p>
+                                                        <p class="mb-2">Submitted Applications</p>
                                                     </div>
                                                     <div class="d-inline-block ms-3">
                                                         <div class="stat">
@@ -134,64 +140,104 @@ $study_centre = Auth::user()->study_centre;
 
 
                             {{-- <div class="row">
+                                <div class="col-12 col-sm-3 col-xxl-3 d-flex">
+                                    <div class="card flex-fill">
+                                        <div class="card-body py-4">
+                                            <a href="{{ route('rie-comp-applications') }}">
+                                                <div class="d-flex align-items-start">
+                                                    <div class="flex-grow-1">
+                                                        <h3 class="mb-2">{{ count($applications_comp) }}</h3>
+                                                        <p class="mb-2">Complete Application</p>
+                                                    </div>
+                                                    <div class="d-inline-block ms-3">
+                                                        <div class="stat">
+                                                            <img src="https://img.icons8.com/nolan/50/paid-bill.png"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-3 col-xxl-3 d-flex">
+                                    <div class="card flex-fill">
+                                        <div class="card-body py-4">
+                                            <a href="{{ route('rie-applications') }}">
+                                                <div class="d-flex align-items-start">
+                                                    <div class="flex-grow-1">
+                                                        <h3 class="mb-2">{{ count($applications_all) }}</h3>
+                                                        <p class="mb-2">Started Filling Application</p>
+                                                    </div>
+                                                    <div class="d-inline-block ms-3">
+                                                        <div class="stat">
+                                                            <img src="https://img.icons8.com/fluency/48/000000/petition.png"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
+
+
+                             <div class="row">
                                 <div class="col-12 col-sm-6  d-flex">
                                     <div class="card flex-fill">
                                         <div class="card-body py-4">
                                             <div class="d-flex align-items-start">
                                                 <div class="flex-grow-1">
-                                                    <h3 class="mb-4 illustration"> Study Center wise application received <i class="fas fa-graduation-cap float-right"></i></h3>
+                                                    <h3 class="mb-4 illustration"> Category-wise Applications <i class="fas fa-graduation-cap float-right"></i></h3>
                                                     <ul class="list-unstyled">
                                                         <li>
                                                             <div class="row">
                                                                 <div class="col-sm-9">
-                                                                    <p>Department of Educational Psychology and Foundations of Education NCERT, New Delhi</p>    
+                                                                    <p>Disability Category</p>    
                                                                 </div>   
-                                                                <div class="col-sm-3 text-right nmbr"><h3>{{count($rie_delhi)}}</h3> </div>    
+                                                                <div class="col-sm-3 text-right nmbr"><h3>{{ count($applications_dis) }}</h3> </div>    
                                                             </div> 
                                                         </li>
                                                         <li>
                                                             <div class="row">
                                                                 <div class="col-sm-9">
-                                                                    <p>Regional Institute of Education, Ajmer</p>    
+                                                                    <p>General Category</p>    
                                                                 </div>   
-                                                                <div class="col-sm-3 text-right nmbr"><h3>{{count($rie_ajmer)}}</h3> </div>    
+                                                                <div class="col-sm-3 text-right nmbr"><h3>{{ count($applications_general) }}</h3> </div>    
                                                             </div> 
                                                         </li>
                                                         <li>
                                                             <div class="row">
                                                                 <div class="col-sm-9">
-                                                                    <p>Regional Institute of Education, Bhopal</p>    
+                                                                    <p>OBC Category</p>    
                                                                 </div>   
-                                                                <div class="col-sm-3 text-right nmbr"><h3>{{count($rie_bhopal)}}</h3> </div> 
+                                                                <div class="col-sm-3 text-right nmbr"><h3>{{ count($applications_obc) }}</h3> </div> 
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="row">
                                                                 <div class="col-sm-9">
-                                                                    <p>Regional Institute of Education, Bhubaneswar</p>    
+                                                                    <p>SC Category</p>    
                                                                 </div>   
-                                                                <div class="col-sm-3 text-right nmbr"><h3>{{count($rie_bhubaneswar)}}</h3> </div>    
+                                                                <div class="col-sm-3 text-right nmbr"><h3>{{ count($applications_sc) }}</h3> </div>    
                                                             </div> 
                                                         </li>
                                                         <li>
                                                             <div class="row">
                                                                 <div class="col-sm-9">
-                                                                    <p>Regional Institute of Education, Mysuru</p>    
+                                                                    <p>ST Category</p>    
                                                                 </div>   
-                                                                <div class="col-sm-3 text-right nmbr"><h3>{{count($rie_mysuru)}}</h3> </div>    
+                                                                <div class="col-sm-3 text-right nmbr"><h3>{{ count($applications_st) }}</h3> </div>    
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="row">
                                                                 <div class="col-sm-9">
-                                                                    <p>North East Regional Institute of Education (NERIE), Shillong</p>    
+                                                                    <p>EWS Category</p>    
                                                                 </div>   
-                                                                <div class="col-sm-3 text-right nmbr"><h3>{{count($rie_shillong)}}</h3> </div>   
+                                                                <div class="col-sm-3 text-right nmbr"><h3>{{ count($applications_ews) }}</h3> </div>   
                                                             </div> 
                                                         </li>
-                                                        <li>
-
-                                                        </li>
+                                                        
                                                     </ul>
                                                 </div>
                                                 
@@ -200,7 +246,7 @@ $study_centre = Auth::user()->study_centre;
                                     </div>
                                 </div>
                             
-                            </div> --}}
+                            </div> 
 
 
                         </div>

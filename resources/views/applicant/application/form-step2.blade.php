@@ -34,7 +34,7 @@
 
                 <form method="POST" action="{{route('application.step2.store')}}">
                     @csrf
-                    <h4 class="text-primary mt-2 mb-4">Details of Educational Qualifications (final school examination onwards):</h4>
+                    <h4 class="text-primary mt-2 mb-4">Details of Educational Qualifications:</h4>
                     <div class="color-box">
                         <div class="form-row">
 

@@ -14,6 +14,13 @@ $rie_bhubaneswar = DB::select('select * from applications where study_centre = "
 $rie_mysuru = DB::select('select * from applications where study_centre = "Regional Institute of Education, Mysuru"');
 $rie_shillong = DB::select('select * from applications where study_centre = "North East Regional Institute of Education (NERIE), Shillong"');
 
+$applications_general = DB::table('applications')->where('category', 'General')->where('status', 'completed')->get();
+$applications_obc = DB::table('applications')->where('category', 'OBC')->where('status', 'completed')->get();
+$applications_sc = DB::table('applications')->where('category', 'SC')->where('status', 'completed')->get();
+$applications_st = DB::table('applications')->where('category', 'ST')->where('status', 'completed')->get();
+$applications_ews = DB::table('applications')->where('category', 'EWS')->where('status', 'completed')->get();
+$applications_dis = DB::table('applications')->where('disability', 'Yes')->where('status', 'completed')->get();
+
 // dd($applications_comp)
 @endphp
 
@@ -102,7 +109,7 @@ $rie_shillong = DB::select('select * from applications where study_centre = "Nor
                                             <div class="d-flex align-items-start">
                                                 <div class="flex-grow-1">
                                                     <h3 class="mb-2">{{ count($applications_comp) }}</h3>
-                                                    <p class="mb-2">Complete Application</p>
+                                                    <p class="mb-2">Submitted Applications</p>
                                                 </div>
                                                 <div class="d-inline-block ms-3">
                                                     <div class="stat">
@@ -121,7 +128,7 @@ $rie_shillong = DB::select('select * from applications where study_centre = "Nor
                                             <div class="d-flex align-items-start">
                                                 <div class="flex-grow-1">
                                                     <h3 class="mb-2">{{ count($applications_pending) }}</h3>
-                                                    <p class="mb-2">Pending Application</p>
+                                                    <p class="mb-2">Pending Applications</p>
                                                 </div>
                                                 <div class="d-inline-block ms-3">
                                                     <div class="stat">
@@ -142,12 +149,12 @@ $rie_shillong = DB::select('select * from applications where study_centre = "Nor
                                     <div class="card-body py-4">
                                         <div class="d-flex align-items-start">
                                             <div class="flex-grow-1">
-                                                <h3 class="mb-4 illustration"> Study Center wise application received <i class="fas fa-graduation-cap float-right"></i></h3>
+                                                <h3 class="mb-4 illustration"> Studycenter-wise Applications Received <i class="fas fa-graduation-cap float-right"></i></h3>
                                                 <ul class="list-unstyled">
                                                     <li>
                                                         <div class="row">
                                                             <div class="col-sm-9">
-                                                                <p>Department of Educational Psychology and Foundations of Education NCERT, New Delhi</p>    
+                                                                <p>Department of Educational Psychology and Foundations of Education, NIE, NCERT, New Delhi</p>    
                                                             </div>   
                                                             <div class="col-sm-3 text-right nmbr"><h3>{{count($rie_delhi)}}</h3> </div>    
                                                         </div> 
@@ -192,8 +199,69 @@ $rie_shillong = DB::select('select * from applications where study_centre = "Nor
                                                             <div class="col-sm-3 text-right nmbr"><h3>{{count($rie_shillong)}}</h3> </div>   
                                                         </div> 
                                                     </li>
-                                                    <li>
+                                                    
+                                                </ul>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="col-12 col-sm-6  d-flex">
+                                <div class="card flex-fill">
+                                    <div class="card-body py-4">
+                                        <div class="d-flex align-items-start">
+                                            <div class="flex-grow-1">
+                                                <h3 class="mb-4 illustration2">Category-wise Applications <i class="fas fa-graduation-cap float-right"></i></h3>
+                                                <ul class="list-unstyled">
+                                                    <li>
+                                                        <div class="row">
+                                                            <div class="col-sm-9">
+                                                                <p>Disability Category</p>    
+                                                            </div>   
+                                                            <div class="col-sm-3 text-right nmbr2"><h3>{{ count($applications_dis) }}</h3> </div>    
+                                                        </div> 
+                                                    </li>
+                                                    <li>
+                                                        <div class="row">
+                                                            <div class="col-sm-9">
+                                                                <p>General Category</p>    
+                                                            </div>   
+                                                            <div class="col-sm-3 text-right nmbr2"><h3>{{ count($applications_general) }}</h3> </div>    
+                                                        </div> 
+                                                    </li>
+                                                    <li>
+                                                        <div class="row">
+                                                            <div class="col-sm-9">
+                                                                <p>OBC Category</p>    
+                                                            </div>   
+                                                            <div class="col-sm-3 text-right nmbr2"><h3>{{ count($applications_obc) }}</h3> </div> 
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="row">
+                                                            <div class="col-sm-9">
+                                                                <p>SC Category</p>    
+                                                            </div>   
+                                                            <div class="col-sm-3 text-right nmbr2"><h3>{{ count($applications_sc) }}</h3> </div>    
+                                                        </div> 
+                                                    </li>
+                                                    <li>
+                                                        <div class="row">
+                                                            <div class="col-sm-9">
+                                                                <p>ST Category</p>    
+                                                            </div>   
+                                                            <div class="col-sm-3 text-right nmbr2"><h3>{{ count($applications_st) }}</h3> </div>    
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="row">
+                                                            <div class="col-sm-9">
+                                                                <p>EWS Category</p>    
+                                                            </div>   
+                                                            <div class="col-sm-3 text-right nmbr2"><h3>{{ count($applications_ews) }}</h3> </div>   
+                                                        </div> 
                                                     </li>
                                                 </ul>
                                             </div>
@@ -203,11 +271,6 @@ $rie_shillong = DB::select('select * from applications where study_centre = "Nor
                                 </div>
                             </div>
 
-
-                            <div class="col-12 col-sm-6  d-flex">
-                                
-                            </div>
-                            
 
                         
                         </div>

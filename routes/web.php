@@ -109,11 +109,11 @@ Route::group(['middleware' => ['auth', 'applicant'], 'prefix' => 'applicant'], f
     Route::get('/application/step6', 'App\Http\Controllers\ApplicationController@step6Show')->name('application.form.step6');
     Route::POST('/application/step6', 'App\Http\Controllers\ApplicationController@step6')->name('application.step6.store');
 
-    Route::get('/application/thankyou', function () {
-        return view('applicant.application.thankyou');
-    })->name('application.thankyou');
+    // Route::get('/application/thankyou', function () {
+    //     return view('applicant.application.thankyou');
+    // })->name('application.form.thankyou');
 
-    //Route::get('/application/thankyou', 'App\Http\Controllers\ApplicationController@thankyouShow')->name('application.form.thankyou');
+    Route::get('/application/thankyou', 'App\Http\Controllers\ApplicationController@thankyouShow')->name('application.form.thankyou');
 
     // Route::get('/application/formedit', function () {
     //     return view('applicant.application.formedit');

@@ -32,8 +32,8 @@ $user = $user ?? null;
                 </div>
 
             @endif
-            <div class="row">
-                <div class="col-sm-4">
+            <div class="row justify-content-center">
+                {{-- <div class="col-sm-4">
                     <div class="card">
                         <div class="card-header h4 text-primary">Profile Picture</div>
 
@@ -41,7 +41,7 @@ $user = $user ?? null;
                             Hello
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="col-sm-7">
                     <div class="card">

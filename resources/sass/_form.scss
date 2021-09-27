@@ -116,7 +116,6 @@
     .illustration {
         background: #e0eafc;
         color: #0135a2;
-        font-weight: 600 !important;
     }
     .card {
         margin-bottom: 1.5rem;
@@ -134,9 +133,19 @@
     .nmbr {
         color: #0135a2;
     }
+    .nmbr2 {
+        color: #ad1410;
+    }
     a {
         text-decoration: none;
         color: #000;
+    }
+    .illustration2 {
+        background: #f9d2d1;
+        color: #ad1410;
+    }
+    p {
+        font-weight: 500;
     }
 }
 

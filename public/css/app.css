@@ -10206,7 +10206,6 @@ h3 {
 .dashboard-page .illustration {
   background: #e0eafc;
   color: #0135a2;
-  font-weight: 600 !important;
 }
 .dashboard-page .card {
   margin-bottom: 1.5rem;
@@ -10224,9 +10223,19 @@ h3 {
 .dashboard-page .nmbr {
   color: #0135a2;
 }
+.dashboard-page .nmbr2 {
+  color: #ad1410;
+}
 .dashboard-page a {
   text-decoration: none;
   color: #000;
+}
+.dashboard-page .illustration2 {
+  background: #f9d2d1;
+  color: #ad1410;
+}
+.dashboard-page p {
+  font-weight: 500;
 }
 
 .badge-danger {
