@@ -57,7 +57,7 @@
 
                 <div class="text-center">
                     <h3>Application Form</h3>
-                    <h4 class="pdf-title">Diploma Course in Guidance and Counselling (2021)</h4>
+                    <h4 class="pdf-title">Diploma Course in Guidance and Counselling (2022)</h4>
                     <br>
                 </div>
 
@@ -313,12 +313,32 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <?php 
+                                        if(!empty($application->work_exp_name))
+                                    { ?> 
+
                                     <th>{{$application->work_exp_name}} <br> {{$application->work_exp_name1}} <br> {{$application->work_exp_name2}} <br> {{$application->work_exp_name3}}</th>
                                     <td>{{$application->work_exp_position}} <br> {{$application->work_exp_position1}} <br> {{$application->work_exp_position2}} <br> {{$application->work_exp_position3}}</td>
                                     <td>{{$application->work_exp_date_from}} <br> {{$application->work_exp_date_from1}} <br> {{$application->work_exp_date_from2}} <br>{{$application->work_exp_date_from3}}</td>
                                     <td>{{$application->work_exp_date_to}} <br> {{$application->work_exp_date_to1}} <br> {{$application->work_exp_date_to2}} <br> {{$application->work_exp_date_to3}}</td>
                                     <td>{{$application->work_exp_duty}} <br> {{$application->work_exp_duty1}} <br> {{$application->work_exp_duty2}} <br> {{$application->work_exp_duty3}} <br></td>
+                               
+                                    <?php } else { ?>
+                                        <td>Nil</td>
+                                        <td>Nil</td>
+                                        <td>Nil</td>
+                                        <td>Nil</td>
+                                        <td>Nil</td>
+                                    <?php }   ?>
+
                                 </tr>
+                                {{-- <tr>
+                                    <th>{{$application->work_exp_name}} <br> {{$application->work_exp_name1}} <br> {{$application->work_exp_name2}} <br> {{$application->work_exp_name3}}</th>
+                                    <td>{{$application->work_exp_position}} <br> {{$application->work_exp_position1}} <br> {{$application->work_exp_position2}} <br> {{$application->work_exp_position3}}</td>
+                                    <td>{{$application->work_exp_date_from}} <br> {{$application->work_exp_date_from1}} <br> {{$application->work_exp_date_from2}} <br>{{$application->work_exp_date_from3}}</td>
+                                    <td>{{$application->work_exp_date_to}} <br> {{$application->work_exp_date_to1}} <br> {{$application->work_exp_date_to2}} <br> {{$application->work_exp_date_to3}}</td>
+                                    <td>{{$application->work_exp_duty}} <br> {{$application->work_exp_duty1}} <br> {{$application->work_exp_duty2}} <br> {{$application->work_exp_duty3}} <br></td>
+                                </tr> --}}
                             </tbody>
                     </table>
 
@@ -336,11 +356,29 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <?php 
+                                    if(!empty($application->course))
+                                { ?> 
+
+                                    <td>{{$application->course}} <br> {{$application->course1}} <br> {{$application->course2}} <br> {{$application->course3}} </td>
+                                    <td>{{$application->course_institute}} <br> {{$application->course_institute1}} <br> {{$application->course_institute2}} <br> {{$application->course_institute3}}</td>
+                                    <td>{{$application->course_year}} <br> {{$application->course_year1}} <br> {{$application->course_year2}} <br> {{$application->course_year3}}</td>
+                                    <td>{{$application->course_duration}} <br> {{$application->course_duration1}} <br> {{$application->course_duration2}} <br> {{$application->course_duration3}}</td>
+                               
+                                <?php } else { ?>
+                                    <td>Nil</td>
+                                    <td>Nil</td>
+                                    <td>Nil</td>
+                                    <td>Nil</td>
+                                <?php }   ?>
+                            
+                            </tr>
+                            {{-- <tr>
                                     <th>{{$application->course}} <br> {{$application->course1}} <br> {{$application->course2}} <br> {{$application->course3}} </th>
                                     <td>{{$application->course_institute}} <br> {{$application->course_institute1}} <br> {{$application->course_institute2}} <br> {{$application->course_institute3}}</td>
                                     <td>{{$application->course_year}} <br> {{$application->course_year1}} <br> {{$application->course_year2}} <br> {{$application->course_year3}}</td>
                                     <td>{{$application->course_duration}} <br> {{$application->course_duration1}} <br> {{$application->course_duration2}} <br> {{$application->course_duration3}}</td>
-                            </tr>
+                            </tr> --}}
                         </tbody>
                     </table>
                    
@@ -354,21 +392,46 @@
                               
                               <th scope="row">Referee 1</th>
                               <td>
-                                  <p>{{$application->ref_name1}}</p>
+                                <?php 
+                                    if(!empty($application->ref_name1))
+                                { ?>
+                                    <p>{{$application->ref_name1}}</p>
+                                    <p>{{$application->ref_add1}}</p>
+                                    <p>{{$application->ref_pin1}}</p>
+                                    <p>{{$application->ref_phone1}}</p>
+                                    <p>{{$application->ref_mobile1}}</p>
+                                    <p>{{$application->ref_email1}}</p>
+                                <?php }else{?>
+                                    <p>Nil</p>
+                                <?php } ?>
+                                  {{-- <p>{{$application->ref_name1}}</p>
                                   <p>{{$application->ref_add1}}</p>
                                   <p>{{$application->ref_pin1}}</p>
                                   <p>{{$application->ref_phone1}}</p>
                                   <p>{{$application->ref_mobile1}}</p>
-                                  <p>{{$application->ref_email1}}</p>
+                                  <p>{{$application->ref_email1}}</p> --}}
                               </td>
                               <th scope="row">Referee 2</th>
                               <td>
-                                <p>{{$application->ref_name2}}</p>
+                                <?php 
+                                    if(!empty($application->ref_name2))
+                                { ?>
+                                    <p>{{$application->ref_name2}}</p>
+                                    <p>{{$application->ref_add2}}</p>
+                                    <p>{{$application->ref_pin2}}</p>
+                                    <p>{{$application->ref_phone2}}</p>
+                                    <p>{{$application->ref_mobile2}}</p>
+                                    <p>{{$application->ref_email2}}</p>
+                                <?php }else{?>
+                                    <p>Nil</p>
+                                <?php } ?>
+
+                                {{-- <p>{{$application->ref_name2}}</p>
                                 <p>{{$application->ref_add2}}</p>
                                 <p>{{$application->ref_pin2}}</p>
                                 <p>{{$application->ref_phone2}}</p>
                                 <p>{{$application->ref_mobile2}}</p>
-                                <p>{{$application->ref_email2}}</p>
+                                <p>{{$application->ref_email2}}</p> --}}
                               </td>
                           </tr>
                         </tbody>

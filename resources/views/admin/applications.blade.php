@@ -24,7 +24,7 @@ $application = DB::select('select * from applications where status = "completed"
                     <div class="col-auto mt-4">
                         <h1 class="page-title"><i class="far fa-file-alt mr-1"></i> Applications</h1>
                         <div class="page-header-subtitle">
-                            Diploma Course in Guidance and Counselling (2021)
+                            Diploma Course in Guidance and Counselling (2022)
                         </div> 
                     </div>
                 </div>

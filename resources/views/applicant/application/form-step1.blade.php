@@ -34,7 +34,7 @@
                 @csrf
                 <div class="form-row">
                     <div class="form-group col-md-1">
-                        <label for="name">Title</label>
+                        <label for="name">1. Title <span class="mendat">*</span></label>
                         <select class="form-control  @error('title') is-invalid @enderror"  name="title" id="title"  value="{{ old('title') }}">
 
                             <option value="" disabled="true" selected="true">Title</option>
@@ -49,7 +49,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="name">Full Name</label>
+                        <label for="name">2. Full Name <span class="mendat">*</span></label>
                         <input type="text"  class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name" value="{{ $user->name }}" autofocus>
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="gender">Gender</label><br>
+                        <label for="gender">3. Gender <span class="mendat">*</span></label><br>
                         <div class="form-group mt-2 mb-0">
                             <div class="form-check-inline">
                                 <label class="form-check-label" for="male">
@@ -83,7 +83,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-2">
-                        <label for="dob">Date of Birth</label>
+                        <label for="dob">4. Date of Birth <span class="mendat">*</span></label>
                         <input type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" id="dob"  value="{{ old('dob') }}">
                         @error('dob')
                         <span class="invalid-feedback" role="alert">
@@ -92,7 +92,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="nationality">Nationality</label>
+                        <label for="nationality">5. Nationality <span class="mendat">*</span></label>
                         <input type="text" placeholder="Nationality" class="form-control @error('nationality') is-invalid @enderror" name="nationality" id="nationality"  value="{{ old('nationality') }}">
                         @error('nationality')
                         <span class="invalid-feedback" role="alert">
@@ -102,7 +102,7 @@
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="product">State/UT</label>
+                        <label for="product">6. State/UT <span class="mendat">*</span></label>
                         <select class="form-control product @error('sc_state') is-invalid @enderror" data-related-regime="#regime" name="sc_state" id="product"  value="{{ old('sc_state') }}">
 
                             <option value="" disabled="true" selected="true">Select State/UT</option>
@@ -114,7 +114,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="regime">Study Centre</label>
+                        <label for="regime">7. Study Centre <span class="mendat">*</span></label>
 
                         <select class="form-control regime @error('study_centre') is-invalid @enderror" data-related-category="" data-related-product="#product" name="study_centre" id="regime"  value="{{ old('study_centre') }}">
                             <option value="" selected="selected">Please select State/UT first</option>
@@ -132,7 +132,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-sm-3">
-                            <label for="p_address">Address</label>
+                            <label for="p_address">8. Address <span class="mendat">*</span></label>
                             <textarea class="form-control @error('p_address') is-invalid @enderror" name="p_address" id="p_address"  value="{{ old('p_address') }}"></textarea>
                             @error('p_address')
                             <span class="invalid-feedback" role="alert">
@@ -141,7 +141,7 @@
                             @enderror
                         </div>
                         <div class="form-group col-sm-3">
-                            <label for="p_city">City</label>
+                            <label for="p_city">9. City <span class="mendat">*</span></label>
                             <input type="text" class="form-control @error('p_city') is-invalid @enderror" name="p_city" id="p_city" placeholder="City"  value="{{ old('p_city') }}">
                             @error('p_city')
                             <span class="invalid-feedback" role="alert">
@@ -151,7 +151,7 @@
                         </div>
 
                         <div class="form-group col-sm-3">
-                            <label for="p_state">State</label>
+                            <label for="p_state">10. State <span class="mendat">*</span></label>
                             <select class="form-control @error('p_state') is-invalid @enderror" name="p_state" id="p_state"  value="{{ old('p_state') }}">
                                 <option value="">Select State</option>
                                 <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -198,7 +198,7 @@
                         </div>
 
                         <div class="form-group col-sm-3">
-                            <label for="p_zip">Pin Code</label>
+                            <label for="p_zip">11. Pin Code <span class="mendat">*</span></label>
                             <input type="number" class="form-control @error('p_zip') is-invalid @enderror" name="p_zip" id="p_zip" placeholder="Pin Code"  value="{{ old('p_zip') }}">
                             @error('p_zip')
                             <span class="invalid-feedback" role="alert">
@@ -210,7 +210,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-sm-4">
-                            <label for="p_telephone">Telephone <small>(Optional)</small></label>
+                            <label for="p_telephone">12. Telephone <small>(Optional)</small></label>
                             <input type="text" class="form-control @error('p_telephone') is-invalid @enderror" name="p_telephone" id="p_telephone" placeholder="e.g. 123-456-7890"  value="{{ old('p_telephone') }}">
                             <small class="text-primary">Format: 123-456-7890</small>
                             @error('p_telephone')
@@ -221,7 +221,7 @@
                         </div>
 
                         <div class="form-group col-sm-4">
-                            <label for="p_mobile"> Mobile</label>
+                            <label for="p_mobile">13. Mobile <span class="mendat">*</span></label>
                             <input type="tel" class="form-control @error('p_mobile') is-invalid @enderror" name="p_mobile" id="p_mobile" placeholder="e.g. 9999999999"  value="{{ old('p_mobile') }}">
                             <small class="text-primary">Format: Phone number with 6-9 and remaing 9 digit with 0-9</small>
                             @error('p_mobile')
@@ -232,7 +232,7 @@
                         </div>
 
                         <div class="form-group col-sm-4">
-                            <label for="p_email"> Email</label>
+                            <label for="p_email">14. Email <span class="mendat">*</span></label>
                             <input type="email" readonly class="form-control @error('p_email') is-invalid @enderror" name="p_email" id="p_email" placeholder="Email"  value="{{ $user->email }}">
                             @error('p_email')
                             <span class="invalid-feedback" role="alert">

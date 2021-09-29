@@ -43,7 +43,7 @@
           <div class=" mt-4 mb-6">
                 <div class="text-center">
                     <h3>Application Receipt</h3>
-                    <h4 class="pdf-title">Diploma Course in Guidance and Counselling (2021)</h4>
+                    <h4 class="pdf-title">Diploma Course in Guidance and Counselling (2022)</h4>
                     <br>
                 </div>
 
@@ -52,14 +52,14 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th colspan="2" class="bg font-weight-bold text-center"><h5>Diploma Application Receipt</h5></th>
+                                <th colspan="2" class="bg font-weight-bold text-center"><h5>Diploma Course in Guidance and Counselling (2022) Receipt</h5></th>
                             </tr>
                         </thead>
                         <tbody>
                             
                             <tr>
                                 <th scope="row">Application Id</th>
-                                <td>{{ $application->application_id }}</td>
+                                <td>{{ $application->title }} {{ $application->application_id }}</td>
                             </tr> 
                             <tr>
                                 <th scope="row">Name</th>

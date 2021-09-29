@@ -10,7 +10,7 @@
                     <img class="img-fluid" src="/images/ncert.png" alt="NCERT Logo">
                 </div>
 
-                <h4 class="mt-2">Diploma Application Portal</h4>
+                <h4 class="mt-2">Diploma Course in Guidance and Counselling</h4>
             </div>
 
             <div class="card">
@@ -72,7 +72,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fas fa-sign-in-alt mr-1"></i> {{ __('Login') }}
                                 </button>
-
+                                
                                 @if (Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
@@ -80,6 +80,12 @@
                                 @endif
                             </div>
                         </div>
+                        <ul class="list mt-4">
+                            <h6><strong>Note:</strong></h6>
+                            <li>All candidates need to <a class="font-weight-bold" href="{{ route('register') }}">create a new account</a> for filling the application form.</li>
+                            <li>All correspondence related to the course will be made through the email ID created.</li>
+                        </ul>
+                        
                     </form>
                 </div>
                 <div class="card-footer text-center">

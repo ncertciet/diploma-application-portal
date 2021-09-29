@@ -39,7 +39,7 @@
                         <h5>Referee 1</h5>
                          <div class="form-row">
                                 <div class="form-group col-md-4">
-                                   <label for="inputZip">Name</label>
+                                   <label for="inputZip">1. Name</label>
                                    <input type="text" name="ref_name1" class="form-control @error('ref_name1') is-invalid @enderror" value="{{ old('ref_name1') }}" id="" placeholder="Name" >
                                    @error('ref_name1')
                                         <span class="invalid-feedback" role="alert">
@@ -48,7 +48,7 @@
                                     @enderror
                                </div>
                                <div class="form-group col-md-4">
-                                   <label for="inputZip">Address</label>
+                                   <label for="inputZip">2. Address</label>
                                    <input type="text" name="ref_add1" class="form-control @error('ref_add1') is-invalid @enderror" value="{{ old('') }}" id="" placeholder="Address" >
                                     @error('ref_add1')
                                     <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                                     @enderror
                                </div>
                                <div class="form-group col-md-4">
-                                   <label for="inputZip">Pin Code</label>
+                                   <label for="inputZip">3. Pin Code</label>
                                    <input type="text" name="ref_pin1" pattern="[0-9]{6}" class="form-control @error('ref_pin1') is-invalid @enderror" value="{{ old('') }}" id="pin" minlength="6" maxlength="6" placeholder="Six digit pin code" >
                                    @error('ref_pin1')
                                    <span class="invalid-feedback" role="alert">
@@ -68,7 +68,7 @@
                          </div>
                          <div class="form-row">
                              <div class="form-group col-md-4">
-                                 <label for="inputPassword4">Telephone number (with STD code):</label>
+                                 <label for="inputPassword4">4. Telephone number (with STD code):</label>
                                  <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="ref_phone1" class="form-control @error('ref_phone1') is-invalid @enderror" value="{{ old('') }}" id="telephone" placeholder="e.g. 123-456-7890">
                                  <small>Format: 123-456-7890</small>
                                  @error('ref_phone1')
@@ -78,7 +78,7 @@
                                    @enderror
                              </div>
                              <div class="form-group col-md-4">
-                               <label for="inputAddress2">Mobile Number:</label>
+                               <label for="inputAddress2">5. Mobile Number:</label>
                                <input type="text" pattern="[6-9]{1}[0-9]{9}" name="ref_mobile1" class="form-control @error('ref_mobile1') is-invalid @enderror" value="{{ old('') }}" id="mobile" placeholder="e.g. 9999999999" title="Phone number with 7-9 and remaing 9 digit with 0-9" >
                                <small>Format: Phone number with 7-9 and remaing 9 digit with 0-9</small>
                                @error('ref_mobile1')
@@ -88,7 +88,7 @@
                                @enderror
                              </div>
                              <div class="form-group col-md-4">
-                                 <label for="inputEmail4">Email:</label>
+                                 <label for="inputEmail4">6. Email:</label>
                                  <input type="email" name="ref_email1" class="form-control @error('ref_email1') is-invalid @enderror"  value="{{ old('') }}" id="email_address" placeholder="Email" >
                                  @error('ref_email1')
                                     <span class="invalid-feedback" role="alert">
@@ -101,7 +101,7 @@
                         <h5>Referee 2</h5>
                         <div class="form-row">
                                  <div class="form-group col-md-4">
-                                   <label for="inputZip">Name</label>
+                                   <label for="inputZip">7. Name</label>
                                    <input type="text" name="ref_name2" class="form-control @error('ref_name2') is-invalid @enderror" value="{{ old('') }}" id="" placeholder="Name" >
                                    @error('ref_name2')
                                    <span class="invalid-feedback" role="alert">
@@ -110,7 +110,7 @@
                                     @enderror
                                 </div>
                                <div class="form-group col-md-4">
-                                   <label for="inputZip">Address</label>
+                                   <label for="inputZip">8. Address</label>
                                    <input type="text" name="ref_add2" class="form-control @error('ref_add2') is-invalid @enderror" value="{{ old('') }}" id="" placeholder="Address" >
                                    @error('ref_add2')
                                     <span class="invalid-feedback" role="alert">
@@ -119,7 +119,7 @@
                                     @enderror
                                 </div>
                                <div class="form-group col-md-4">
-                                   <label for="inputZip">Pin Code</label>
+                                   <label for="inputZip">9. Pin Code</label>
                                    <input type="text" name="ref_pin2" pattern="[0-9]{6}" class="form-control @error('ref_pin2') is-invalid @enderror" value="{{ old('') }}" id="pin" minlength="6" maxlength="6" placeholder="Six digit pin code">
                                    @error('ref_pin2')
                                    <span class="invalid-feedback" role="alert">
@@ -130,7 +130,7 @@
                          </div>
                          <div class="form-row">
                              <div class="form-group col-md-4">
-                                 <label for="inputPassword4">Telephone number (with STD code):</label>
+                                 <label for="inputPassword4">10. Telephone number (with STD code):</label>
                                  <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="ref_phone2" class="form-control @error('ref_phone2') is-invalid @enderror" value="{{ old('') }}" id="telephone" placeholder="e.g. 123-456-7890">
                                  <small>Format: 123-456-7890</small>
                                  @error('ref_phone2')
@@ -140,7 +140,7 @@
                                 @enderror
                              </div>
                              <div class="form-group col-md-4">
-                               <label for="inputAddress2">Mobile Number:</label>
+                               <label for="inputAddress2">11. Mobile Number:</label>
                                <input type="text" pattern="[6-9]{1}[0-9]{9}" name="ref_mobile2" class="form-control @error('ref_mobile2') is-invalid @enderror" value="{{ old('') }}" id="mobile" placeholder="e.g. 9999999999" title="Phone number with 7-9 and remaing 9 digit with 0-9" >
                                <small>Format: Phone number with 7-9 and remaing 9 digit with 0-9</small>
                                @error('ref_mobile2')
@@ -150,7 +150,7 @@
                                 @enderror
                              </div>
                              <div class="form-group col-md-4">
-                                 <label for="inputEmail4">Email:</label>
+                                 <label for="inputEmail4">12. Email:</label>
                                  <input type="email" name="ref_email2" class="form-control @error('ref_email2') is-invalid @enderror" value="{{ old('') }}" id="email_address" placeholder="Email" >
                                  @error('ref_email2')
                                  <span class="invalid-feedback" role="alert">

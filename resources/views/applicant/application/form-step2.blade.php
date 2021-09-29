@@ -41,11 +41,11 @@
                             <table id="myTable" class=" table order-list-school">
                                 <thead>
                                     <tr>
-                                        <th>Examinations Passed</th>
-                                        <th>Examining Body</th>
-                                        <th>Year</th>
-                                        <th>%age of marks/Grade Point</th>
-                                        <th>Subject(s)</th>
+                                        <th>Examinations Passed <span class="mendat">*</span></th>
+                                        <th>Examining Body <span class="mendat">*</span></th>
+                                        <th>Year <span class="mendat">*</span></th>
+                                        <th>%age of marks/Grade Point <span class="mendat">*</span></th>
+                                        <th>Subject(s) <span class="mendat">*</span></th>
                                     </tr>
                                     <tr>
                                         <td class="col-sm-2">
@@ -259,7 +259,7 @@
                         </div>
                         <div class="form-row">
                         <div class="form-group col-md-3 custom-btn">
-                            <input type="button" class="btn btn-primary" id="addrowschool" value="Add More Qualification"  />
+                            <input type="button" class="btn btn-primary" id="addrowschool" value="Add More Qualification"  /> <small class="optional">(Optional)</small>
                         </div>
                         <div class="form-group col-md-6">
 
@@ -276,11 +276,11 @@
                           <table id="myTable" class=" table order-list">
                               <thead>
                                   <tr>
-                                      <th>Examinations Passed</th>
-                                      <th>Examining Body</th>
-                                      <th>Year</th>
-                                      <th>%age of marks/Grade Point</th>
-                                      <th>Subject(s)</th>
+                                      <th>Examinations Passed <span class="mendat">*</span></th>
+                                      <th>Examining Body <span class="mendat">*</span></th>
+                                      <th>Year <span class="mendat">*</span></th>
+                                      <th>%age of marks/Grade Point <span class="mendat">*</span></th>
+                                      <th>Subject(s) <span class="mendat">*</span></th>
                                   </tr>
                                   <tr>
                                       <td class="col-sm-2">
@@ -341,7 +341,7 @@
 
                         <div class="form-row">
                           <div class="form-group col-md-3 custom-btn">
-                              <input type="button" class="btn btn-primary" id="addrow" value="Add More Qualification"  />
+                              <input type="button" class="btn btn-primary" id="addrow" value="Add More Qualification"  /> <small class="optional">(Optional)</small>
                           </div>
                           <div class="form-group col-md-6">
 

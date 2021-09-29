@@ -127,6 +127,15 @@ $count = count($applications);
                                     <li>Postgraduates in Psychology/educational/social work/child development/special education. Preference will be given to those with at least one year of teaching or related experience.</li>
                                     <li>Minimum % of marks for all target groups is 50% (5% relaxation for SC/ST).</li>
                                 </ul>
+
+                                <h4 class="ml-4 mb-3 mt-5">Important Instructions</h4>
+                                <ul class="list">
+                                    <h5 class="text-primary">Before proceeding for filling the form online the applicant must have the following:-</h5>
+                                    <li>Scanned passport size recent photograph (JPG/PNG only)</li>
+                                    <li>Scanned Signature (JPG/PNG only)</li>
+                                    <li>Scanned copy of relevant Educational Qualification (Create a PDF file with all your documents and then upload it).</li>
+                                    <li>Scaanned copy of Category Certificate, if SC/ST/OBC/EWS.</li>
+                                </ul>
                             </div>
 
                     </div>

@@ -117,7 +117,7 @@ $application = \Illuminate\Support\Facades\DB::table('applications')->where('reg
                               <th scope="row"></th>
                               <td></td>
                           </tr>
-                          <tr>
+                          {{-- <tr>
                               <td colspan="6" class="bg"><h5>Present Occupation and Official Address</h5></td>
                           </tr>
                           <tr>
@@ -135,7 +135,7 @@ $application = \Illuminate\Support\Facades\DB::table('applications')->where('reg
                               <td>{{$application->o_zip}}</td>
                               <th scope="row"></th>
                               <td></td>
-                          </tr>
+                          </tr> --}}
                         </tbody>
                       </table>
 

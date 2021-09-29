@@ -9,7 +9,7 @@
                 <div class="login-logo">
                     <img class="img-fluid" src="/images/ncert.png" alt="NCERT Logo">
                 </div>
-                <h4 class="mt-2">Diploma Application Portal</h4>
+                <h4 class="mt-2">Diploma Course in Guidance and Counselling (2022)</h4>
             </div>
             <div class="card">
                 <div class="card-header text-center">

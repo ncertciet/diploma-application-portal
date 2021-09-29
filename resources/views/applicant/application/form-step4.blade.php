@@ -39,7 +39,7 @@
                          <div class="row">
                             <div class="col-sm-6">
 
-                                <label for="inputZip">Do You have ANY Disability:</label>
+                                <label for="inputZip">1. Do You have ANY Disability <span class="mendat">*</span></label>
                                 <div class="disabality" id="">
                                     <div class="form-check-inline mb-4">
                                         <input class="form-check-input" type="radio" name="disability" value="Yes" id="disability_yes" value="{{ old('disability') }}">
@@ -64,7 +64,7 @@
                                       <div class="disability-content" style="display: none; @error('disability_certificate') display: block; @enderror" >
                                         <div class="form-row">
                                             <div class="form-group col-sm-7">
-                                                <label for="disability_content">Disability extent may be mentioned:</label>
+                                                <label for="disability_content">Disability extent may be mentioned <span class="mendat">*</span></label>
                                                 <textarea class="form-control @error('disability_content') is-invalid @enderror" name="disability_content" id="disability_content" rows="1">{{ old('disability_content') }}</textarea>
                                                 <small class="text-primary">(Not exceeding 150 words)</small>
                                                 @error('disability_content')
@@ -74,7 +74,7 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group col-sm-5">
-                                                <label for="disability_certificate">Attach Disability Cerificate:</label>
+                                                <label for="disability_certificate">Attach Disability Cerificate <span class="mendat">*</span></label>
                                                 <input type="file" name="disability_certificate" class="form-control-file form-control form-control @error('disability_certificate') is-invalid @enderror" id="disability_certificate" value="{{ old('disability_certificate') }}">
                                                 <small class="text-primary">Maximum size of PDF file can be 5MB. </small>
                                                 @error('disability_certificate')
@@ -90,7 +90,7 @@
                             
                             </div>
                             <div class="col-sm-6">
-                                <label for="inputZip">Category:</label>
+                                <label for="inputZip">2. Category <span class="mendat">*</span></label>
                                 <div class="category" id="">
                                     <div class="form-check form-check-inline mb-4">
                                         <input class="form-check-input" type="radio" name="category" id="General" value="General" value="{{ old('category') }}">
@@ -127,7 +127,7 @@
                                       <div class="category-content" style="display: none; @error('disability_content') display: block; @enderror">
                                         <div class="form-row">
                                             <div class="form-group col-sm-12">
-                                                <label for="category_certificate">Attach Category Cerificate:</label>
+                                                <label for="category_certificate">Attach Category Cerificate <span class="mendat">*</span></label>
                                                 <input type="file" name="category_certificate" class="form-control-file form-control @error('category_certificate') is-invalid @enderror" id="category_certificate" value="{{ old('category_certificate') }}">
                                                 <small>Maximum size of PDF file can be 5MB. </small>
                                                 @error('category_certificate')
@@ -143,7 +143,7 @@
                          </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="candidate_sign">Upload your scanned signature</label>
+                                <label for="candidate_sign">3. Upload your scanned signature <span class="mendat">*</span></label>
                                 <input type="file" name="candidate_sign" class="form-control-file form-control @error('candidate_sign') is-invalid @enderror" id="candidate_sign" value="{{ old('candidate_sign') }}">
                                 <small class="text-primary">The maximum size should be 200KB and maximum dimension should be 100 x 150px.</small>
                                 @error('candidate_sign')
@@ -153,7 +153,7 @@
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="candidate_photo">Upload your passport size recent photograph</label>
+                                <label for="candidate_photo">4. Upload your passport size recent photograph <span class="mendat">*</span></label>
                                 <input type="file" name="candidate_photo" class="form-control-file form-control @error('candidate_photo') is-invalid @enderror" id="candidate_photo" value="{{ old('candidate_photo') }}">
                                 <small class="text-primary">Upload passport size photo in JPG/PNG only.<br> Maximum size should be 200KB and maximum dimension should be 150 x 200px.</small>
                                 @error('candidate_photo')
@@ -167,7 +167,7 @@
                         <div class="form-row">
                             
                             <div class="form-group col-md-6">
-                                <label for="document">Please attach Self-attested copies of all the Mark Sheets, Certificates, Professional Experience, etc. Create a PDF file with all your documents and then upload it.</label>
+                                <label for="document">5. Please attach Self-attested copies of all the Mark Sheets, Certificates, Professional Experience, etc. Create a PDF file with all your documents and then upload it.<span class="mendat">*</span></label>
                                 <input type="file" name="document" class="form-control-file form-control @error('document') is-invalid @enderror" id="document" value="{{ old('document') }}">
                                 <small class="text-primary">Maximum size of PDF file can be 5MB. </small>
                                 @error('document')
@@ -177,7 +177,7 @@
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="forwarding_letter">If you are currently in service, Please upload forwarding letter from your employer.</label>
+                                <label for="forwarding_letter">6. If you are currently in service, Please upload forwarding letter from your employer.</label>
                                 <input type="file" name="forwarding_letter" class="form-control-file form-control mt-3 @error('forwarding_letter') is-invalid @enderror" id="forwarding_letter" value="{{ old('forwarding_letter') }}">
                                 <small class="text-primary">Maximum size of PDF file can be 5MB. </small>
                                 @error('forwarding_letter')

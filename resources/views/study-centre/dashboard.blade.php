@@ -22,6 +22,11 @@ $study_centre = Auth::user()->study_centre;
  $applications_ews = DB::table('applications')->where('study_centre', $study_centre)->where('category', 'EWS')->where('status', 'completed')->get();
  $applications_dis = DB::table('applications')->where('study_centre', $study_centre)->where('disability', 'Yes')->where('status', 'completed')->get();
 
+ $applications_male = DB::table('applications')->where('study_centre', $study_centre)->where('gender', 'Male')->where('status', 'completed')->get();
+ $applications_female = DB::table('applications')->where('study_centre', $study_centre)->where('gender', 'Female')->where('status', 'completed')->get();
+ $applications_trans = DB::table('applications')->where('study_centre', $study_centre)->where('gender', 'Transgender')->where('status', 'completed')->get();
+
+ 
  
 @endphp
 
@@ -235,6 +240,30 @@ $study_centre = Auth::user()->study_centre;
                                                                     <p>EWS Category</p>    
                                                                 </div>   
                                                                 <div class="col-sm-3 text-right nmbr"><h3>{{ count($applications_ews) }}</h3> </div>   
+                                                            </div> 
+                                                        </li>
+                                                        <li>
+                                                            <div class="row">
+                                                                <div class="col-sm-9">
+                                                                    <p>Male</p>    
+                                                                </div>   
+                                                                <div class="col-sm-3 text-right nmbr"><h3>{{ count($applications_male) }}</h3> </div>   
+                                                            </div> 
+                                                        </li>
+                                                        <li>
+                                                            <div class="row">
+                                                                <div class="col-sm-9">
+                                                                    <p>Female</p>    
+                                                                </div>   
+                                                                <div class="col-sm-3 text-right nmbr"><h3>{{ count($applications_female) }}</h3> </div>   
+                                                            </div> 
+                                                        </li>
+                                                        <li>
+                                                            <div class="row">
+                                                                <div class="col-sm-9">
+                                                                    <p>Transgender</p>    
+                                                                </div>   
+                                                                <div class="col-sm-3 text-right nmbr"><h3>{{ count($applications_trans) }}</h3> </div>   
                                                             </div> 
                                                         </li>
                                                         
